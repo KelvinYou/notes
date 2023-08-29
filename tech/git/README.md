@@ -2,10 +2,14 @@
 
 Welcome to the "Git Best Practices" repository! This repository is dedicated to providing you with a comprehensive understanding of Git practices that can enhance your development workflow. By following these practices, you can ensure a more organized, collaborative, and efficient version control process.
 
+---
+
 ## Table of Contents
 
-1. [Keyword](Keyword.md)
-2. [Format & Example](Format%20&%20Example.md)
+1. [Git Command Reference](git_command_reference.md)
+2. Commit
+    1. [Keyword](commit_keyword.md)
+    2. [Format & Example](commit_format&example.md)
 
 ## What You'll Find Here
 

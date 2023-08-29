@@ -1,8 +1,9 @@
-## 1. Keyword (Keyword.md)
+## 1. Commit Keyword
 
 This section dives into important keywords and concepts that are fundamental to understanding Git. By grasping these keywords, you'll be better equipped to navigate through Git's functionalities and terminology effectively.
 
 ---
+
 ### Here are some of the most commonly used commit types:
 
 1. feat: A new feature or enhancement added to the codebase.
