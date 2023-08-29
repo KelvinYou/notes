@@ -15,10 +15,6 @@ Welcome to the "Git Best Practices" repository! This repository is dedicated to 
 
 In this repository, you'll find detailed explanations and guidelines on various Git best practices. Each topic is designed to improve your knowledge and usage of Git for better collaboration and code management.
 
-
-
-
-
 ## Additional Resources
 
 For more insights into Git best practices, you can explore the following reference:
