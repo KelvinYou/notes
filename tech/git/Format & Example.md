@@ -1,3 +1,9 @@
+## 2. Format & Example (Format%20&%20Example.md)
+
+In this section, we explore the recommended format for writing clear and informative Git commit messages. Good commit messages play a vital role in communication and maintaining a clean commit history. We also provide practical examples that illustrate the proper structure and content of commit messages.
+
+<hr/>
+
 Writing a good Git commit message is essential for clear communication and maintaining a well-organized codebase. A well-structured commit message can make it easier for you and your collaborators to understand the purpose and context of the changes. Here's a template for a well-structured Git commit message:
 
 ```xml
