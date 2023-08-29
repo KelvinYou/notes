@@ -1,5 +1,4 @@
-## Brand Name
+## Notes
 
-- English: Literary Trail Station
-- Chinese: 文学步道站
+- **App Name:** 文学步道站 Literary Trail Station
 

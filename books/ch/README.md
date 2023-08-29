@@ -1,6 +1,4 @@
-# 文学步道站 Literary Trail Station
-
-中文站
+# 文学步道站 Literary Trail Station (中文站)
 
 ## Table of Contents
 
