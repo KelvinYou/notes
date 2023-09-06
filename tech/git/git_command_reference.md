@@ -12,6 +12,9 @@
 | Create a new branch                    | `git branch <new-branch-name>`             |
 | Switch to a branch                     | `git checkout <branch-name>`               |
 | Delete a branch                        | `git branch -d <branch-name>`              |
+| **Merging Branches**                   |                                             |
+| Merge a branch into another branch     | `git merge <source-branch>`                |
+| Commit it                              | `git commit -m "Merge feature-branch into main"`                |
 | **Creating and Pushing a New Branch Based on Release** |                               |
 | Fetch origin                           | `git fetch origin`                         |
 | Create new feature branch              | `git checkout -b new-feature-branch origin/release` |
