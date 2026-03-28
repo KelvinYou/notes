@@ -78,12 +78,12 @@ const config = {
             position: 'left',
             label: 'Tech Notes',
           },
-          // {
-          //   type: 'docSidebar',
-          //   sidebarId: 'personalGrowthNotes',
-          //   position: 'left',
-          //   label: 'Personal Growth Notes',
-          // },
+          {
+            type: 'docSidebar',
+            sidebarId: 'thinking',
+            position: 'left',
+            label: 'Thinking',
+          },
           // {
           //   type: 'docSidebar',
           //   sidebarId: 'techs',

@@ -1,7 +1,6 @@
 # Interview Questions
 
-
-
+Answers written for my own context. Update these before each job search cycle.
 
 
 
@@ -11,17 +10,6 @@
 <details>
 
 <summary>Tell me about yourself</summary>
-
-This warm-up question is your chance to make an impactful first impression. Be prepared to describe yourself in a few sentences. You can mention: 
-
-- Your past experiences and how they relate to the current job
-- How your most recent job is tied to this new opportunity
-- Two of your strengths
-- One personal attribute, like a hobby or an interest
-
-The majority of this response leans on your past work experience, with a small dash of your personal life added at the end of the response. Keep your answer to two to four minutes.
-
-Example:
 
 我是Kelvin，目前从事前端开发已经有2年多的经验，比较擅长React.js，Typescript，Node.js，Golang，也对这些技术栈感兴趣。
 目前，我在 Simpletruss 负责 一款面向 vendor 的 Property Management SaaS 平台。该平台提供 technician 排班管理、工单处理、发票支付和数据报告等功能。
@@ -77,52 +65,11 @@ Example:
 
 <summary>What have you achieved at your current company?</summary>
 
-Example:
-In my current role as a frontend developer, I've had the opportunity to contribute to several key achievements within my team and the company as a whole.
-
-One notable accomplishment was leading the redesign of our flagship product's user interface. This project involved collaborating closely with UX designers, product managers, and backend developers to modernize the UI while improving usability and performance. Through my contributions, we were able to deliver a sleek and intuitive interface that received positive feedback from both users and stakeholders, resulting in a significant increase in user engagement and satisfaction metrics.
-
-Additionally, I played a key role in optimizing the performance of our web application. By conducting thorough performance audits, identifying bottlenecks, and implementing targeted optimizations such as lazy loading, code splitting, and caching strategies, I was able to significantly reduce page load times and improve overall responsiveness. This not only enhanced the user experience but also contributed to higher conversion rates and improved SEO rankings for our product.
-
-Furthermore, I spearheaded the implementation of a new frontend testing strategy utilizing modern testing frameworks like Jest and React Testing Library. By establishing comprehensive test suites for critical UI components and features, I helped improve the stability and reliability of our codebase, reducing the occurrence of bugs and regressions in production.
-
-Overall, these achievements demonstrate my ability to drive impactful changes through effective collaboration, strategic problem-solving, and a commitment to delivering high-quality frontend solutions that align with both user needs and business goals.
+*(Fill this in with specific, personal stories before each job search cycle. Don't use generic examples here.)*
 
 </details>
 
 
-<details>
-
-<summary>Temp: to be organized </summary>
-
-Certainly! Here's an example of how the interview might be structured:
-
-**Introduction (5 minutes)**:
-- The interviewer welcomes you to the interview and introduces themselves.
-- They provide an overview of the interview process, mentioning that it will consist of a video interview followed by a whiteboard coding assessment, focusing on your front-end development experience, particularly your knowledge of JavaScript.
-- They briefly explain the format and duration of each part of the interview.
-
-**Video Interview (30 minutes)**:
-- The interviewer begins by asking you to introduce yourself, highlighting your relevant experience in front-end development and your proficiency in JavaScript.
-- They may ask specific questions about your previous projects, challenges you've faced, and how you overcame them.
-- The interviewer might inquire about your familiarity with specific JavaScript frameworks or libraries, your understanding of modern front-end development practices, and your approach to problem-solving in JavaScript.
-
-**Technical Coding Assessment (25 minutes)**:
-- The interviewer shares their screen to start the whiteboard coding assessment.
-- They present you with a coding problem related to front-end development, such as implementing a specific feature using JavaScript, manipulating the DOM, or solving a common algorithmic challenge.
-- You are given a certain amount of time (e.g., 20 minutes) to solve the problem.
-- During this time, you explain your thought process, ask clarifying questions if needed, and write code on the virtual whiteboard within the Codility platform.
-- The interviewer may provide feedback or guidance as you work through the problem.
-
-**Wrap-Up (5 minutes)**:
-- The interviewer concludes the interview by thanking you for your time and participation.
-- They may ask if you have any questions for them about the company, the role, or the interview process.
-- They provide information on the next steps in the hiring process, such as when you can expect to hear back from them regarding the outcome of the interview.
-
-Throughout the interview, the focus is on assessing your technical skills in front-end development, particularly your proficiency in JavaScript, as well as your problem-solving abilities, communication skills, and overall fit for the role.
-
-
-</details>
 
 <details>
 
@@ -231,19 +178,3 @@ My ability to understand the tasks given and the overall application structure. 
 
 </details>
 
-<details>
-
-<summary></summary>
-
-
-</details>
-
-
-
-
-<details>
-
-<summary></summary>
-
-
-</details>
