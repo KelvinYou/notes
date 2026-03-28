@@ -1,18 +1,69 @@
 # Idempotency
 
-Idempotency in the context of APIs refers to the property of certain HTTP methods where performing the same operation multiple times has the same effect as performing it once. In other words, if a request is idempotent, making multiple identical requests will not produce different outcomes than making a single request.
+An operation is idempotent if calling it N times produces the same result as calling it once.
 
-For example, consider a hypothetical API endpoint for updating a user's profile information:
+**Why it matters:** Networks are unreliable. Clients retry on timeout. Without idempotency, a retry can create duplicate payments, double-send emails, or corrupt state.
 
-- If the API endpoint is idempotent, sending the same request to update the user's profile multiple times with the same data will result in the same state of the user's profile each time.
-- If the API endpoint is not idempotent, sending the same request multiple times might result in unintended consequences, such as creating duplicate records or modifying the data in unexpected ways.
+---
 
-Idempotent HTTP methods include:
+## Which HTTP Methods Are Idempotent?
 
-1. **GET**: Retrieving data from the server. Sending multiple identical GET requests will not modify the server's state.
+| Method | Idempotent? | Safe? | Notes |
+|--------|-------------|-------|-------|
+| `GET` | ✅ | ✅ | Read-only |
+| `PUT` | ✅ | ❌ | Replace resource at URI |
+| `DELETE` | ✅ | ❌ | Deleting twice = still deleted |
+| `POST` | ❌ | ❌ | Creates new resource each time |
+| `PATCH` | ❌* | ❌ | Depends on the operation |
 
-2. **PUT**: Updating or replacing a resource at a specific URI. Repeated PUT requests with the same data will have the same effect as a single request.
+*`PATCH` can be made idempotent if the operation is absolute (`set status = 'active'`), but not if it's relative (`increment count by 1`).
 
-3. **DELETE**: Deleting a resource at a specific URI. Deleting a resource multiple times will result in the resource being deleted only once.
+---
 
-Idempotency is an important concept in API design and implementation, as it helps ensure predictable behavior and reliability of APIs, especially in scenarios where requests might be retried due to network issues or other failures. By designing idempotent APIs, developers can minimize unintended side effects and make systems more robust and resilient.
+## The Idempotency Key Pattern
+
+Used when `POST` must be made safe to retry (e.g. payment API):
+
+```mermaid
+sequenceDiagram
+    participant Client
+    participant API
+    participant DB
+
+    Client->>API: POST /payments\nIdempotency-Key: key-abc123
+    API->>DB: Lookup key-abc123
+    alt Key not seen before
+        DB-->>API: Not found
+        API->>DB: Process payment + store key-abc123 + result
+        DB-->>API: Payment created
+        API-->>Client: 201 Created { payment_id: "pay_xxx" }
+    else Key already exists (retry)
+        DB-->>API: Found — return stored result
+        API-->>Client: 200 OK { payment_id: "pay_xxx" } (same response)
+    end
+```
+
+**Implementation notes:**
+- Key is client-generated (UUID), sent in a header or request body
+- Store the key + response in DB/cache when first processed
+- Return the same stored response on duplicates — don't re-execute
+- Key TTL: 24h is Stripe's convention; match your retry window
+
+---
+
+## When I Implement This
+
+I add idempotency keys any time:
+- The operation creates or charges money
+- The operation sends a notification (email, SMS, push)
+- The operation triggers a webhook or external side effect
+- The client is a mobile app with unreliable connectivity
+
+Read-only endpoints don't need them — `GET` is already idempotent.
+
+---
+
+## Reference
+
+- [Stripe — Idempotent Requests](https://stripe.com/docs/api/idempotent_requests)
+- [REST API Design — Idempotency (HTTP RFC 9110)](https://www.rfc-editor.org/rfc/rfc9110#section-9.2.2)

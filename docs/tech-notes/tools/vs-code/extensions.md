@@ -1,76 +1,105 @@
-# Extensions
+# VS Code Extensions I Actually Use
 
-### [CodeTour](https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner) 
-- **Description:** CodeTour allows you to create interactive guided walkthroughs in your codebase, helping onboard new contributors or explain complex code.
-- **Features:** Supports multiple programming languages, integrates with VS Code's source control and comments, and allows for easy sharing of tours.
+Curated. Not everything — just what's in my setup and why.
 
-### [JavaScript (ES6) code snippets](https://marketplace.visualstudio.com/items?itemName=xabikos.JavaScriptSnippets)
-- **Description:** JavaScript (ES6) code snippets offers a collection of helpful code snippets for modern JavaScript development in VS Code, speeding up coding tasks and promoting best practices.
-- **Features:** Includes snippets for common ES6 syntax patterns, such as arrow functions, template literals, destructuring, promises, and more, facilitating rapid code writing and reducing boilerplate.
+## Quick reference
 
-### [ES7+ React/Redux/React-Native snippets](https://marketplace.visualstudio.com/items?itemName=dsznajder.es7-react-js-snippets)
-- **Description:** Provides a collection of ES7+ snippets for React, Redux, and React Native development, helping you write code faster by offering shortcuts for common patterns and tasks.
-- **Features:** Includes snippets for React components, Redux actions and reducers, React Native components, and more, with support for ES7+ syntax features.
+| Extension | Category | What it does |
+|-----------|----------|--------------|
+| GitLens | Git | Inline blame, history, file revisions |
+| Prettier | Formatting | Format on save |
+| ESLint | Linting | Inline lint errors |
+| Pretty TypeScript Errors | TypeScript | Readable TS error messages |
+| Git Graph | Git | Visual branch/commit graph |
+| Tailwind CSS IntelliSense | Tailwind | Class autocomplete + hover preview |
+| Prisma | Database | Schema formatting + autocomplete |
+| Go | Go | Autocomplete, format, test runner |
+| Docker | DevOps | Container management + Compose support |
+| Dependi | Dependencies | Shows outdated versions in `package.json` |
+| Code Spell Checker | Productivity | Catch typos in code + comments |
+| Import Cost | Productivity | Bundle size inline per import |
+| Material Icon Theme | UI | Better file type icons |
+| Draw.io Integration | Diagramming | Edit architecture diagrams in VS Code |
+
+---
+
+## Essential (always installed)
 
 ### [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
-- **Description:** GitLens enhances the built-in Git capabilities of VS Code, providing powerful features such as inline Git blame annotations, code authorship information, commit history exploration, and more.
-- **Features:** Intuitive UI for navigating through Git history, comparison of file revisions, detailed commit information, and seamless integration with GitHub, GitLab, and Bitbucket.
+Inline git blame on every line. I use this constantly to understand *why* code exists, not just what it does. The commit history exploration and file revision comparison are the main things I reach for.
 
-### [Import Cost](https://marketplace.visualstudio.com/items?itemName=wix.vscode-import-cost)
-- **Description:** Import Cost displays the size of imported JavaScript and CSS files directly in the VS Code editor, helping you optimize your bundle size by identifying heavy dependencies.
-- **Features:** Real-time analysis of imported modules, visual indication of file sizes, configurable threshold settings, and support for various module formats like CommonJS, ES6, and AMD.
+### [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+Format on save. Non-negotiable for any JS/TS project. Takes one decision (formatting) permanently off my plate.
 
-### [Material Icon Theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme)
-- **Description:** Material Icon Theme replaces the default icons in VS Code with Material Design icons, enhancing the visual appeal and clarity of file and folder icons in the editor.
-- **Features:** A wide range of colorful and consistent icons for different file types and folders, support for custom icon associations, and seamless integration with various VS Code themes.
-
-### [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
-- **Description:** Code Spell Checker is a spell checker extension for VS Code, helping you catch and correct spelling errors in your code and comments, improving code readability and professionalism.
-- **Features:** Highlights misspelled words in real-time, offers suggestions for corrections, supports custom dictionaries, and allows configuration of language-specific dictionaries.
-
-### [Docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)
-- **Description:** The Docker extension for VS Code simplifies Docker container management within your development environment, providing features for building, debugging, and deploying containerized applications.
-- **Features:** Integration with Docker CLI, Docker Compose, and Dockerfile syntax highlighting, container lifecycle management, container debugging support, and seamless deployment to container registries.
-
-### [Git Graph](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph)
-
-### [Go](https://marketplace.visualstudio.com/items?itemName=golang.Go)
-
-### [Kubernetes](https://marketplace.visualstudio.com/items?itemName=ms-kubernetes-tools.vscode-kubernetes-tools)
-
-### [Polacode-2022](https://marketplace.visualstudio.com/items?itemName=jeff-hykin.polacode-2019)
+### [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+Lint errors inline. Catches real bugs, not just style issues when configured correctly.
 
 ### [Pretty TypeScript Errors](https://marketplace.visualstudio.com/items?itemName=yoavbls.pretty-ts-errors)
+TypeScript error messages are notoriously unreadable. This extension reformats them into something human. Huge quality-of-life improvement.
 
-### [Prisma](https://marketplace.visualstudio.com/items?itemName=Prisma.prisma)
+### [Git Graph](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph)
+Visual git history. Useful when I need to see how branches diverged or find a merge point.
 
-### [Simple React Snippets](https://marketplace.visualstudio.com/items?itemName=burkeholland.simple-react-snippets)
+---
+
+## Language / framework specific
 
 ### [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
+Autocomplete, hover previews, and lint for Tailwind classes. Essential if you use Tailwind daily.
 
-### [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+### [Prisma](https://marketplace.visualstudio.com/items?itemName=Prisma.prisma)
+Schema formatting, syntax highlighting, and autocomplete for `.prisma` files.
 
-### ESLint
+### [Go](https://marketplace.visualstudio.com/items?itemName=golang.Go)
+The official Go extension. Autocomplete, formatting, test running. Required for Go development.
 
-### Dependi
+### [Docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)
+Container management without leaving the editor. I mostly use it for the Compose file integration and container log viewing.
 
-### GitHub Pull Requests
+### [Dependi](https://marketplace.visualstudio.com/items?itemName=fill-labs.dependi)
+Shows outdated package versions inline in `package.json`. Useful during dependency audits.
+
+---
+
+## Productivity
+
+### [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
+Catches spelling errors in comments, variable names, and strings. Embarrassing to ship typos in user-facing strings.
+
+### [Import Cost](https://marketplace.visualstudio.com/items?itemName=wix.vscode-import-cost)
+Shows the bundle size of imports inline. Makes you think twice before adding a 200KB dependency.
+
+### [Material Icon Theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme)
+Better file icons. Makes navigating large projects faster because your eye recognizes file types instantly.
+
+### [Polacode](https://marketplace.visualstudio.com/items?itemName=jeff-hykin.polacode-2019)
+Beautiful code screenshots. Useful when sharing code in presentations or design docs.
+
+---
 
 ## Viewers
 
 ### [Draw.io Integration](https://marketplace.visualstudio.com/items?itemName=hediet.vscode-drawio)
-- **Description:** This extension enables seamless integration of Draw.io diagrams within VS Code, allowing you to create, edit, and view diagrams directly in your code editor.
-- **Features:** Supports various diagram types, such as flowcharts, UML diagrams, network diagrams, etc., and provides a user-friendly interface for diagram manipulation.
+Edit architecture diagrams directly in VS Code, stored as `.drawio` files in the repo. Better than exporting PNGs.
 
 ### [Excel Viewer](https://marketplace.visualstudio.com/items?itemName=GrapeCity.gc-excelviewer)
-- **Description:** The Excel Viewer extension allows you to view Excel files directly within VS Code, providing a convenient way to inspect spreadsheet data without leaving your code editor.
-- **Features:** Supports basic viewing of Excel files, including rendering of worksheets, cell data, and basic formatting.
-
-### [SVG](https://marketplace.visualstudio.com/items?itemName=jock.svg)
-- **Description:** The SVG extension provides enhanced support for editing Scalable Vector Graphics (SVG) files within VS Code, offering features such as syntax highlighting, IntelliSense, and code snippets.
-- **Features:** Syntax highlighting for SVG markup, IntelliSense for SVG attributes and elements, live preview of SVG files, and integration with other VS Code extensions for SVG manipulation.
+View `.xlsx` files without opening Excel. Useful for data files in repos.
 
 ### [PDF Viewer](https://marketplace.visualstudio.com/items?itemName=mathematic.vscode-pdf)
-- **Description:** The PDF Viewer extension enables viewing PDF files directly within VS Code, providing a seamless experience for inspecting and navigating through PDF documents while coding.
-- **Features:** Supports basic viewing of PDF files, including navigation controls, zooming, and searching within the document.
+Quick PDF viewing. For specs and design docs shared as PDFs.
 
+---
+
+## Snippets (useful but not critical)
+
+- [ES7+ React/Redux snippets](https://marketplace.visualstudio.com/items?itemName=dsznajder.es7-react-js-snippets) — `rafce` for React arrow function component
+- [Simple React Snippets](https://marketplace.visualstudio.com/items?itemName=burkeholland.simple-react-snippets) — overlaps with above, pick one
+- [JavaScript (ES6) snippets](https://marketplace.visualstudio.com/items?itemName=xabikos.JavaScriptSnippets) — less useful now that Copilot exists
+
+---
+
+## What I don't install anymore
+
+- Themes (one is enough, I use default dark)
+- Multiple snippet packs that overlap
+- Extensions I "might use someday" — they slow VS Code startup

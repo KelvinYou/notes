@@ -1,28 +1,59 @@
-# Domain Name System (DNS)
+# DNS Resolution
 
-The Domain Name System (DNS) is the phonebook of the Internet. Humans access information online through domain names, like google.com or facebook.com. Web browsers interact through Internet Protocol (IP) addresses. DNS translates domain anmes to IP addresses so browsers can load Internet resources.
+DNS translates a domain name (`example.com`) into an IP address (`93.184.216.34`) so the browser knows where to connect.
 
-Each device connected to the Internet has a unique IP address which other machines use to find the device. DNS servers eliminate the need for humans to memorize IP addresses such as 192.168.1.1 (in IPv4), or more complex newer alphanumeric IP addresses such as 2400:cb00:2048:1::c629:d7a2 (in IPv6).
+## Resolution Flowchart
 
-![alt text](image.png)
+```mermaid
+flowchart TD
+    Browser["Browser needs IP for example.com"]
+    Browser --> LC["Check local DNS cache"]
+    LC -->|Hit| Done["Use cached IP (TTL still valid)"]
+    LC -->|Miss| OS["Check OS hosts file\n(/etc/hosts)"]
+    OS -->|Hit| Done
+    OS -->|Miss| Recursor["Ask ISP's DNS Recursor"]
+    Recursor -->|Cached| Done
+    Recursor -->|Not cached| Root["Ask Root Nameserver\n(knows TLD locations)"]
+    Root --> TLD["Ask TLD Nameserver for .com\n(knows authoritative servers)"]
+    TLD --> Auth["Ask Authoritative Nameserver\n(has actual A/AAAA record)"]
+    Auth --> IP["Return IP address"]
+    IP --> Recursor
+    Recursor --> Browser
+    Browser --> Done
+```
 
-## How does DNS work?
+## The Four Servers
 
-The process of DNS resolution involves converting a hostname (such as www.example.com) into a computer-friendly IP address (such as 192.168.1.1). An IP address is given to each device on the Internet, and that address is necessary to find the appropriate Internet device - like a street address is used to find a particular home. When a user wants to load a webpage, a translation must occur between what a user types into their web browser (example.com) and the machine-friendly address necessary to locate the example.com webpage.
+| Server | Role | Example |
+|--------|------|---------|
+| Recursor | Your ISP or resolver (e.g. 8.8.8.8) — asks on your behalf | Google DNS, Cloudflare 1.1.1.1 |
+| Root Nameserver | Knows where TLD servers are — 13 root server clusters globally | a.root-servers.net |
+| TLD Nameserver | Knows authoritative servers for `.com`, `.io`, etc. | Verisign for `.com` |
+| Authoritative Nameserver | Has the actual records for your domain | Your registrar / Route53 / Cloudflare |
 
-In order to understand the process behind the DNS resolution, it’s important to learn about the different hardware components a DNS query must pass between. For the web browser, the DNS lookup occurs "behind the scenes" and requires no interaction from the user’s computer apart from the initial request.
+## Common DNS Record Types
 
-## There are 4 DNS servers involved in loading a webpage:
+| Record | Purpose | Example |
+|--------|---------|---------|
+| `A` | Domain → IPv4 | `example.com → 93.184.216.34` |
+| `AAAA` | Domain → IPv6 | `example.com → 2606:2800::1` |
+| `CNAME` | Alias to another domain | `www → example.com` |
+| `MX` | Mail server for domain | `example.com → mail.example.com` |
+| `TXT` | Arbitrary text (SPF, DKIM, verification) | SPF record |
+| `NS` | Authoritative nameservers for domain | `ns1.cloudflare.com` |
 
-- DNS recursor - The recursor can be thought of as a librarian who is asked to go find a particular book somewhere in a library. The DNS recursor is a server designed to receive queries from client machines through applications such as web browsers. Typically the recursor is then responsible for making additional requests in order to satisfy the client’s DNS query.
-- Root nameserver - The root server is the first step in translating (resolving) human readable host names into IP addresses. It can be thought of like an index in a library that points to different racks of books - typically it serves as a reference to other more specific locations.
-- TLD nameserver - The top level domain server (TLD) can be thought of as a specific rack of books in a library. This nameserver is the next step in the search for a specific IP address, and it hosts the last portion of a hostname (In example.com, the TLD server is “com”).
-- Authoritative nameserver - This final nameserver can be thought of as a dictionary on a rack of books, in which a specific name can be translated into its definition. The authoritative nameserver is the last stop in the nameserver query. If the authoritative name server has access to the requested record, it will return the IP address for the requested hostname back to the DNS Recursor (the librarian) that made the initial request.
+## TTL and Caching
 
+DNS results are cached at each layer for the duration of the **TTL (Time To Live)** set on the record.
 
-More info:
+- Low TTL (60–300s): faster failover, but more DNS queries
+- High TTL (3600–86400s): fewer queries, slower propagation of changes
 
-https://www.cloudflare.com/en-gb/learning/dns/what-is-dns/
+**My rule:** Keep TTL low when a change is coming (migration, failover), then raise it after the change is stable.
 
+---
 
+## Reference
 
+- [Cloudflare — What is DNS?](https://www.cloudflare.com/en-gb/learning/dns/what-is-dns/)
+- [RFC 1034 — Domain Names Concepts](https://www.rfc-editor.org/rfc/rfc1034)

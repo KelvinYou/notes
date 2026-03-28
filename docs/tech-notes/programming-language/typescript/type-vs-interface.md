@@ -1,129 +1,74 @@
-# Type vs Interface
+# Type vs Interface: My Rule
 
-In TypeScript, **`type` and `interface`** are both used to define custom types, but they have some key differences in usage and flexibility.  
+**Default to `type`. Use `interface` when you need declaration merging or a library-style API.**
 
----
-
-## **1. Key Differences Between `type` and `interface`**
-
-| Feature | `type` | `interface` |
-|---------|--------|------------|
-| **Usage** | Defines aliases for any type (primitive, object, union, tuple, etc.). | Defines the shape of an object. |
-| **Extending** | Can use intersection (`&`) to combine multiple types. | Can use `extends` to inherit properties. |
-| **Merging** | Cannot be merged when declared multiple times. | Supports declaration merging (multiple declarations merge automatically). |
-| **Objects & Classes** | Can describe objects, functions, and primitives. | Primarily used for objects and classes. |
-| **Performance** | Slightly slower in compilation. | More optimized for performance. |
+That's it. Everything else is noise.
 
 ---
 
-## **2. Examples**
-### **(1) Defining an Object Type**
-#### **Using `interface`**
-```ts
-interface User {
-  name: string;
-  age: number;
-}
-```
-#### **Using `type`**
-```ts
-type User = {
-  name: string;
-  age: number;
-};
-```
-👉 **For defining objects, both `type` and `interface` work the same.**
+## Why I default to `type`
 
----
+Works for primitives, unions, tuples — things `interface` can't do:
 
-### **(2) Extending**
-#### **Using `interface` (extends)**
-```ts
-interface Person {
-  name: string;
-}
-
-interface Employee extends Person {
-  role: string;
-}
-```
-#### **Using `type` (intersection `&`)**
-```ts
-type Person = {
-  name: string;
-};
-
-type Employee = Person & {
-  role: string;
-};
-```
-👉 Both approaches work, but `interface` has built-in `extends`, while `type` uses `&`.
-
----
-
-### **(3) Declaration Merging**
-#### **`interface` Supports Merging**
-```ts
-interface User {
-  name: string;
-}
-
-interface User {
-  age: number;
-}
-
-const user: User = { name: "Alice", age: 25 }; // Works!
-```
-#### **`type` Does Not Support Merging**
-```ts
-type User = {
-  name: string;
-};
-
-type User = {
-  age: number;
-}; // ❌ Error: Duplicate identifier 'User'
-```
-👉 **If you need automatic merging, use `interface`.**
-
----
-
-### **(4) Defining Functions**
-#### **Using `interface`**
-```ts
-interface Add {
-  (a: number, b: number): number;
-}
-const add: Add = (x, y) => x + y;
-```
-#### **Using `type`**
-```ts
-type Add = (a: number, b: number) => number;
-const add: Add = (x, y) => x + y;
-```
-👉 **For functions, `type` is more concise.**
-
----
-
-### **(5) Union Types (Only `type` Supports This)**
 ```ts
 type ID = string | number;
-let userId: ID = 123;  // ✅ Works
-userId = "abc";  // ✅ Works
+type Status = 'active' | 'inactive';
+type UserOrAdmin = User | Admin;
 ```
-👉 **`interface` cannot define union types; use `type` instead.**
+
+## When I use `interface`
+
+**Declaration merging** — extending types defined elsewhere (e.g. third-party library augmentation):
+
+```ts
+// Extend Express Request globally
+interface Request {
+  user?: User;
+}
+```
+
+**Class contracts** — `implements` reads more naturally with `interface`:
+
+```ts
+interface Serializable {
+  serialize(): string;
+}
+class Config implements Serializable { ... }
+```
 
 ---
 
-## **3. When to Use What?**
-✅ **Use `interface` when**:
-- Defining object shapes.
-- Using class-based OOP.
-- Taking advantage of declaration merging.
+## Quick comparison
 
-✅ **Use `type` when**:
-- Defining primitives, unions, or tuples.
-- Creating function signatures.
-- Using advanced type compositions.
+| | `type` | `interface` |
+|--|--|--|
+| Primitives / unions | Yes | No |
+| Declaration merging | No | Yes |
+| Extending | Via `&` intersection | Native `extends` |
+| `implements` (class) | Works | Works |
 
-Would you like a real-world example based on your projects?
+---
+
+## Decision flowchart
+
+```mermaid
+flowchart TD
+    Q1{Need union or\nprimitive alias?} -->|Yes| TYPE[Use type]
+    Q1 -->|No| Q2{Need declaration\nmerging?}
+    Q2 -->|Yes| INT[Use interface]
+    Q2 -->|No| Q3{Library API\nor class contract?}
+    Q3 -->|Yes| INT
+    Q3 -->|No| TYPE
+```
+
+---
+
+## Bottom line
+
+If you're unsure: use `type`. You can always change it later.
+
+---
+
+## Reference
+
+- [TypeScript Handbook — Differences Between Type Aliases and Interfaces](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#differences-between-type-aliases-and-interfaces)

@@ -1,5 +1,29 @@
 # NextJS
 
+## Rendering Strategies
+
+| Strategy | When HTML is generated | Data freshness | My use case |
+|----------|------------------------|----------------|-------------|
+| **SSR** (Server-Side Rendering) | On each request | Always fresh | Personalized pages, auth-gated content |
+| **SSG** (Static Site Generation) | At build time | Stale until rebuild | Marketing pages, docs, blog posts |
+| **ISR** (Incremental Static Regen) | At build time + revalidate interval | Fresh after TTL | Product catalogs, semi-dynamic content |
+| **CSR** (Client-Side Rendering) | On client after hydration | Fresh on each fetch | Dashboards, user-specific data after load |
+
+In the App Router, every component is a **React Server Component** by default (rendered server-side). Add `'use client'` only when you need interactivity.
+
+```mermaid
+flowchart TD
+    Q1{Is the page\npersonalized per user?} -->|Yes| SSR
+    Q1 -->|No| Q2{Changes more than\nonce a day?}
+    Q2 -->|Yes| ISR[ISR with short revalidate]
+    Q2 -->|No| SSG
+    SSR -->|Interactivity needed\non client| CSR[Add 'use client' components]
+```
+
+**Reference:** [Next.js Docs — Data Fetching](https://nextjs.org/docs/app/building-your-application/data-fetching)
+
+---
+
 ## Quick Start
 
 ```shell

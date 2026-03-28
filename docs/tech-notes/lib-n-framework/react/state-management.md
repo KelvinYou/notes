@@ -1,155 +1,92 @@
-# State Management
+# React State Management
 
-## Introduction
+My decision process for picking a state solution. The answer is almost always "use less state, not more libraries."
 
-In React applications, state management ensures that data flows efficiently between components. It becomes especially important as the application grows, and various components need access to shared data. Redux, Zustand, and Context API are tools that address this challenge by providing efficient and organized ways to manage state.
+---
 
-## Type of State Management
+## Decision Flowchart
 
-### Redux: The Predictable State Container
-
-#### Pros
-- Centralized state management: Redux stores the application state in a single store, making it easy to maintain and access data.
-- Predictable state changes: Redux follows a strict unidirectional data flow, which simplifies debugging and testing.
-- Large community support: Redux has a massive community and a wealth of libraries and tools built around it.
-
-#### Cons
-
-- Boilerplate code: Redux can involve writing a significant amount of boilerplate code, which may increase development time.
-- Steeper learning curve: Beginners may find Redux’s concepts, such as reducers and actions, challenging to grasp initially.
-
-#### Example Usage
-
-```js
-// Redux store setup
-import { createStore } from 'redux';
-import rootReducer from './reducers';
-
-const store = createStore(rootReducer);
-
-// Redux action
-const ADD_TODO = 'ADD_TODO';
-const addTodo = (text) => ({
-  type: ADD_TODO,
-  payload: { text },
-});
-
-// Redux reducer
-const initialState = {
-  todos: [],
-};
-
-const rootReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case ADD_TODO:
-      return {
-        ...state,
-        todos: [...state.todos, action.payload.text],
-      };
-    default:
-      return state;
-  }
-};
-
+```mermaid
+flowchart TD
+    Q1{Is it local to\none component?} -->|Yes| US[useState]
+    Q1 -->|No| Q2{Complex update\nlogic / many sub-states?}
+    Q2 -->|Yes| UR[useReducer]
+    Q2 -->|No| Q3{Shared across\nmany components?}
+    Q3 -->|No| PROP[Props / prop drilling\n(it's fine for 1-2 levels)]
+    Q3 -->|Yes| Q4{High-frequency\nupdates / performance\ncritical?}
+    Q4 -->|No| CTX[Context API]
+    Q4 -->|Yes| ZUS[Zustand]
+    Q4 -->|Complex app\nwith many devs| REDUX[Redux Toolkit]
 ```
 
-### Zustand: A Simple State Management Solution
+---
 
-https://github.com/pmndrs/zustand/tree/main
+## My Rule of Thumb
 
-#### Pros
+**Start local, lift only when needed.** Most state never needs to leave the component.
 
-- Minimal setup: Zustand requires less boilerplate code compared to Redux, making it quick and easy to set up.
-- Lightweight: Zustand is a small library with a focus on performance, making it suitable for smaller projects.
-- Easy integration: Zustand can be used alongside other state management solutions like Redux or MobX.
+| Tool | When I reach for it |
+|------|---------------------|
+| `useState` | Single value, simple toggle, form field |
+| `useReducer` | Multiple related fields, state machine-like logic |
+| Context API | Theme, locale, auth user — slow-changing, widely consumed |
+| Zustand | Cross-component state that updates frequently (e.g. cart, filters, UI state) |
+| Redux Toolkit | Large team, complex domain model, needs devtools + time-travel debugging |
 
-#### Cons
+---
 
-- Limited ecosystem: Zustand’s ecosystem is smaller compared to Redux, which means fewer third-party tools and libraries.
-- Not suitable for complex applications: Zustand’s simplicity may limit its suitability for large and complex applications.
+## Context API: the re-render trap
 
-#### Example Usage
+Context re-renders every consumer when the value changes — even if they only use a small part of it.
 
-```js
-import create from 'zustand';
+```tsx
+// Bad: single context for everything
+const AppContext = createContext({ user, cart, theme, filters });
 
-const useStore = create((set) => ({
-  count: 0,
-  increment: () => set((state) => ({ count: state.count + 1 })),
-}));
+// Better: split by update frequency
+const AuthContext   = createContext(user);   // rarely changes
+const CartContext   = createContext(cart);   // changes often → consider Zustand instead
+const ThemeContext  = createContext(theme);  // rarely changes
+```
 
-function Counter() {
-  const { count, increment } = useStore();
+**Rule:** Context is for state that changes rarely and is consumed widely (auth, theme, locale). If it changes on user interaction, use Zustand.
 
-  return <button onClick={increment}>{count}</button>;
+---
+
+## Zustand: my default for shared client state
+
+```ts
+import { create } from 'zustand';
+
+interface CartStore {
+  items: CartItem[];
+  add: (item: CartItem) => void;
+  remove: (id: string) => void;
 }
+
+const useCartStore = create<CartStore>((set) => ({
+  items: [],
+  add: (item) => set((s) => ({ items: [...s.items, item] })),
+  remove: (id) => set((s) => ({ items: s.items.filter((i) => i.id !== id) })),
+}));
 ```
 
-### Context API: Built-in State Management in React
+Components only re-render when the specific slice they subscribe to changes. No providers, no prop drilling.
 
-#### Pros
-- Built-in React feature: Context API comes with React, eliminating the need for additional libraries or dependencies.
-- Simplicity: Context API provides a straightforward way to share state across components without complex setups.
-- Easy to use with small applications: For small-scale applications, Context API can be sufficient as a state management solution.
+---
 
-#### Cons
-- Performance concerns: Context API may lead to unnecessary re-renders, impacting performance in larger applications.
-- Global state management: Using Context API for global state management can lead to potential challenges in tracking state changes.
+## Server state is different
 
-#### Example Usage
+For async data from APIs, don't use any of the above — use a data-fetching library:
+- **TanStack Query** (React Query) — my default for REST
+- **Apollo Client** — if the API is GraphQL
 
-```js
-// Context API setup
-import { createContext, useContext, useState } from 'react';
+These handle caching, background refetch, loading/error states. Replacing them with `useEffect + useState` is a mistake I've made and won't repeat.
 
-const TodoContext = createContext();
-
-const TodoProvider = ({ children }) => {
-  const [todos, setTodos] = useState([]);
-
-  const addTodo = (text) => {
-    setTodos([...todos, text]);
-  };
-
-  return (
-    <TodoContext.Provider value={{ todos, addTodo }}>
-      {children}
-    </TodoContext.Provider>
-  );
-};
-
-const useTodoContext = () => useContext(TodoContext);
-
-```
-
-
-## When to use Redux, Zustand, or Context API?
-
-### Redux:
-- Use Redux for large-scale applications with complex state management needs.
-- Choose Redux if you require strict data flow and a well-defined architecture.
-- Redux is an excellent choice for projects with a large development team and the need for standardized state management practices.
-
-### Zustand:
-- Zustand is best suited for smaller applications or specific components with localized state needs.
-- Consider Zustand when you prefer a lightweight state management solution with minimal setup.
-- Zustand is ideal for projects where simplicity and performance are essential.
-
-### Context API:
-- Use Context API for small applications or when managing state within individual components.
-- Context API is a good choice when you want a built-in, easy-to-use state management solution with less complexity.
-- Context API is well-suited for scenarios where global state management is not a primary concern.
-
-
-## Performance Consideration
-
-In terms of performance, Zustand generally outperforms Redux and Context API due to its simplicity and lightweight nature. However, Redux can optimize performance using tools like Reselect or Redux Toolkit. Context API may lead to performance issues in larger applications due to potential re-renders, but this can be mitigated by using memoization techniques.
-
-
+---
 
 ## Reference
 
-Type of state management. https://github.com/olegrjumin/awesome-react-state-management [Accessed 14 May 2024]
-
-Original blog.
-https://bootcamp.uxdesign.cc/redux-vs-zustand-vs-context-api-their-pros-cons-and-usage-d3bcbb79ab6a [Accessed 14 May 2024]
+- [Zustand GitHub](https://github.com/pmndrs/zustand)
+- [React docs — Choosing the State Structure](https://react.dev/learn/choosing-the-state-structure)
+- [TanStack Query](https://tanstack.com/query)

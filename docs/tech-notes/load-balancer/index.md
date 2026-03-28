@@ -1,86 +1,69 @@
 # Load Balancer
 
-## **1️⃣ What is a Load Balancer?**  
-A **Load Balancer** is a system that **distributes incoming network traffic across multiple servers** to ensure:  
-- High availability  
-- Performance optimization  
-- Reliability and fault tolerance  
-
-### **Analogy:**  
-Imagine a **traffic officer** directing cars to different lanes to prevent congestion and ensure smooth flow. 🚦  
+Distributes incoming traffic across multiple backend servers so no single server becomes a bottleneck.
 
 ---
 
-## **2️⃣ Why Do We Need a Load Balancer?**  
-🔹 **High Availability:** Ensures application uptime even if some servers fail  
-🔹 **Scalability:** Handles increased traffic efficiently  
-🔹 **Better Performance:** Prevents server overload and reduces response times  
-🔹 **Redundancy & Failover:** Automatically redirects traffic if a server goes down  
+## Traffic Distribution
+
+```mermaid
+flowchart TD
+    Client["Client Requests"] --> LB["Load Balancer"]
+    LB --> S1["Server 1"]
+    LB --> S2["Server 2"]
+    LB --> S3["Server 3"]
+    S1 & S2 & S3 --> DB["Database / Shared State"]
+
+    LB -.->|Health check| S1
+    LB -.->|Health check| S2
+    LB -.->|Health check| S3
+```
+
+The load balancer health-checks each server continuously. Unhealthy servers are automatically removed from rotation.
 
 ---
 
-## **3️⃣ How Does a Load Balancer Work?**  
-1️⃣ A user makes a request (e.g., visiting a website) 🌍  
-2️⃣ The request reaches the **Load Balancer** 🔄  
-3️⃣ The Load Balancer selects an **available server** based on an algorithm 🎯  
-4️⃣ The server processes the request and sends a response 🔁  
-5️⃣ The Load Balancer ensures **equal distribution of traffic** ⚡  
+## Algorithms
+
+| Algorithm | How it works | When to use |
+|-----------|-------------|-------------|
+| **Round Robin** | Rotate through servers in order | Servers are roughly equal capacity |
+| **Least Connections** | Send to server with fewest active connections | Long-lived requests (WebSocket, uploads) |
+| **IP Hash** | Hash client IP → always same server | Session stickiness without shared session store |
+| **Weighted Round Robin** | Round robin, but some servers get more traffic | Mixed capacity servers |
+| **Random** | Pick a random server | Simple, surprisingly effective at scale |
+
+**My default:** Round Robin for stateless APIs. Least Connections for WebSocket services. IP Hash only when I can't use a shared session store.
 
 ---
 
-## **4️⃣ Types of Load Balancers**  
-### **1. Hardware Load Balancer**  
-✅ Dedicated physical device  
-✅ High performance, but expensive 💰  
+## L4 vs L7 Load Balancing
 
-### **2. Software Load Balancer**  
-✅ Runs on standard hardware  
-✅ Cost-effective and flexible ⚡  
+| | L4 (Transport Layer) | L7 (Application Layer) |
+|-|---------------------|------------------------|
+| Routes by | IP + TCP port | HTTP headers, URL path, cookies |
+| TLS termination | ❌ (passes through) | ✅ (inspects content) |
+| Content-based routing | ❌ | ✅ (`/api/*` → API servers, `/*` → web servers) |
+| Performance | Faster (less inspection) | More flexible |
+| Example | AWS NLB, HAProxy TCP mode | nginx, AWS ALB, Traefik |
 
-### **3. Cloud-Based Load Balancer**  
-✅ Managed by cloud providers (AWS, Azure, GCP)  
-✅ Scales dynamically based on traffic 📈  
-
----
-
-## **5️⃣ Load Balancing Algorithms**  
-📌 **How does a Load Balancer decide which server gets the request?**  
-
-1️⃣ **Round Robin:** Sends requests to each server in order 🔄  
-2️⃣ **Least Connections:** Chooses the server with the fewest active connections 🔗  
-3️⃣ **IP Hash:** Routes requests based on the client’s IP address 🌍  
-4️⃣ **Weighted Load Balancing:** Prioritizes more powerful servers ⚖️  
+**My default:** L7 (ALB / nginx) for web apps — path-based routing and TLS termination are worth it.
 
 ---
 
-## **6️⃣ Load Balancer in Real-World Applications**  
-📌 **Common Use Cases:**  
-✅ **Web Applications** – Preventing downtime and improving user experience 🌐  
-✅ **E-commerce Sites** – Handling high traffic on sales days 🛒  
-✅ **Streaming Services** – Preventing buffering in video streaming 🎥  
-✅ **Online Gaming** – Managing thousands of concurrent players 🎮  
+## My Tool Choices
+
+| Context | Tool |
+|---------|------|
+| Cloud (AWS) | ALB (L7) or NLB (L4) |
+| Self-hosted / K8s | nginx or Traefik |
+| Edge / CDN | Cloudflare |
+| Dev environment | nginx or Caddy |
 
 ---
 
-## **7️⃣ Popular Load Balancer Solutions**  
-### **Cloud-Based:**  
-- ✅ AWS Elastic Load Balancer (ELB)  
-- ✅ Google Cloud Load Balancer  
-- ✅ Azure Load Balancer  
+## Reference
 
-### **Software-Based:**  
-- ✅ **Nginx**  
-- ✅ **HAProxy**  
-- ✅ **Traefik**  
-
----
-
-## **8️⃣ Summary**  
-✅ **A Load Balancer distributes traffic among multiple servers**  
-✅ **Improves availability, scalability, and reliability**  
-✅ **Uses different algorithms to optimize performance**  
-✅ **Essential for handling high traffic & preventing downtime**  
-
----
-
-Would you like additional details or a diagram to complement these notes? 🚀
+- [nginx Load Balancing](https://nginx.org/en/docs/http/load_balancing.html)
+- [HAProxy Configuration Manual](https://www.haproxy.org/#docs)
+- [AWS Application Load Balancer](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html)

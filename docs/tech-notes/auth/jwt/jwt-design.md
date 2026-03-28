@@ -1,84 +1,105 @@
-# JWT Design
+# JWT Design Reference
 
-### ✅ 1. **JWT Structure (Standard)**
-```plaintext
-Header.Payload.Signature
+## Token Structure
+
+```
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9   ← Header (Base64URL)
+.eyJzdWIiOiJ1c2VyXzEyMyIsImV4cCI6...   ← Payload (Base64URL)
+.SflKxwRJSMeKKF2QT4fwpMeJf36POkx...    ← Signature
 ```
 
 ---
 
-### ✅ 2. **Header**
+## Payload Claims
+
+```mermaid
+flowchart LR
+    subgraph Registered ["Registered Claims (RFC 7519)"]
+        sub["sub — subject (user id)"]
+        iss["iss — issuer"]
+        aud["aud — audience"]
+        exp["exp — expiration (UNIX)"]
+        iat["iat — issued at"]
+        nbf["nbf — not before"]
+        jti["jti — JWT ID (for revocation)"]
+    end
+    subgraph Custom ["Custom Claims"]
+        role["role — app-defined"]
+        plan["plan — subscription tier"]
+    end
+```
+
+**Rule of thumb:** Registered claims first, minimal custom claims. Don't put PII or sensitive data — the payload is Base64-encoded, not encrypted.
+
+### Example payload I use
+
 ```json
 {
-  "alg": "HS256", // or RS256 for asymmetric
-  "typ": "JWT"
+  "sub": "user_abc123",
+  "iss": "https://api.myapp.com",
+  "aud": "myapp-web",
+  "exp": 1716667200,
+  "iat": 1716663600,
+  "role": "admin",
+  "jti": "tok_xyz789"
 }
 ```
 
-- Use **RS256** (asymmetric) if you're distributing public keys (e.g., 3rd party clients).
-- Use **HS256** (symmetric) for internal API tokens.
+---
+
+## Algorithm Choice
+
+| Algorithm | Type | Use when |
+|-----------|------|----------|
+| `HS256` | Symmetric (shared secret) | Single service, internal APIs |
+| `RS256` | Asymmetric (private/public key) | Multiple services, public key distribution |
+| `ES256` | Asymmetric (ECDSA, smaller keys) | Mobile-constrained environments |
+
+**My default:** `RS256` for anything that crosses a service boundary. `HS256` for simple single-service setups where secret rotation is manageable.
+
+Use **Key ID (`kid`)** in the header when rotating keys — consumers can fetch the right public key by ID.
 
 ---
 
-### ✅ 3. **Payload (Claims)**
-Keep it minimal. Example:
-```json
-{
-  "sub": "user_id_123",        // Subject (user id)
-  "iss": "https://yourapp.com", // Issuer
-  "aud": "your-app-client",     // Audience
-  "exp": 1716667200,            // Expiration time (UNIX timestamp)
-  "iat": 1716663600,            // Issued at
-  "nbf": 1716663600,            // Not before (optional)
-  "role": "admin",              // Custom claim (minimal!)
-  "jti": "unique-token-id"      // JWT ID (optional for revocation tracking)
-}
-```
+## Access & Refresh Token Lifetimes
 
-✅ **Best Practices**:
-- **Use short lifespans** (`exp`) for access tokens (e.g., 15 mins).
-- Use longer-lived **refresh tokens** (stored securely).
-- Avoid putting **sensitive data** like passwords or personal info in JWTs.
-- Include `aud`, `iss`, and `sub` for clarity and validation.
-- Use `jti` for token blacklisting/revocation if needed.
+| Token | Lifetime | Storage |
+|-------|----------|---------|
+| Access token | 15 min | In-memory (JS) |
+| Refresh token | 7 days | `httpOnly` cookie |
+
+Short access token lifetimes limit blast radius on theft. Refresh tokens should be rotated on use (issue new one, invalidate old).
 
 ---
 
-### ✅ 4. **Signature**
-- Protects token from tampering.
-- Sign with a strong secret (`HS256`) or private key (`RS256`).
-- Rotate keys regularly.
+## Validation Checklist
+
+Every token validation must check:
+- [ ] Signature is valid
+- [ ] `exp` > now (not expired)
+- [ ] `iat` ≤ now (not issued in the future)
+- [ ] `iss` matches your app's issuer
+- [ ] `aud` matches your app's audience
+- [ ] `nbf` ≤ now (if present)
+
+Libraries: [`jose`](https://github.com/panva/jose) (JS/TS), [`golang-jwt/jwt`](https://github.com/golang-jwt/jwt) (Go).
 
 ---
 
-### ✅ 5. **Access & Refresh Token Strategy**
-- Access Token: Short-lived, stored in memory or `Authorization: Bearer`.
-- Refresh Token: Long-lived, stored in **httpOnly cookies** or secure storage, used to issue new access tokens.
+## Common Mistakes
+
+| Mistake | Why it's bad | Fix |
+|---------|-------------|-----|
+| `localStorage` for tokens | XSS can steal it | Use `httpOnly` cookie or memory |
+| Long-lived access tokens | Stolen token valid for days | 15 min max |
+| PII in payload | Payload is readable by anyone | Keep payload minimal |
+| Trusting header `alg` | Algorithm confusion attacks | Enforce `alg` server-side |
+| No key rotation | Compromised secret = all tokens compromised | Rotate with `kid` |
 
 ---
 
-### ✅ 6. **Validation Best Practices**
-- Always verify:
-  - Signature
-  - `exp`, `iat`, `nbf`
-  - `iss` and `aud` match your app
-- Use libraries like `jsonwebtoken`, `jose`, or `nimbus-jose-jwt`.
+## Reference
 
----
-
-### 🛑 Common Mistakes to Avoid
-- ❌ Storing JWTs in localStorage (vulnerable to XSS).
-- ❌ Using long-lived access tokens without refresh logic.
-- ❌ Putting sensitive data inside the payload.
-- ❌ Not rotating keys or handling token revocation.
-
----
-
-### ✨ Optional Enhancements
-- Use **Key ID (`kid`)** in header for rotating keys.
-- Implement **revocation list** (using `jti`).
-- Combine with **OAuth2 / OpenID Connect** for broader compatibility.
-
----
-
-If you're building an app, I can help sketch out the actual implementation (e.g., with Supabase, Firebase, Node.js, or a Next.js app). Want to go deeper into any specific part?
+- [JWT RFC 7519](https://datatracker.ietf.org/doc/html/rfc7519)
+- [OWASP JWT Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/JSON_Web_Token_for_Java_Cheat_Sheet.html)
+- [`jose` library (JS/TS)](https://github.com/panva/jose)

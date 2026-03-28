@@ -2,32 +2,91 @@
 sidebar_position: 2
 ---
 
-# React - useEffect
+# useEffect: My Mental Model
 
-[`useEffect`](https://react.dev/reference/react/useEffect) is a React Hook that lets you [synchronize a component with an external system](https://react.dev/learn/synchronizing-with-effects).
+`useEffect` runs code *after* a render, in response to something changing (or once on mount).
+
+The mental model: **"synchronize this side effect with this state."**
 
 ```js
-useEffect(setup, dependencies?) 
+useEffect(setup, dependencies?)
 ```
 
-In my experience, it mainly used for `initialization` or need to use some `variables` to `render the current component`
+---
 
-## Reference
+## The three forms
 
 ```js
-import { useEffect } from 'react';
-import { createConnection } from './chat.js';
+// 1. Run once on mount (and cleanup on unmount)
+useEffect(() => {
+  const sub = subscribe();
+  return () => sub.unsubscribe();
+}, []);
 
+// 2. Run when specific values change
+useEffect(() => {
+  fetchData(userId);
+}, [userId]);
+
+// 3. Run after every render (almost never what you want)
+useEffect(() => {
+  doSomething();
+});
+```
+
+---
+
+## When I actually use it
+
+- **On mount setup:** connect to a WebSocket, subscribe to an event, initialize a third-party library
+- **Sync with external state:** re-fetch data when a filter/ID changes, update the document title
+- **Cleanup:** unsubscribe, clear timers, disconnect
+
+---
+
+## Common mistakes I've made
+
+**Infinite loop:** forgot to add a stable dependency or included an object/function that recreates every render.
+```js
+// Bad: `options` is a new object every render
+useEffect(() => { fetchData(options) }, [options]);
+
+// Fix: destructure the primitives you actually need
+useEffect(() => { fetchData(filter, page) }, [filter, page]);
+```
+
+**Missing cleanup:** subscriptions and timers that live past the component's unmount.
+```js
+useEffect(() => {
+  const timer = setInterval(tick, 1000);
+  return () => clearInterval(timer); // always clean up
+}, []);
+```
+
+**Running fetch directly without aborting:**
+```js
+useEffect(() => {
+  const controller = new AbortController();
+  fetch(url, { signal: controller.signal }).then(...)
+  return () => controller.abort();
+}, [url]);
+```
+
+---
+
+## My rule
+
+If I'm tempted to write `useEffect` to sync two pieces of React state with each other — that's usually a sign I need to restructure. Derive, don't sync.
+
+Real example from production:
+```js
 function ChatRoom({ roomId }) {
   const [serverUrl, setServerUrl] = useState('https://localhost:1234');
 
   useEffect(() => {
     const connection = createConnection(serverUrl, roomId);
     connection.connect();
-    return () => {
-      connection.disconnect();
-    };
+    return () => connection.disconnect();
   }, [serverUrl, roomId]);
-  // ...
 }
 ```

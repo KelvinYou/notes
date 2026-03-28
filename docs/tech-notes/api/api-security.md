@@ -1,24 +1,38 @@
-# API security
+# API Security: What I Actually Check
 
-## Top 12 Tips for API Security
+A working checklist — not theoretical. Things I verify when building or reviewing APIs.
 
-- Use HTTPS
-- Use OAuth2
-- Use WebAuthn
-- Use Leveled API Keys
-- Authorization
-- Rate Limiting
-- API Versioning
-- Whitelisting
-- Check OWASP API Security Risks
-- Use API Gateway
-- Error Handling
-- Input Validation
+---
 
+## Must-haves (non-negotiable)
 
-![12](https://media.licdn.com/dms/image/D4E22AQGJDoe_kt711g/feedshare-shrink_1280/0/1709191008977?e=1712188800&v=beta&t=Kx9uwZphpS29MjBiRHT1OFwkp1z1bQwT7zYPldPKcJ4)
+- **HTTPS everywhere** — no exceptions, not even internal APIs
+- **Input validation** — never trust client data; validate type, length, format at the boundary
+- **Authentication** — JWT with short expiry + refresh tokens, or OAuth2 for third-party
+- **Authorization** — check *every* endpoint: "is this user allowed to do this specific action?"
+- **Rate limiting** — protect against brute force and scraping; per-user and per-IP
+- **Error handling** — never expose stack traces or internal details to clients
 
+## Things I commonly see skipped
 
-## Reference
+- **API versioning** — `/v1/`, `/v2/` from day one. Changing APIs without versioning breaks clients.
+- **Leveled API keys** — read-only vs read-write keys. Don't give every integration full access.
+- **OWASP API Top 10** — worth a read. The broken object-level authorization one bites people constantly. ([OWASP API Security Top 10](https://owasp.org/API-Security/editions/2023/en/0x00-header/))
 
-https://www.linkedin.com/posts/bytebytego_systemdesign-coding-interviewtips-activity-7168866687251918849-Tuuw/?utm_source=share&utm_medium=member_android
+## Infrastructure layer
+
+- **API Gateway** — centralize auth, rate limiting, logging instead of doing it in every service
+- **Whitelisting** — IP allowlists for admin or internal endpoints
+- **WebAuthn / passkeys** — for user-facing auth where you want to avoid passwords
+
+---
+
+## My quick review checklist
+
+When reviewing a new API endpoint:
+- [ ] Auth: is authentication required?
+- [ ] Authz: can this user access *this specific resource* (not just any resource of this type)?
+- [ ] Input: is every input validated before it touches the database?
+- [ ] Output: does the response leak any sensitive fields?
+- [ ] Rate: is this endpoint rate limited?
+- [ ] Versioned: is this in a versioned path?

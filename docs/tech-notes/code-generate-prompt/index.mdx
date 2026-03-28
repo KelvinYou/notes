@@ -1,74 +1,108 @@
-# Cheat Sheet for Code Generation with Cursor AI
+# AI Prompts That Actually Work
+
+Prompts I use regularly with Cursor, Claude, and ChatGPT. Organized by task type.
 
 ---
 
-### 🧠 Cursor AI Prompt Cheat Sheet
+## Starting a project
 
-#### 🚀 Generate MVP App
 ```md
-- Generate a Next.js 14 app with TypeScript, Tailwind, and a login page.
-- Create a SaaS dashboard layout with sidebar and top nav using ShadCN.
-- Scaffold a CRUD interface for managing courses using Prisma and React.
+Build a Next.js 14 app with TypeScript, Tailwind, and Shadcn.
+Include: auth with NextAuth, Prisma + PostgreSQL, basic CRUD for [entity].
+Start with the folder structure and schema, then implement step by step.
 ```
 
-#### ✨ Refactor Code
 ```md
-- Refactor this component to use custom hooks and make it cleaner.
-- Split this file into smaller reusable components.
-- Refactor this API route using async/await and proper error handling.
+Scaffold a SaaS dashboard with sidebar nav and top bar using ShadCN components.
+Pages needed: dashboard overview, [feature 1], [feature 2], settings.
 ```
 
-#### 🛠️ Fix Bugs / Debug
+---
+
+## Refactoring
+
 ```md
-- Why is this useEffect running infinitely?
-- Fix this TypeScript error and explain why it happened.
-- Debug this form validation issue.
+Refactor this component to be cleaner.
+Constraints: no new dependencies, keep the same interface, preserve all existing behavior.
+Explain each change you make.
 ```
 
-#### 🧱 Generate Components/UI
 ```md
-- Create a reusable modal component with open/close logic.
-- Generate a responsive card layout using Tailwind.
-- Build a date picker with disabled past dates.
+Split this file into smaller, reusable pieces.
+Tell me what you'd separate and why before doing it.
 ```
 
-#### 🧠 Understand / Learn Code
 ```md
-- Explain what this Zustand store does.
-- Describe how this middleware handles authentication.
-- What is the purpose of this Prisma query?
+This is getting complex. What's the simplest way to restructure this?
 ```
 
-#### 📚 Generate Documentation
+---
+
+## Debugging
+
 ```md
-- Generate a README.md for this project.
-- Add JSDoc comments to these functions.
-- Document this API endpoint using OpenAPI format.
+Why is this useEffect running infinitely? Walk me through the dependency array.
 ```
 
-#### 🔐 Auth & Role Management
 ```md
-- Add Firebase Auth with email/password and role-based access.
-- Protect this API route so only admins can access it.
+Fix this TypeScript error: [paste error]
+Explain what caused it and how to prevent it next time.
 ```
 
-#### 📦 Backend / Database
 ```md
-- Create Prisma models for students, tutors, and classes.
-- Generate API routes for CRUD operations on courses.
-- Write a seed script for this database.
+This component re-renders too often. Help me profile it and fix the cause.
 ```
 
-#### 🧪 Testing
+---
+
+## Understanding unfamiliar code
+
 ```md
-- Write a unit test for this function using Vitest.
-- Generate integration tests for this login flow.
-- Test this API route for error and success cases.
+Explain what this code does in plain language.
+Then explain: what problem does it solve, what are its edge cases, what would break it.
 ```
 
-#### 📈 Optimization & Cleanup
 ```md
-- Optimize this loop for performance.
-- Clean up unused imports and variables.
-- Convert this component to a server component (Next.js 14).
+I inherited this codebase. Walk me through the data flow from [entry point] to [output].
 ```
+
+---
+
+## Code generation
+
+```md
+Create a [component name] component.
+Requirements: [list]
+Props: [list]
+Use TypeScript, Tailwind, and follow the existing patterns in [file path].
+```
+
+```md
+Write a Prisma schema for [domain].
+Entities: [list with relationships].
+Include: created_at, updated_at on all models. Use UUIDs for primary keys.
+```
+
+---
+
+## Testing
+
+```md
+Write unit tests for this function using Vitest.
+Cover: happy path, edge cases (null, empty, boundary values), and error cases.
+```
+
+```md
+Generate integration tests for this API endpoint.
+Test: successful response, auth failure, validation error, not found.
+```
+
+---
+
+## My rules for prompting
+
+1. **Give constraints upfront.** "No new dependencies", "keep the same interface", "TypeScript strict mode" — saves back-and-forth.
+2. **Ask for explanation alongside code.** "Explain each change" produces better output and helps you review it.
+3. **Start broad, then drill down.** Ask for structure first, then implementation.
+4. **Paste the actual error message.** Not a paraphrase — the exact text.
+5. **Specify the stack.** Claude doesn't know you're using Tailwind v4 unless you say so.

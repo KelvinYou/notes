@@ -2,100 +2,76 @@
 sidebar_position: 3
 ---
 
-# Git - Command Reference
+# Git: Commands I Actually Use
 
-## Common Commands
+Not a full reference — just the things I reach for regularly, including the recovery stuff I always forget.
 
-| Task                               | Command                                 |
-|------------------------------------|-----------------------------------------|
-| Add changes to staging             | `git add .`                             |
-| Commit changes                     | `git commit -m "Update"`                |
-| Pull code from a branch            | `git pull origin master`                |
-| Push code to a branch              | `git push origin master`                |
+---
 
-## Branch Commands
+## Branch management
 
-| Task                               | Command                                 |
-|------------------------------------|-----------------------------------------|
-| List branches                      | `git branch`                           |
-| Create a new branch                | `git branch <new-branch-name>`         |
-| Switch to a branch                 | `git checkout <branch-name>`           |
-| Delete a branch                    | `git branch -d <branch-name>`          |
+```bash
+git branch                          # list branches
+git checkout -b feature-name        # create + switch
+git checkout main                   # switch to main
+git branch -d feature-name          # delete (safe)
+git push origin --delete branch     # delete remote
+```
 
-## Merging Branches
+## Undoing things
 
-| Task                               | Command                                 |
-|------------------------------------|-----------------------------------------|
-| Merge a branch into another branch | `git merge <source-branch>`            |
-| Commit it                          | `git commit -m "Merge feature-branch into main"` |
+### Undo the last commit (keep changes staged)
+```bash
+git reset --soft HEAD^
+```
 
-## Creating and Pushing a New Branch Based on Release
+### Undo the last commit (unstage changes)
+```bash
+git reset HEAD^
+```
 
-| Task                               | Command                                       |
-|------------------------------------|-----------------------------------------------|
-| Fetch origin                       | `git fetch origin`                           |
-| Create new feature branch          | `git checkout -b new-feature-branch origin/release` |
-| Push feature branch                | `git push origin new-feature-branch`        |
+### Hard reset to a specific commit (destructive)
+```bash
+git reset --hard <commit-hash>
+git push origin <branch> --force
+```
 
-## Creating and Pushing a Daily Branch Based on Release
-
-| Task                               | Command                                           |
-|------------------------------------|---------------------------------------------------|
-| Create and switch to daily branch  | `git checkout -b daily-<date>-gr origin/release` |
-| Push daily branch                  | `git push origin daily-<date>-gr`                 |
-
-## Code Library
-
-| Task                               | Command                                 |
-|------------------------------------|-----------------------------------------|
-| Delete a remote branch             | `git push origin --delete <branch-name>`|
-
-## Submodule Commands
-
-| Task                               | Command                                 |
-|------------------------------------|---------------------------------------------------|
-| Initialize submodules              | `git submodule init`                    |
-| Update submodules                  | `git submodule update`                  |
-
-## Revert a commit
-
-1. `git log` to check log
-2. `git reset --hard HEAD^`
-3. `git push origin <branch> --force`
-
-example
+Real example from my workflow:
 ```bash
 git log
 git reset --hard d37c4bb36ebbb03e0f3beccb72418e153bf7b367
-git push origin feat-country-comparison-gr-2024-3-20 --force
+git push origin feat-country-comparison --force
 ```
 
-## Revert git merge
-
-| Task                               | Command                                 |
-|------------------------------------|-----------------------------------------|
-| Abort a merge in progress          | `git merge --abort`                    |
-
-## Replace git commit
-
-| Task                               | Command                                 |
-|------------------------------------|-----------------------------------------|
-| Amend the last commit message      | `git commit --amend -m "new message"`  |
-
-example
+### Fix last commit message
 ```bash
 git commit --amend -m "feat(cards): implement auto debit limit feature"
 ```
 
-## Git move - move div/file to another div/file
+### Abort a merge in progress
+```bash
+git merge --abort
+```
 
-| Task                               | Command                                 |
-|------------------------------------|-----------------------------------------|
-| Move/rename files or directories   | `git mv <source> <destination>`        |
+---
 
-## Git extra - copy div/file
+## Working with feature branches off release
 
-| Task                               | Command                                 |
-|------------------------------------|-----------------------------------------|
-| Install git-extras for additional commands | `brew install git-extras`        |
-| Reference                          | https://formulae.brew.sh/formula/git-extras |
+```bash
+git fetch origin
+git checkout -b feature-name origin/release
+git push origin feature-name
+```
+
+## Submodules (I always forget this)
+
+```bash
+git submodule init
+git submodule update
+```
+
+## Move / rename files (tracks history)
+
+```bash
+git mv src/old-name.ts src/new-name.ts
+```

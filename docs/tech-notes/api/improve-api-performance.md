@@ -1,73 +1,123 @@
 # Improve API Performance
 
-## How to Improve API Performance?
+Five techniques I reach for when an API is too slow. The right one depends on where the bottleneck is.
 
-![Original Image](https://media.licdn.com/dms/image/D5622AQEpIMPVRjy5Xw/feedshare-shrink_2048_1536/0/1704000168554?e=1710374400&v=beta&t=hUyIxTS333nIbqlswz8_SpVU2xOEFdJMXlhSZ65aDlI)
+## The Five Techniques
 
-### Pagination
+```mermaid
+flowchart TD
+    Slow[Slow API?] --> Q1{Too many results?}
+    Q1 -->|Yes| PAG[Pagination]
+    Q1 -->|No| Q2{Logging overhead?}
+    Q2 -->|Yes| LOG[Async Logging]
+    Q2 -->|No| Q3{Repeated DB reads?}
+    Q3 -->|Yes| CACHE[Caching]
+    Q3 -->|No| Q4{Large payloads?}
+    Q4 -->|Yes| COMP[Payload Compression]
+    Q4 -->|No| POOL[Connection Pooling]
+```
 
-![Alt text](image.png)
+---
 
-  - An ordinal numbering of pages
-  - handles a large number of results
+## 1. Pagination
 
-### Async Logging
+Return data in pages instead of all at once.
 
-![Alt text](image-1.png)
+```mermaid
+sequenceDiagram
+    Client->>API: GET /items?page=2&limit=20
+    API->>DB: SELECT ... LIMIT 20 OFFSET 20
+    DB-->>API: 20 rows
+    API-->>Client: { data: [...], total: 200, page: 2 }
+```
 
-  - send logs to a lock-free ring buffer and return
-  - flush to the disk periodically
-  - higher throughput and lower latency
+**When I use it:** Any list endpoint that could return more than ~50 rows. Default page size I pick: 20 for UI, 100 for bulk export.
 
-### Caching
+Two styles:
+- **Offset pagination** — simple, but slow on large offsets (`OFFSET 10000` scans 10k rows)
+- **Cursor pagination** — use a stable cursor (e.g., `created_at + id`), better for infinite scroll and real-time data
 
-![Alt text](image-2.png)
+---
 
-  - store frequently used data in the cache instead of database
-  - query the database when there is a cache miss
+## 2. Async Logging
 
-### Payload Compression
+Write logs to a lock-free ring buffer in memory, flush to disk on a background thread.
 
-![Alt text](image-3.png)
+```mermaid
+sequenceDiagram
+    Request->>Handler: incoming
+    Handler->>RingBuffer: push log entry (non-blocking)
+    Handler-->>Client: response (fast)
+    RingBuffer-->>Disk: flush batch periodically
+```
 
-  - reduce the data size to speed up the download and upload
+**When I use it:** High-throughput services where synchronous disk I/O adds measurable latency. Libraries like [Zap (Go)](https://github.com/uber-go/zap) do this by default.
 
-### Connection Pool
+---
 
-![Alt text](image-4.png)
+## 3. Caching
 
-  - opening and closing DB connections add significant overhead
-  - a connection pool maintains a number of open connections for applications to reuse
+Serve frequently-read data from memory instead of hitting the DB every time.
 
+```mermaid
+sequenceDiagram
+    Client->>API: GET /product/42
+    API->>Cache: get("product:42")
+    alt Cache hit
+        Cache-->>API: cached data
+    else Cache miss
+        Cache-->>API: null
+        API->>DB: SELECT ...
+        DB-->>API: row
+        API->>Cache: set("product:42", data, TTL=60s)
+    end
+    API-->>Client: product data
+```
 
-## Improving API Performance with Database Connection Pooling
+**When I use it:** Read-heavy, rarely-changing data — product catalogs, config, user profiles. I set short TTLs (60s–5min) and invalidate on write. Redis is my default.
 
-The diagram below shows 5 common API optimization techniques. Today, I’ll focus on number 5, connection pooling. It is not as trivial to implement as it sounds for some languages.
+**Gotcha:** Don't cache anything user-specific without namespacing the key by user ID.
 
-When fulfilling API requests, we often need to query the database. Opening a new connection for every API call adds overhead. 𝗖𝗼𝗻𝗻𝗲𝗰𝘁𝗶𝗼𝗻 𝗽𝗼𝗼𝗹𝗶𝗻𝗴 helps avoid this penalty by reusing connections.
+---
 
-𝗛𝗼𝘄 𝗖𝗼𝗻𝗻𝗲𝗰𝘁𝗶𝗼𝗻 𝗣𝗼𝗼𝗹𝗶𝗻𝗴 𝗪𝗼𝗿𝗸𝘀
+## 4. Payload Compression
 
-1. For each API server, establish a pool of database connections at startup.
-2. Workers share these connections, requesting one when needed and returning it after.
+Compress response bodies with gzip or Brotli before sending.
 
-𝗖𝗵𝗮𝗹𝗹𝗲𝗻𝗴𝗲𝘀 𝗳𝗼𝗿 𝗦𝗼𝗺𝗲 𝗟𝗮𝗻𝗴𝘂𝗮𝗴𝗲𝘀
+**When I use it:** JSON responses over ~1KB, especially on slower mobile connections. Most frameworks enable this with one line:
+- Express: `compression()` middleware
+- Go/Gin: `gzip.Gzip(gzip.DefaultCompression)`
+- Next.js: enabled by default in production
 
-However, setting up connection pooling can be more complex for languages like PHP, Python and Node.js. These languages handle scale by having multiple processes, each serving a subset of requests.
+Typical savings: 60–80% on JSON. Not worth it for tiny responses (compression overhead > gains).
 
-- In these languages, database connections get tied to each process.
-- Connections can't be efficiently shared across processes. Each process needs its own pool, wasting resources.
+---
 
-In contrast, languages like Java and Go use threads within a single process to handle requests. Connections are bound at the application level, allowing easy sharing of a centralized pool.
+## 5. Connection Pooling
 
-𝗖𝗼𝗻𝗻𝗲𝗰𝘁𝗶𝗼𝗻 𝗣𝗼𝗼𝗹𝗶𝗻𝗴 𝗦𝗼𝗹𝘂𝘁𝗶𝗼𝗻
+Reuse existing DB connections instead of opening a new one per request.
 
-Tools like PgBouncer work around these challenges by 𝗽𝗿𝗼𝘅𝘆𝗶𝗻𝗴 𝗰𝗼𝗻𝗻𝗲𝗰𝘁𝗶𝗼𝗻𝘀 at the application level.
+```mermaid
+sequenceDiagram
+    participant API as API Server
+    participant Pool as Connection Pool
+    participant DB as Database
 
-PgBouncer creates a centralized pool that all processes can access. No matter which process makes the request, PgBouncer efficiently handles the pooling.
+    API->>Pool: request connection
+    Pool-->>API: existing connection (reused)
+    API->>DB: query
+    DB-->>API: result
+    API->>Pool: return connection
+```
 
-At high scale, all languages can benefit from running PgBouncer on a dedicated server. Now the connection pool is shared over the network for all API servers. This conserves finite database connections.
+**When I use it:** Always. Opening a TCP connection + TLS + DB auth on every request is expensive (~10–50ms).
 
-Connection pooling improves efficiency, but its implementation complexity varies across languages.
+**Language gotcha:** Go/Java share a pool across goroutines/threads within one process. Node.js/PHP/Python spawn multiple processes — each process needs its own pool, which wastes connections. Fix: use a proxy like [PgBouncer](https://www.pgbouncer.org/) in front of Postgres to centralize pooling across all processes.
 
-Have you run into database connection limit issues as your API traffic grew? How did you troubleshoot and fix that?
+---
+
+## Sources
+
+- [ByteByteGo — Top 5 API Performance Optimization Tricks](https://bytebytego.com)
+- [PgBouncer docs](https://www.pgbouncer.org/config.html)
+- [Zap logger — Go](https://github.com/uber-go/zap)

@@ -1,46 +1,69 @@
-# System Design
+# My System Design Approach
 
-## Roadmap
+System design interviews and real system design are different. These are my notes for both.
 
-https://roadmap.sh/system-design
+---
 
-## Introduction
+## How I approach a design problem
 
-### What is System Design?
+1. **Clarify before designing.** What's the scale? Read-heavy or write-heavy? Consistency or availability? Latency requirement? Who are the users? Most design mistakes come from skipping this.
 
-System design is the process of defining the elements of a system, as well as their interactions and relationships, in order to satisfy a set of specified requirements.
+2. **Start with the simplest thing that could work.** A single server with a database is a valid starting point. Then identify where it breaks.
 
-It involves taking a problem statement, breaking it down into smaller components and designing each component to work together effectively to achieve the overall goal of the system. This process typically includes analyzing the current system (if any) and determining any deficiencies, creating a detailed plan for the new system, and testing the design to ensure that it meets the requirements. It is an iterative process that may involve multiple rounds of design, testing, and refinement.
+3. **Identify bottlenecks, then add complexity.** Don't add a cache, queue, or CDN because they're cool — add them when you can explain exactly what problem they solve.
 
-In software engineering, system design is a phase in the software development process that focuses on the high-level design of a software system, including the architecture and components.
+4. **Think in layers:**
 
-It is also one of the important aspects of the interview process for software engineers. Most of the companies have a dedicated system design interview round, where they ask the candidates to design a system for a given problem statement. The candidates are expected to come up with a detailed design of the system, including the architecture, components, and their interactions. They are also expected to discuss the trade-offs involved in their design and the alternatives that they considered.
+```mermaid
+flowchart LR
+    Client --> LB[Load Balancer]
+    LB --> GW[API Gateway]
+    GW --> SVC[Service]
+    SVC --> Cache[(Cache)]
+    SVC --> DB[(Database)]
+    SVC --> MQ[Message Queue]
+    MQ --> Worker[Worker]
+```
 
-### Who is this guide for?
+   - Where does each request go? Where could it fail?
 
-This guide is intended for a wide range of individuals including software engineers, system administrators, and IT professionals who are interested in understanding the principles and best practices of designing scalable systems. It is also useful for those who are preparing for system design interviews as it provides a comprehensive understanding of the key concepts and considerations involved in the design process. The guide covers a variety of System Design topics with detailed explanations and external links for learning more about each topic.
+5. **Make trade-offs explicit.** SQL vs NoSQL, consistency vs availability, monolith vs microservices — there's no right answer, only the right trade-off for the context.
 
-## How to approach System Design?
+---
 
-There are several steps that can be taken when approaching a system design:
+## Components and when I'd use them
 
-- Understand the problem: Gather information about the problem you are trying to solve and the requirements of the system. Identify the users and their needs, as well as any constraints or limitations of the system.
-- Identify the scope of the system: Define the boundaries of the system, including what the system will do and what it will not do.
-- Research and analyze existing systems: Look at similar systems that have been built in the past and identify what worked well and what didn’t. Use this information to inform your design decisions.
-- Create a high-level design: Outline the main components of the system and how they will interact with each other. This can include a rough diagram of the system’s architecture, or a flowchart outlining the process the system will follow.
-- Refine the design: As you work on the details of the design, iterate and refine it until you have a complete and detailed design that meets all the requirements.
-- Document the design: Create detailed documentation of your design for future reference and maintenance.
-- Continuously monitor and improve the system: The system design is not a one-time process, it needs to be continuously monitored and improved to meet the changing requirements.
+| Component | When it's justified |
+|-----------|---------------------|
+| Load Balancer | Multiple instances, need to distribute traffic |
+| CDN | Static assets, global users, latency matters |
+| Cache (Redis) | Read-heavy, data doesn't change often, DB is a bottleneck |
+| Message Queue | Async processing, decoupling producers/consumers, spikes |
+| Database sharding | Single DB can't handle write volume |
+| Read replicas | Read-heavy, single primary DB is a bottleneck |
+| API Gateway | Multiple services, need centralized auth/rate-limiting |
 
-## Performance vs Scalability
+---
 
+## Numbers I keep in mind
 
+- DB read: ~1ms (index hit), ~10ms (full scan)
+- Cache read: ~0.1ms
+- Network round trip (same region): ~1ms
+- 1M requests/day ≈ 12 req/sec (roughly)
+- A single DB handles ~1,000–10,000 QPS depending on query complexity
 
+---
 
+## Interview format (what I follow)
 
+1. Requirements (5 min): functional + non-functional, scale estimate
+2. High-level design (10 min): major components and data flow
+3. Deep dive (15 min): pick the hardest part and go deep
+4. Trade-offs (5 min): what would you do differently at 10x scale?
 
+---
 
+## Reference
 
-
-
-
+- [roadmap.sh/system-design](https://roadmap.sh/system-design) — good starting overview

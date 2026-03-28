@@ -1,25 +1,135 @@
-# Asynchronous Programming Techniques
+# JavaScript Async
 
-JavaScript is indeed a single-threaded language, meaning it has only one execution thread in which code is executed sequentially, one statement at a time. However, JavaScript can still perform multiple tasks simultaneously through various asynchronous programming techniques. These techniques allow JavaScript to execute non-blocking code, enabling it to handle tasks like playing video while performing other operations such as liking or commenting.
+JavaScript is single-threaded but non-blocking. The engine offloads I/O to the browser/Node runtime and resumes via the event loop.
 
-Here are some asynchronous programming techniques that JavaScript uses to achieve multitasking:
+## The Event Loop (simplified)
 
-1. **Event Loop**:
-   - JavaScript utilizes an event-driven architecture with an event loop. The event loop continuously checks for tasks in the event queue and executes them one by one.
-   - Asynchronous tasks, such as fetching data from a server or handling user interactions, are scheduled as events and placed in the event queue.
-   - While the main thread is busy executing synchronous code or rendering video frames, the event loop continues to process asynchronous tasks in the background.
+```mermaid
+sequenceDiagram
+    participant CS as Call Stack
+    participant WEB as Web APIs / Node APIs
+    participant MQ as Microtask Queue
+    participant TQ as Task Queue
 
-2. **Callbacks**:
-   - Callback functions are a common asynchronous programming pattern in JavaScript. They allow you to specify code that should be executed once an asynchronous operation, such as an HTTP request or a timer, completes.
-   - By providing callback functions to asynchronous APIs, you can initiate operations and continue executing other tasks while waiting for the asynchronous operation to complete.
+    CS->>WEB: setTimeout / fetch / I/O
+    Note over CS: Continues executing sync code
+    WEB-->>TQ: Timer/I/O callback ready
+    WEB-->>MQ: Promise .then() / await
+    Note over CS,MQ: Stack empty → drain Microtasks first
+    MQ-->>CS: Promise callbacks
+    Note over CS,TQ: Then run one Task Queue item
+    TQ-->>CS: setTimeout callback
+```
 
-3. **Promises** and **Async/Await**:
-   - Promises and async/await are modern JavaScript features that provide syntactic sugar for working with asynchronous code.
-   - Promises represent the eventual completion (or failure) of an asynchronous operation and allow you to chain operations using `.then()` and `.catch()` methods.
-   - Async/await provides a more synchronous-like way to write asynchronous code by using the `async` keyword to define asynchronous functions and the `await` keyword to pause execution until a Promise is resolved or rejected.
+**Key rule:** Microtasks (Promises) always drain before the next Task Queue item runs. This is why `Promise.resolve().then(...)` runs before `setTimeout(() => ..., 0)`.
 
-4. **Web Workers**:
-   - Web Workers allow JavaScript code to run in background threads, separate from the main execution thread.
-   - You can use Web Workers to perform CPU-intensive tasks, such as data processing or image manipulation, without blocking the main thread, thus enabling multitasking.
+---
 
-In the case of playing a video while performing other tasks like liking or commenting, the browser's rendering engine handles the video playback separately from the main JavaScript execution thread. Asynchronous tasks like liking or commenting are scheduled as events in the event queue and processed by the event loop while the main thread is busy rendering video frames. This allows JavaScript to perform multiple tasks simultaneously, providing a smooth and responsive user experience.
+## The Three Patterns
+
+### Callbacks (avoid in new code)
+
+```js
+fs.readFile('file.txt', (err, data) => {
+  if (err) throw err;
+  processData(data, (err, result) => { // callback hell
+    ...
+  });
+});
+```
+
+Problem: error handling is inconsistent, nesting gets out of hand fast.
+
+### Promises
+
+```js
+fetch('/api/user')
+  .then(res => res.json())
+  .then(user => console.log(user))
+  .catch(err => console.error(err));
+```
+
+Better for chaining, but `.then()` chains still get verbose.
+
+### Async/Await (my default)
+
+```js
+async function getUser(id) {
+  try {
+    const res = await fetch(`/api/user/${id}`);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return await res.json();
+  } catch (err) {
+    console.error('Failed to fetch user:', err);
+    throw err; // re-throw so caller can handle
+  }
+}
+```
+
+Reads like synchronous code. Always pair with `try/catch` — unhandled promise rejections are silent in some environments.
+
+---
+
+## Patterns I Actually Use
+
+### Parallel fetches
+
+```js
+// Sequential (slow — waits for each)
+const user = await getUser(id);
+const posts = await getPosts(id);
+
+// Parallel (fast — runs simultaneously)
+const [user, posts] = await Promise.all([getUser(id), getPosts(id)]);
+```
+
+### Abort on unmount (React)
+
+```js
+useEffect(() => {
+  const controller = new AbortController();
+  fetch('/api/data', { signal: controller.signal })
+    .then(res => res.json())
+    .then(setData)
+    .catch(err => { if (err.name !== 'AbortError') console.error(err); });
+  return () => controller.abort();
+}, []);
+```
+
+### Race with timeout
+
+```js
+const withTimeout = (promise, ms) =>
+  Promise.race([
+    promise,
+    new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout')), ms))
+  ]);
+```
+
+---
+
+## Gotchas
+
+**`await` inside `forEach` doesn't work:**
+```js
+// Broken — forEach ignores returned promise
+items.forEach(async (item) => { await process(item); });
+
+// Fix
+for (const item of items) { await process(item); }
+// Or parallel: await Promise.all(items.map(process));
+```
+
+**`async` functions always return a Promise:**
+```js
+async function getNum() { return 42; }
+getNum(); // → Promise<42>, not 42
+```
+
+---
+
+## Reference
+
+- [MDN — Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+- [MDN — Event Loop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Event_loop)
+- [Jake Archibald — In The Loop (JSConf)](https://www.youtube.com/watch?v=cCOL7MC4Pl0)
