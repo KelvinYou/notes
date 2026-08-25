@@ -1,0 +1,45 @@
+# datasets/nutrition/foods/dairy.yaml
+# See ../README.md for source/date/kcal caveats — not yet Phase-1-schema-validated.
+
+- id: greek_yogurt
+  name: Greek Yogurt
+  basis: 100g_raw
+  protein_g: 9
+  carbs_g: 11.6
+  fat_g: 1.5
+  sugar_g: 11.6
+  kcal: 96
+  kcal_computed: true
+  glycemic_index: 11
+  gi_source: "public GI reference (plain yogurt), not lab-tested on this specific product"
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-19"
+
+- id: whole_milk
+  name: 全脂牛奶 (whole milk)
+  basis: 100ml_raw
+  protein_g: 3.2
+  carbs_g: 4.8
+  fat_g: 3.2
+  sugar_g: 4.8
+  kcal: 61
+  kcal_computed: true
+  glycemic_index: 30
+  gi_source: "public GI reference (whole milk), not lab-tested on this specific product"
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-19"
+  notes: "Source table priced this per 200ml pack unit (RM1.40/200ml); macros normalized to 100ml here for basis consistency."
+
+- id: cheese_slice
+  name: Cheese 片 (cheese slice)
+  basis: 100g_raw
+  protein_g: 18
+  carbs_g: 4
+  fat_g: 25
+  sugar_g: 4
+  kcal: 313
+  kcal_computed: true
+  unit_weight_g: 20
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-19"
+  notes: "unit_weight_g backed out from the original meal-library.md math (1-2 slices -> ~3.6g protein/slice => 20g/slice), not an independent measurement."

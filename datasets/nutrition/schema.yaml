@@ -1,0 +1,44 @@
+# datasets/nutrition/schema.yaml
+# Contract for datasets/nutrition/{foods,prices}/*.yaml.
+# Enforced by scripts/validate-nutrition-data.mjs — this file is the source of
+# truth for what "valid" means; the validator must not hardcode a second copy
+# of these rules. See docs/plan-public-knowledge-integration.md §7 (personal-os)
+# for the design rationale.
+#
+# meals/ (structured meal-template records + slot/unit enums, ingredient
+# basis conversion) existed here until 2026-08-24 and was removed — replaced
+# by narrative technique/pairing notes under docs/health/nutrition/ instead of
+# a structured catalog. scripts/nutrition.py's `meal`/`search` subcommands and
+# scripts/lib/nutrition/query.py's ingredient/basis-conversion logic were
+# removed from personal-os in the same change; `food_lookup` is what remains.
+
+basis_enum:
+  - 100g_raw
+  - 100g_cooked
+  - 100ml_raw
+  - 1_serving
+  - 1_piece
+
+food:
+  required: [id, name, basis, source, last_verified]
+  # A food with basis 1_serving/1_piece (supplements) has no macros — dosed by
+  # count/weight, not eaten. Every other basis must carry full macros.
+  macro_required_unless_basis: [1_serving, 1_piece]
+  macro_fields: [protein_g, carbs_g, fat_g, sugar_g, kcal]
+  optional_fields:
+    - fibre_g
+    - kcal_computed
+    - glycemic_index
+    - gi_source
+    - serving_g       # required when basis is 1_serving
+    - unit_weight_g    # grams per "piece" unit, when it differs from the
+                       # food's own 100g/100ml basis size — e.g. one egg is
+                       # 50g, not 100g. No consumer reads this since the meal
+                       # dataset was removed; kept as a documented physical
+                       # fact in case a future consumer needs it.
+    - notes
+    - aliases
+
+price:
+  required: [food_id, unit_cost_myr, unit, source, last_verified]
+  optional_fields: [pack_size, pack_price_myr, is_estimate]

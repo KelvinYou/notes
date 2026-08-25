@@ -1,0 +1,263 @@
+# datasets/nutrition/prices/my-retail-2026-08.yaml
+# See ../README.md for source/date caveats — not yet Phase-1-schema-validated.
+# unit_cost is per the food record's `basis` unit unless noted otherwise.
+
+- food_id: wholemeal_bread
+  pack_size: "1 loaf / 20 slices"
+  pack_price_myr: 4.20
+  unit_cost_myr: 0.21
+  unit: "per slice"
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-19"
+
+- food_id: egg
+  pack_size: "30 eggs / tray"
+  pack_price_myr: 7.00
+  unit_cost_myr: 0.23
+  unit: "per egg"
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-19"
+
+- food_id: chicken_breast_raw
+  pack_size: "1kg"
+  pack_price_myr: ~15.00
+  unit_cost_myr: 1.50
+  unit: "per 100g"
+  is_estimate: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-19"
+
+- food_id: brown_rice_cooked
+  pack_size: "1kg"
+  pack_price_myr: ~10.00
+  unit_cost_myr: 1.00
+  unit: "per 100g"
+  is_estimate: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-19"
+
+- food_id: potato
+  pack_size: "1kg (~6 pcs)"
+  pack_price_myr: 1.99
+  unit_cost_myr: 0.33
+  unit: "per piece"
+  is_estimate: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-19"
+
+- food_id: taiwan_sausage
+  pack_size: "1 pack / 5 links"
+  pack_price_myr: 7.00
+  unit_cost_myr: 1.40
+  unit: "per link"
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-19"
+
+- food_id: greek_yogurt
+  pack_size: "900g tub"
+  pack_price_myr: 15.00
+  unit_cost_myr: 1.67
+  unit: "per 100g"
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-19"
+
+- food_id: whole_milk
+  pack_size: "1L"
+  pack_price_myr: ~7.00
+  unit_cost_myr: 1.40
+  unit: "per 200ml"
+  is_estimate: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-19"
+
+- food_id: cheese_slice
+  pack_size: "10 slices"
+  pack_price_myr: ~8.00
+  unit_cost_myr: 0.80
+  unit: "per slice"
+  is_estimate: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-19"
+
+- food_id: keto_almond_chocolate
+  pack_size: "300g (~30 pcs)"
+  pack_price_myr: 27.00
+  unit_cost_myr: 0.90
+  unit: "per piece"
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-19"
+
+- food_id: matcha_powder
+  pack_size: "~20 servings/pack"
+  pack_price_myr: ~30.00
+  unit_cost_myr: 1.50
+  unit: "per serving"
+  is_estimate: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-19"
+
+- food_id: whey_protein_powder
+  pack_size: "2.26kg tub, 30g scoop"
+  pack_price_myr: 360.00
+  unit_cost_myr: 4.78
+  unit: "per scoop"
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-19"
+
+- food_id: dark_chocolate_999
+  pack_size: "138g pack, 4g/piece"
+  pack_price_myr: 20.00
+  unit_cost_myr: 0.58
+  unit: "per piece"
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-19"
+
+- food_id: vegetables_mixed
+  pack_size: null
+  pack_price_myr: null
+  unit_cost_myr: ~0.50
+  unit: "per serving"
+  is_estimate: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-19"
+
+- food_id: white_rice_cooked
+  pack_size: "1kg"
+  pack_price_myr: ~8.00
+  unit_cost_myr: ~0.80
+  unit: "per 100g"
+  is_estimate: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-19"
+
+- food_id: almonds
+  pack_size: "1kg"
+  pack_price_myr: ~40.00
+  unit_cost_myr: ~0.60
+  unit: "per 15g"
+  is_estimate: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-19"
+
+- food_id: walnuts
+  pack_size: "1kg"
+  pack_price_myr: 30.00
+  unit_cost_myr: 3.00
+  unit: "per 100g"
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-19"
+
+- food_id: chia_seeds
+  pack_size: "400g"
+  pack_price_myr: 14.88
+  unit_cost_myr: 0.37
+  unit: "per 10g (≈RM1.04 per 28g)"
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-19"
+
+- food_id: cocoa_powder_100
+  pack_size: "300g"
+  pack_price_myr: 27.94
+  unit_cost_myr: 0.47
+  unit: "per 5g (≈RM9.31 per 100g)"
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-19"
+
+- food_id: black_sesame_powder
+  pack_size: "100g"
+  pack_price_myr: 11.00
+  unit_cost_myr: 1.10
+  unit: "per 10g (≈RM0.55 per 5g)"
+  notes: "Shopee coupon price"
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-19"
+
+- food_id: ikan_kembung
+  pack_size: "1kg"
+  pack_price_myr: ~12.00
+  unit_cost_myr: ~1.20
+  unit: "per 100g"
+  is_estimate: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-19"
+
+- food_id: tempeh
+  pack_size: "300g"
+  pack_price_myr: ~3.00
+  unit_cost_myr: ~1.00
+  unit: "per 100g"
+  is_estimate: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-19"
+
+- food_id: salmon_raw
+  pack_size: "1kg"
+  pack_price_myr: ~45.00
+  unit_cost_myr: ~4.50
+  unit: "per 100g"
+  is_estimate: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-19"
+
+- food_id: dory_fillet_raw
+  pack_size: "1kg"
+  pack_price_myr: ~22.00
+  unit_cost_myr: ~2.20
+  unit: "per 100g"
+  is_estimate: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-19"
+
+- food_id: shrimp_peeled_raw
+  pack_size: "1kg"
+  pack_price_myr: ~38.00
+  unit_cost_myr: ~3.80
+  unit: "per 100g"
+  is_estimate: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-19"
+
+- food_id: rolled_oats
+  pack_size: "900g"
+  pack_price_myr: ~8.90
+  unit_cost_myr: ~0.99
+  unit: "per 100g"
+  is_estimate: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-19"
+
+- food_id: black_sesame_oil
+  pack_size: "250ml"
+  pack_price_myr: ~18.00
+  unit_cost_myr: ~7.20
+  unit: "per 100ml"
+  is_estimate: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-19"
+
+- food_id: frozen_blueberries
+  pack_size: "400g"
+  pack_price_myr: ~14.00
+  unit_cost_myr: ~3.50
+  unit: "per 100g"
+  is_estimate: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-19"
+
+- food_id: creatine_monohydrate
+  pack_size: "500g"
+  pack_price_myr: ~60.00
+  unit_cost_myr: ~0.30
+  unit: "per 5g"
+  is_estimate: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-19"
+
+- food_id: magnesium_glycinate
+  pack_size: "60 capsules"
+  pack_price_myr: ~50.00
+  unit_cost_myr: ~0.83
+  unit: "per capsule"
+  is_estimate: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-19"

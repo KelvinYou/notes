@@ -1,0 +1,29 @@
+# datasets/nutrition/foods/produce.yaml
+# Not in the plan's original 4-file sketch — see ../README.md — "Food categories" note.
+
+- id: vegetables_mixed
+  name: 蔬菜 (mixed vegetables — broccoli / lettuce)
+  basis: 100g_raw
+  protein_g: 2
+  carbs_g: 4
+  fat_g: 0.3
+  sugar_g: 2
+  kcal: 27
+  kcal_computed: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-19"
+  notes: "Generic placeholder for 花椰菜/生菜 (broccoli/lettuce); Phase 1 should split into distinct food ids if precision matters."
+
+- id: frozen_blueberries
+  name: 冷冻蓝莓 (frozen blueberries)
+  basis: 100g_raw
+  protein_g: 0.7
+  carbs_g: 14
+  fat_g: 0.3
+  sugar_g: 10
+  kcal: 62
+  kcal_computed: true
+  glycemic_index: 53
+  gi_source: "public GI reference (fresh/frozen blueberries), not lab-tested on this specific product"
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-19"

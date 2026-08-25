@@ -1,0 +1,17 @@
+# datasets/nutrition/foods/supplements.yaml
+# Not in the plan's original 4-file sketch — see ../README.md — "Food categories" note.
+# No protein/carb/fat macros apply; these are dosed by count/weight, not eaten as food.
+
+- id: creatine_monohydrate
+  name: Creatine Monohydrate
+  basis: 1_serving
+  serving_g: 5
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-19"
+  notes: "Evidence grade and dosing timing live in docs/health/nutrition (protein-and-energy.md family); this record is price/serving-size only."
+
+- id: magnesium_glycinate
+  name: Magnesium Glycinate
+  basis: 1_piece
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-19"

@@ -10,7 +10,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 const config = {
   title: 'Kelvin You\'s Notes',
   tagline: 'Documentations',
-  favicon: 'img/logo.png',
+  favicon: 'img/ky-mark.svg',
 
   // Set the production url of your site here
   url: 'https://kelvinyou-notes.vercel.app/',
@@ -68,8 +68,11 @@ const config = {
       navbar: {
         title: 'Kelvin You\'s Notes',
         logo: {
-          alt: 'My Site Logo',
-          src: 'img/logo.png',
+          alt: 'Kelvin You — KY mark',
+          src: 'img/ky-mark.svg',
+          srcDark: 'img/ky-mark-dark.svg',
+          width: 22,
+          height: 22,
         },
         items: [
           {
@@ -83,6 +86,12 @@ const config = {
             sidebarId: 'thinking',
             position: 'left',
             label: 'Thinking',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'health',
+            position: 'left',
+            label: 'Health',
           },
           // {
           //   type: 'docSidebar',
@@ -157,7 +166,7 @@ const config = {
     },
     themes: [
       '@docusaurus/theme-mermaid',
-      '@docusaurus/theme-live-codeblock'
+      '@docusaurus/theme-live-codeblock',
     ],
 };
 

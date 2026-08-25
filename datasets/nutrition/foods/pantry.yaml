@@ -1,0 +1,54 @@
+# datasets/nutrition/foods/pantry.yaml
+# See ../README.md for source/date/kcal caveats — not yet Phase-1-schema-validated.
+# Split out of snacks.yaml: these are condiments/powders/oils used to season or
+# fortify a meal, not eaten as a standalone snack — didn't belong in "Snacks & Nuts".
+
+- id: matcha_powder
+  name: Matcha 粉 (matcha powder)
+  basis: 100g_raw
+  protein_g: 1
+  carbs_g: 1
+  fat_g: 0
+  sugar_g: 0
+  kcal: 8
+  kcal_computed: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-19"
+
+- id: cocoa_powder_100
+  name: 可可粉 100% (100% cocoa powder)
+  basis: 100g_raw
+  protein_g: 22.9
+  carbs_g: 10.7
+  fat_g: 11.0
+  sugar_g: 0
+  fibre_g: 34.4
+  kcal: 233
+  kcal_computed: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-19"
+
+- id: black_sesame_powder
+  name: 黑芝麻粉 (black sesame powder)
+  basis: 100g_raw
+  protein_g: 18
+  carbs_g: 23
+  fat_g: 50
+  sugar_g: 0
+  kcal: 614
+  kcal_computed: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-19"
+  notes: "Ca ~975mg, Fe ~14mg per 100g per source table"
+
+- id: black_sesame_oil
+  name: 黑芝麻油 (black sesame oil)
+  basis: 100ml_raw
+  protein_g: 0
+  carbs_g: 0
+  fat_g: 100
+  sugar_g: 0
+  kcal: 900
+  kcal_computed: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-19"

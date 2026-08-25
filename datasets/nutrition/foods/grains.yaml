@@ -1,0 +1,74 @@
+# datasets/nutrition/foods/grains.yaml
+# See ../README.md for source/date/kcal caveats — not yet Phase-1-schema-validated.
+
+- id: wholemeal_bread
+  name: 全麦面包 (wholemeal bread)
+  basis: 100g_raw
+  protein_g: 12
+  carbs_g: 43
+  fat_g: 3.5
+  sugar_g: 5
+  kcal: 252
+  kcal_computed: true
+  glycemic_index: 74
+  gi_source: "public GI reference (wholemeal/whole wheat bread), not lab-tested on this specific product"
+  unit_weight_g: 20
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-19"
+  notes: "unit_weight_g backed out from the original meal-library.md math (1 slice -> ~2.4g protein => 20g/slice), not an independent measurement."
+
+- id: brown_rice_cooked
+  name: 糙米 (brown rice, cooked)
+  basis: 100g_cooked
+  protein_g: 2.6
+  carbs_g: 23
+  fat_g: 0.9
+  sugar_g: 0
+  kcal: 111
+  kcal_computed: true
+  glycemic_index: 50
+  gi_source: "public GI reference (cooked brown rice), not lab-tested on this specific product"
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-19"
+
+- id: white_rice_cooked
+  name: 白饭 (white rice, cooked)
+  basis: 100g_cooked
+  protein_g: 2.7
+  carbs_g: 28
+  fat_g: 0.3
+  sugar_g: 0
+  kcal: 126
+  kcal_computed: true
+  glycemic_index: 73
+  gi_source: "public GI reference (cooked white rice), not lab-tested on this specific product"
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-19"
+
+- id: potato
+  name: 马铃薯 (potato)
+  basis: 100g_raw
+  protein_g: 2
+  carbs_g: 17
+  fat_g: 0.1
+  sugar_g: 0.8
+  kcal: 77
+  kcal_computed: true
+  glycemic_index: 78
+  gi_source: "public GI reference (boiled potato), not lab-tested on this specific product"
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-19"
+
+- id: rolled_oats
+  name: Rolled Oats
+  basis: 100g_raw
+  protein_g: 13.5
+  carbs_g: 68
+  fat_g: 6.9
+  sugar_g: 1
+  kcal: 388
+  kcal_computed: true
+  glycemic_index: 55
+  gi_source: "public GI reference (rolled oats/porridge), not lab-tested on this specific product"
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-19"
