@@ -30,6 +30,20 @@
   last_verified: "2026-08-19"
   notes: "Source table priced this per 200ml pack unit (RM1.40/200ml); macros normalized to 100ml here for basis consistency."
 
+- id: skim_milk
+  name: 脱脂牛奶 (skim milk)
+  basis: 100ml_raw
+  protein_g: 3.4
+  carbs_g: 5.0
+  fat_g: 0.1
+  sugar_g: 5.0
+  kcal: 35
+  kcal_computed: true
+  glycemic_index: 32
+  gi_source: "public GI reference (skim milk), not lab-tested on this specific product"
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-31"
+
 - id: cheese_slice
   name: Cheese 片 (cheese slice)
   basis: 100g_raw

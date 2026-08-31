@@ -1,18 +1,32 @@
 # datasets/nutrition/foods/produce.yaml
 # Not in the plan's original 4-file sketch — see ../README.md — "Food categories" note.
 
-- id: vegetables_mixed
-  name: 蔬菜 (mixed vegetables — broccoli / lettuce)
+- id: broccoli
+  name: 花椰菜 (broccoli)
   basis: 100g_raw
-  protein_g: 2
-  carbs_g: 4
-  fat_g: 0.3
-  sugar_g: 2
-  kcal: 27
+  protein_g: 2.8
+  carbs_g: 6.6
+  fat_g: 0.4
+  sugar_g: 1.7
+  fibre_g: 2.6
+  kcal: 34
   kcal_computed: true
   source: "personal shopping records (Malaysia), unverified"
-  last_verified: "2026-08-19"
-  notes: "Generic placeholder for 花椰菜/生菜 (broccoli/lettuce); Phase 1 should split into distinct food ids if precision matters."
+  last_verified: "2026-08-31"
+  notes: "Split out of the old generic vegetables_mixed placeholder for precision."
+
+- id: lettuce
+  name: 生菜 (lettuce)
+  basis: 100g_raw
+  protein_g: 1.4
+  carbs_g: 2.9
+  fat_g: 0.2
+  sugar_g: 0.8
+  kcal: 15
+  kcal_computed: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-31"
+  notes: "Split out of the old generic vegetables_mixed placeholder for precision."
 
 - id: frozen_blueberries
   name: 冷冻蓝莓 (frozen blueberries)
@@ -27,3 +41,70 @@
   gi_source: "public GI reference (fresh/frozen blueberries), not lab-tested on this specific product"
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-19"
+
+- id: frozen_strawberries
+  name: 冷冻草莓 (frozen strawberries)
+  basis: 100g_raw
+  protein_g: 0.7
+  carbs_g: 7.7
+  fat_g: 0.3
+  sugar_g: 4.9
+  kcal: 33
+  kcal_computed: true
+  glycemic_index: 40
+  gi_source: "public GI reference (fresh/frozen strawberries), not lab-tested on this specific product"
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-31"
+
+- id: bell_pepper
+  name: 红黄甜椒 (red/yellow bell pepper)
+  basis: 100g_raw
+  protein_g: 1
+  carbs_g: 6
+  fat_g: 0.3
+  sugar_g: 4.2
+  kcal: 31
+  kcal_computed: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-31"
+
+- id: banana
+  name: 香蕉 (banana)
+  basis: 100g_raw
+  protein_g: 1.1
+  carbs_g: 23
+  fat_g: 0.3
+  sugar_g: 12
+  kcal: 96
+  kcal_computed: true
+  glycemic_index: 51
+  gi_source: "public GI reference (banana), not lab-tested on this specific product"
+  unit_weight_g: 120
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-31"
+  notes: "Referenced in user_profile.md pre-workout nutrition (Pre 半勺 whey + 1 香蕉) but had no food record until now."
+
+- id: cherry_tomato
+  name: 小番茄 (cherry tomato)
+  basis: 100g_raw
+  protein_g: 0.9
+  carbs_g: 3.9
+  fat_g: 0.2
+  sugar_g: 2.6
+  kcal: 18
+  kcal_computed: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-31"
+
+- id: avocado
+  name: 牛油果 (avocado)
+  basis: 100g_raw
+  protein_g: 2
+  carbs_g: 8.5
+  fat_g: 15
+  sugar_g: 0.7
+  kcal: 160
+  kcal_computed: true
+  unit_weight_g: 200
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-31"

@@ -111,3 +111,28 @@
   kcal_computed: true
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-19"
+
+- id: tofu
+  name: 豆腐 (firm tofu)
+  basis: 100g_raw
+  protein_g: 8
+  carbs_g: 2
+  fat_g: 4.8
+  sugar_g: 0.6
+  kcal: 76
+  kcal_computed: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-31"
+
+- id: canned_tuna
+  name: 吞拿鱼罐头 (canned tuna, drained)
+  basis: 100g_raw
+  protein_g: 26
+  carbs_g: 0
+  fat_g: 1
+  sugar_g: 0
+  kcal: 116
+  kcal_computed: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-31"
+  notes: "In water, drained weight (schema has no 100g_drained enum, using 100g_raw). Oil-packed tuna has substantially higher fat/kcal — check the label before using this record."

@@ -52,3 +52,54 @@
   kcal_computed: true
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-19"
+
+- id: black_sesame_paste
+  name: 黑芝麻酱 (black sesame paste)
+  basis: 100g_raw
+  protein_g: 17
+  carbs_g: 15
+  fat_g: 55
+  sugar_g: 0.5
+  kcal: 597
+  kcal_computed: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-31"
+  notes: "Distinct from black_sesame_powder (drier, ground form) — paste is oil-blended, higher fat density."
+
+- id: sesame_paste
+  name: 芝麻酱 (sesame paste / tahini)
+  basis: 100g_raw
+  protein_g: 17
+  carbs_g: 21
+  fat_g: 54
+  sugar_g: 0.5
+  fibre_g: 9.3
+  kcal: 595
+  kcal_computed: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-31"
+
+- id: peanut_butter
+  name: 花生酱 (peanut butter)
+  basis: 100g_raw
+  protein_g: 25
+  carbs_g: 20
+  fat_g: 50
+  sugar_g: 9
+  kcal: 588
+  kcal_computed: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-31"
+
+- id: aromatics_mixed
+  name: 洋葱/蒜/姜 (onion / garlic / ginger)
+  basis: 100g_raw
+  protein_g: 1.5
+  carbs_g: 9
+  fat_g: 0.3
+  sugar_g: 4
+  kcal: 40
+  kcal_computed: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-31"
+  notes: "Blended placeholder for onion/garlic/ginger seasoning aromatics, priced/estimated as one group since typical portions are small and mixed within one dish — split into distinct food ids later if precision matters."

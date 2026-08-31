@@ -1,20 +1,6 @@
 # datasets/nutrition/foods/snacks.yaml
 # See ../README.md for source/date/kcal caveats — not yet Phase-1-schema-validated.
 
-- id: keto_almond_chocolate
-  name: Keto Almond Chocolate
-  basis: 100g_raw
-  protein_g: 12
-  carbs_g: 25
-  fat_g: 45
-  sugar_g: 3
-  kcal: 553
-  kcal_computed: true
-  unit_weight_g: 10
-  source: "personal shopping records (Malaysia), unverified"
-  last_verified: "2026-08-19"
-  notes: "Pack is ~30 pieces per 300g => 10g/piece"
-
 - id: dark_chocolate_999
   name: 99.9% 黑巧克力 (99.9% dark chocolate)
   basis: 100g_raw
@@ -65,4 +51,17 @@
   kcal_computed: true
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-19"
+
+- id: pumpkin_seeds
+  name: 南瓜籽 (pumpkin seeds)
+  basis: 100g_raw
+  protein_g: 30.2
+  carbs_g: 10.7
+  fat_g: 49.1
+  sugar_g: 1.4
+  fibre_g: 6
+  kcal: 559
+  kcal_computed: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-31"
 

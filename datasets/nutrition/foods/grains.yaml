@@ -59,6 +59,21 @@
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-19"
 
+- id: pasta_dry
+  name: 意面 (pasta, dry)
+  basis: 100g_raw
+  protein_g: 13
+  carbs_g: 75
+  fat_g: 1.5
+  sugar_g: 3
+  kcal: 371
+  kcal_computed: true
+  glycemic_index: 50
+  gi_source: "public GI reference (cooked durum pasta), not lab-tested on this specific product"
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-31"
+  notes: "Referenced in user_profile.md as a carb rotation option (糙米/意面/杂饭) but had no food record until now. basis is dry/raw weight before cooking (schema has no 100g_dry enum, using 100g_raw) — do not compare directly to brown_rice_cooked/white_rice_cooked which are cooked-basis."
+
 - id: rolled_oats
   name: Rolled Oats
   basis: 100g_raw

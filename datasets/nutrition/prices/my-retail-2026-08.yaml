@@ -70,20 +70,21 @@
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-19"
 
+- food_id: skim_milk
+  pack_size: "1L"
+  pack_price_myr: ~7.00
+  unit_cost_myr: 1.40
+  unit: "per 200ml"
+  is_estimate: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-31"
+
 - food_id: cheese_slice
   pack_size: "10 slices"
   pack_price_myr: ~8.00
   unit_cost_myr: 0.80
   unit: "per slice"
   is_estimate: true
-  source: "personal shopping records (Malaysia), unverified"
-  last_verified: "2026-08-19"
-
-- food_id: keto_almond_chocolate
-  pack_size: "300g (~30 pcs)"
-  pack_price_myr: 27.00
-  unit_cost_myr: 0.90
-  unit: "per piece"
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-19"
 
@@ -112,14 +113,23 @@
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-19"
 
-- food_id: vegetables_mixed
+- food_id: broccoli
   pack_size: null
   pack_price_myr: null
   unit_cost_myr: ~0.50
-  unit: "per serving"
+  unit: "per serving (~100g)"
   is_estimate: true
   source: "personal shopping records (Malaysia), unverified"
-  last_verified: "2026-08-19"
+  last_verified: "2026-08-31"
+
+- food_id: lettuce
+  pack_size: null
+  pack_price_myr: null
+  unit_cost_myr: ~0.50
+  unit: "per serving (~100g)"
+  is_estimate: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-31"
 
 - food_id: white_rice_cooked
   pack_size: "1kg"
@@ -244,6 +254,51 @@
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-19"
 
+- food_id: frozen_strawberries
+  pack_size: "400g"
+  pack_price_myr: ~14.00
+  unit_cost_myr: ~3.50
+  unit: "per 100g"
+  is_estimate: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-31"
+
+- food_id: bell_pepper
+  pack_size: "100g"
+  pack_price_myr: ~1.50
+  unit_cost_myr: ~1.50
+  unit: "per 100g"
+  is_estimate: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-31"
+
+- food_id: pumpkin_seeds
+  pack_size: "100g"
+  pack_price_myr: ~8.00
+  unit_cost_myr: ~8.00
+  unit: "per 100g"
+  is_estimate: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-31"
+
+- food_id: black_sesame_paste
+  pack_size: "100g"
+  pack_price_myr: ~3.50
+  unit_cost_myr: ~3.50
+  unit: "per 100g"
+  is_estimate: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-31"
+
+- food_id: sesame_paste
+  pack_size: "100g"
+  pack_price_myr: ~3.50
+  unit_cost_myr: ~3.50
+  unit: "per 100g"
+  is_estimate: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-31"
+
 - food_id: creatine_monohydrate
   pack_size: "500g"
   pack_price_myr: ~60.00
@@ -261,3 +316,69 @@
   is_estimate: true
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-19"
+
+- food_id: banana
+  pack_size: "1kg (~8 pcs)"
+  pack_price_myr: 4.50
+  unit_cost_myr: 0.56
+  unit: "per piece"
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-31"
+
+- food_id: cherry_tomato
+  pack_size: "250g pack"
+  pack_price_myr: 3.50
+  unit_cost_myr: 1.40
+  unit: "per 100g"
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-31"
+
+- food_id: pasta_dry
+  pack_size: "500g"
+  pack_price_myr: 5.00
+  unit_cost_myr: 1.00
+  unit: "per 100g (dry)"
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-31"
+
+- food_id: avocado
+  pack_size: "1 piece (~200g)"
+  pack_price_myr: 4.00
+  unit_cost_myr: 2.00
+  unit: "per 100g"
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-31"
+
+- food_id: tofu
+  pack_size: "1 block (~300g)"
+  pack_price_myr: 2.00
+  unit_cost_myr: 0.67
+  unit: "per 100g"
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-31"
+
+- food_id: canned_tuna
+  pack_size: "1 can (~150g drained)"
+  pack_price_myr: 4.50
+  unit_cost_myr: 3.00
+  unit: "per 100g (drained)"
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-31"
+
+- food_id: peanut_butter
+  pack_size: "100g"
+  pack_price_myr: ~3.00
+  unit_cost_myr: ~3.00
+  unit: "per 100g"
+  is_estimate: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-31"
+
+- food_id: aromatics_mixed
+  pack_size: "100g"
+  pack_price_myr: ~2.00
+  unit_cost_myr: ~2.00
+  unit: "per 100g"
+  is_estimate: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-31"
