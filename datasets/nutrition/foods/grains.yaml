@@ -8,6 +8,7 @@
   carbs_g: 43
   fat_g: 3.5
   sugar_g: 5
+  fibre_g: 7.0
   kcal: 252
   kcal_computed: true
   glycemic_index: 74
@@ -24,6 +25,7 @@
   carbs_g: 23
   fat_g: 0.9
   sugar_g: 0
+  fibre_g: 1.8
   kcal: 111
   kcal_computed: true
   glycemic_index: 50
@@ -38,6 +40,7 @@
   carbs_g: 28
   fat_g: 0.3
   sugar_g: 0
+  fibre_g: 0.4
   kcal: 126
   kcal_computed: true
   glycemic_index: 73
@@ -52,6 +55,7 @@
   carbs_g: 17
   fat_g: 0.1
   sugar_g: 0.8
+  fibre_g: 2.2
   kcal: 77
   kcal_computed: true
   glycemic_index: 78
@@ -66,6 +70,7 @@
   carbs_g: 75
   fat_g: 1.5
   sugar_g: 3
+  fibre_g: 3.2
   kcal: 371
   kcal_computed: true
   glycemic_index: 50
@@ -81,6 +86,7 @@
   carbs_g: 68
   fat_g: 6.9
   sugar_g: 1
+  fibre_g: 10.6
   kcal: 388
   kcal_computed: true
   glycemic_index: 55

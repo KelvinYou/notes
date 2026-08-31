@@ -28,13 +28,18 @@
   last_verified: "2026-08-19"
 
 - food_id: brown_rice_cooked
-  pack_size: "1kg"
+  pack_size: "1kg dry (~2.8kg cooked)"
   pack_price_myr: ~10.00
-  unit_cost_myr: 1.00
-  unit: "per 100g"
+  unit_cost_myr: ~0.36
+  unit: "per 100g cooked"
   is_estimate: true
   source: "personal shopping records (Malaysia), unverified"
-  last_verified: "2026-08-19"
+  last_verified: "2026-08-31"
+  notes: >-
+    Corrected 2026-08-31: was unit_cost 1.00 "per 100g", which silently priced a
+    DRY 1kg pack against this record's 100g_COOKED basis and overstated cooked
+    rice by ~2.8x. Cooking yield ~2.8x by weight (1kg dry -> ~2.8kg cooked) is
+    the conversion; RM10 / 2800g = RM0.36 per 100g cooked.
 
 - food_id: potato
   pack_size: "1kg (~6 pcs)"
@@ -132,13 +137,16 @@
   last_verified: "2026-08-31"
 
 - food_id: white_rice_cooked
-  pack_size: "1kg"
+  pack_size: "1kg dry (~2.8kg cooked)"
   pack_price_myr: ~8.00
-  unit_cost_myr: ~0.80
-  unit: "per 100g"
+  unit_cost_myr: ~0.29
+  unit: "per 100g cooked"
   is_estimate: true
   source: "personal shopping records (Malaysia), unverified"
-  last_verified: "2026-08-19"
+  last_verified: "2026-08-31"
+  notes: >-
+    Corrected 2026-08-31 for the same dry-pack-vs-cooked-basis mismatch as
+    brown_rice_cooked. RM8 / 2800g = RM0.29 per 100g cooked.
 
 - food_id: almonds
   pack_size: "1kg"
@@ -181,6 +189,14 @@
   notes: "Shopee coupon price"
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-19"
+
+- food_id: soy_protein_isolate
+  pack_size: "1kg"
+  pack_price_myr: 30.00
+  unit_cost_myr: 3.00
+  unit: "per 100g"
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-31"
 
 - food_id: ikan_kembung
   pack_size: "1kg"
@@ -322,6 +338,15 @@
   pack_price_myr: 4.50
   unit_cost_myr: 0.56
   unit: "per piece"
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-31"
+
+- food_id: apple
+  pack_size: "1 piece (~180g)"
+  pack_price_myr: ~1.50
+  unit_cost_myr: ~1.50
+  unit: "per piece"
+  is_estimate: true
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-31"
 

@@ -35,6 +35,7 @@
   carbs_g: 23
   fat_g: 50
   sugar_g: 0
+  fibre_g: 11.6
   kcal: 614
   kcal_computed: true
   source: "personal shopping records (Malaysia), unverified"
@@ -86,6 +87,7 @@
   carbs_g: 20
   fat_g: 50
   sugar_g: 9
+  fibre_g: 6.0
   kcal: 588
   kcal_computed: true
   source: "personal shopping records (Malaysia), unverified"
@@ -98,6 +100,7 @@
   carbs_g: 9
   fat_g: 0.3
   sugar_g: 4
+  fibre_g: 1.8
   kcal: 40
   kcal_computed: true
   source: "personal shopping records (Malaysia), unverified"

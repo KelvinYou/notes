@@ -52,6 +52,27 @@
   last_verified: "2026-08-19"
   notes: "1 scoop = 30g"
 
+- id: soy_protein_isolate
+  name: 大豆分离蛋白 (soy protein isolate)
+  basis: 100g_raw
+  protein_g: 88
+  carbs_g: 2
+  fat_g: 1.5
+  sugar_g: 0
+  fibre_g: 1.5
+  kcal: 374
+  kcal_computed: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-08-31"
+  notes: >-
+    Commercial isolate label profile; confirm against the actual tub, isolates
+    range 85-92g protein/100g. Complete protein, DIAAS ~0.90 vs whey ~1.09 and
+    leucine ~8% vs whey ~11% — the acute-MPS edge whey holds largely washes out
+    once total daily protein is high (>=1.6 g/kg). Isoflavones do not lower
+    testosterone or raise estradiol in men at dietary intakes (Messina
+    meta-analyses). At RM3.00/100g it is the cheapest protein per ringgit in
+    this dataset: ~29g protein per RM, vs whey_protein_powder's ~5g.
+
 - id: ikan_kembung
   name: Ikan Kembung (Indian mackerel)
   basis: 100g_raw
@@ -71,6 +92,7 @@
   carbs_g: 9
   fat_g: 11
   sugar_g: 0
+  fibre_g: 4.5
   kcal: 211
   kcal_computed: true
   source: "personal shopping records (Malaysia), unverified"
@@ -119,6 +141,7 @@
   carbs_g: 2
   fat_g: 4.8
   sugar_g: 0.6
+  fibre_g: 0.3
   kcal: 76
   kcal_computed: true
   source: "personal shopping records (Malaysia), unverified"

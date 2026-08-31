@@ -8,6 +8,7 @@
   carbs_g: 20
   fat_g: 43
   sugar_g: 0.5
+  fibre_g: 16.0
   kcal: 523
   kcal_computed: true
   unit_weight_g: 4
@@ -22,6 +23,7 @@
   carbs_g: 22
   fat_g: 49
   sugar_g: 4
+  fibre_g: 12.5
   kcal: 613
   kcal_computed: true
   source: "personal shopping records (Malaysia), unverified"
@@ -34,6 +36,7 @@
   carbs_g: 14
   fat_g: 65
   sugar_g: 3
+  fibre_g: 6.7
   kcal: 701
   kcal_computed: true
   source: "personal shopping records (Malaysia), unverified"
