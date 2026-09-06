@@ -14,6 +14,24 @@
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-19"
   notes: "unit_weight_g backed out from the original meal-library.md math (3 eggs -> ~19.5g protein => 50g/egg), not an independent measurement."
+  iron_mg: 1.75
+  calcium_mg: 56
+  magnesium_mg: 12
+  zinc_mg: 1.29
+  potassium_mg: 138
+  sodium_mg: 142
+  vitamin_a_ug: 160
+  vitamin_d_ug: 2.00
+  vitamin_e_mg: 1.05
+  vitamin_k_ug: 0.30
+  vitamin_b1_mg: 0.04
+  vitamin_b2_mg: 0.46
+  vitamin_b6_mg: 0.17
+  vitamin_b12_ug: 0.89
+  folate_ug: 47
+  omega3_g: 0.11
+  micronutrient_source: "USDA FDC 171287 (Egg, whole, raw, fresh)"
+  micronutrient_fdc_id: 171287
 
 - id: chicken_breast_raw
   name: 鸡胸肉 (chicken breast, raw weight)
@@ -26,6 +44,24 @@
   kcal_computed: true
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-19"
+  iron_mg: 0.37
+  calcium_mg: 5
+  magnesium_mg: 28
+  zinc_mg: 0.68
+  potassium_mg: 334
+  sodium_mg: 45
+  vitamin_a_ug: 9
+  vitamin_d_ug: 0
+  vitamin_e_mg: 0.56
+  vitamin_k_ug: 8.40
+  vitamin_b1_mg: 0.09
+  vitamin_b2_mg: 0.18
+  vitamin_b6_mg: 0.81
+  vitamin_b12_ug: 0.21
+  folate_ug: 9
+  omega3_g: 0.01
+  micronutrient_source: "USDA FDC 171077 (Chicken, broilers or fryers, breast, meat only, raw)"
+  micronutrient_fdc_id: 171077
 
 - id: taiwan_sausage
   name: 台湾香肠 (Taiwanese sausage)
@@ -38,6 +74,18 @@
   kcal_computed: true
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-19"
+  iron_mg: 1.77
+  calcium_mg: 12
+  magnesium_mg: 16
+  zinc_mg: 1.91
+  potassium_mg: 211
+  sodium_mg: 563
+  vitamin_a_ug: 0
+  vitamin_b2_mg: 0.23
+  vitamin_b12_ug: 1.0
+  vitamin_c_mg: 0
+  micronutrient_source: "USDA FDC 171631 (proxy: Sausage, raw, mild, pork, Italian — no Taiwanese-sausage entry in FDC; macros are the closest match found, protein/fat/kcal align within ~10%)"
+  micronutrient_fdc_id: 171631
 
 - id: whey_protein_powder
   name: 乳清蛋白粉 (whey protein powder)
@@ -51,6 +99,25 @@
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-19"
   notes: "1 scoop = 30g"
+  iron_mg: 1.26
+  calcium_mg: 698
+  magnesium_mg: 233
+  zinc_mg: 8.72
+  potassium_mg: 872
+  sodium_mg: 372
+  vitamin_a_ug: 872
+  vitamin_d_ug: 0
+  vitamin_e_mg: 7.85
+  vitamin_k_ug: 46.5
+  vitamin_b1_mg: 0.872
+  vitamin_b2_mg: 0.988
+  vitamin_b6_mg: 1.16
+  vitamin_b12_ug: 3.49
+  folate_ug: 395
+  vitamin_c_mg: 34.9
+  omega3_g: 0.0035
+  micronutrient_source: "USDA FDC 173177 (Beverages, Whey protein powder isolate) — values back-converted from a 3-scoop/86g serving by the retrieval tool, not read directly per-100g; treat as lower-confidence, especially the very high vitamin A/K/folate/C figures which suggest a heavily fortified product"
+  micronutrient_fdc_id: 173177
 
 - id: soy_protein_isolate
   name: 大豆分离蛋白 (soy protein isolate)
@@ -72,6 +139,25 @@
     testosterone or raise estradiol in men at dietary intakes (Messina
     meta-analyses). At RM3.00/100g it is the cheapest protein per ringgit in
     this dataset: ~29g protein per RM, vs whey_protein_powder's ~5g.
+  iron_mg: 14.5
+  calcium_mg: 178
+  magnesium_mg: 39
+  zinc_mg: 4.0
+  potassium_mg: 81
+  sodium_mg: 1005
+  vitamin_a_ug: 0
+  vitamin_d_ug: 0
+  vitamin_e_mg: 0
+  vitamin_k_ug: 0
+  vitamin_b1_mg: 0.18
+  vitamin_b2_mg: 0.10
+  vitamin_b6_mg: 0.10
+  vitamin_b12_ug: 0
+  folate_ug: 176
+  vitamin_c_mg: 0
+  omega3_g: 0.19
+  micronutrient_source: "USDA FDC 174276 (Soy protein powder isolate) — values back-converted from a 28.35g serving by the retrieval tool, not read directly per-100g; treat as lower-confidence, especially sodium (1005mg/100g seems high, verify against the actual tub label)"
+  micronutrient_fdc_id: 174276
 
 - id: ikan_kembung
   name: Ikan Kembung (Indian mackerel)
@@ -84,6 +170,25 @@
   kcal_computed: true
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-19"
+  iron_mg: 0.44
+  calcium_mg: 11
+  magnesium_mg: 33
+  zinc_mg: 0.49
+  potassium_mg: 446
+  sodium_mg: 59
+  vitamin_a_ug: 39
+  vitamin_d_ug: 7.30
+  vitamin_e_mg: 0.69
+  vitamin_k_ug: 0.10
+  vitamin_b1_mg: 0.13
+  vitamin_b2_mg: 0.17
+  vitamin_b6_mg: 0.40
+  vitamin_b12_ug: 2.40
+  folate_ug: 1.00
+  vitamin_c_mg: 1.60
+  omega3_g: 1.04
+  micronutrient_source: "USDA FDC 173673 (proxy: Fish, mackerel, Spanish, raw — no Indian mackerel/ikan kembung entry in FDC; fat content differs from this record's macros, 6.3g vs 8g/100g, so treat as moderate confidence)"
+  micronutrient_fdc_id: 173673
 
 - id: tempeh
   name: Tempeh
@@ -97,6 +202,20 @@
   kcal_computed: true
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-19"
+  iron_mg: 2.70
+  calcium_mg: 111
+  magnesium_mg: 81
+  zinc_mg: 1.14
+  potassium_mg: 412
+  sodium_mg: 9
+  vitamin_d_ug: 0
+  vitamin_b1_mg: 0.08
+  vitamin_b2_mg: 0.36
+  vitamin_b6_mg: 0.22
+  vitamin_b12_ug: 0.08
+  folate_ug: 24
+  micronutrient_source: "USDA FDC 174272 (Tempeh)"
+  micronutrient_fdc_id: 174272
 
 - id: salmon_raw
   name: 三文鱼 (salmon, raw weight)
@@ -109,6 +228,25 @@
   kcal_computed: true
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-19"
+  iron_mg: 0.34
+  calcium_mg: 9
+  magnesium_mg: 27
+  zinc_mg: 0.36
+  potassium_mg: 363
+  sodium_mg: 59
+  vitamin_a_ug: 58
+  vitamin_d_ug: 11.00
+  vitamin_e_mg: 3.55
+  vitamin_k_ug: 0.50
+  vitamin_b1_mg: 0.21
+  vitamin_b2_mg: 0.16
+  vitamin_b6_mg: 0.64
+  vitamin_b12_ug: 3.23
+  folate_ug: 26
+  vitamin_c_mg: 3.90
+  omega3_g: 1.27
+  micronutrient_source: "USDA FDC 175167 (Fish, salmon, Atlantic, farmed, raw)"
+  micronutrient_fdc_id: 175167
 
 - id: dory_fillet_raw
   name: Dory 鱼柳 (dory fillet, raw weight)
@@ -121,6 +259,23 @@
   kcal_computed: true
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-19"
+  iron_mg: 0.30
+  calcium_mg: 14
+  magnesium_mg: 23
+  zinc_mg: 0.51
+  potassium_mg: 358
+  sodium_mg: 43
+  vitamin_a_ug: 15
+  vitamin_d_ug: 12.50
+  vitamin_b1_mg: 0.21
+  vitamin_b2_mg: 0.07
+  vitamin_b6_mg: 0.12
+  vitamin_b12_ug: 2.23
+  folate_ug: 10
+  vitamin_c_mg: 0.70
+  omega3_g: 0.23
+  micronutrient_source: "USDA FDC 174186 (proxy: Fish, catfish, channel, wild, raw — no dory/pangasius/basa entry in FDC; macros match well: 16.4g protein/2.82g fat/95kcal vs this record's 15g/2g/78kcal)"
+  micronutrient_fdc_id: 174186
 
 - id: shrimp_peeled_raw
   name: 虾仁 (peeled shrimp, raw weight)
@@ -133,6 +288,25 @@
   kcal_computed: true
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-19"
+  iron_mg: 0.52
+  calcium_mg: 64
+  magnesium_mg: 35
+  zinc_mg: 1.34
+  potassium_mg: 264
+  sodium_mg: 119
+  vitamin_a_ug: 180
+  vitamin_d_ug: 0.10
+  vitamin_e_mg: 1.3
+  vitamin_k_ug: 0.30
+  vitamin_b1_mg: 0.02
+  vitamin_b2_mg: 0.01
+  vitamin_b6_mg: 0.16
+  vitamin_b12_ug: 1.1
+  folate_ug: 19.0
+  vitamin_c_mg: 0
+  omega3_g: 0.06
+  micronutrient_source: "USDA FDC (Crustaceans, shrimp, mixed species, raw; NDB 15149) — minerals and omega-3 read from the raw (non-additive) variant matching this record's macros (20.1g protein/0.51g fat/85kcal vs 20g/1g/89kcal here); vitamin A/D/E/K/B-vitamins/folate came from a closely related shrimp entry (moisture-retention-additive variant, lower protein/kcal) because the raw variant's page didn't expose them — flag as lower confidence, mixed-source"
+  micronutrient_fdc_id: 15149
 
 - id: tofu
   name: 豆腐 (firm tofu)
@@ -146,6 +320,79 @@
   kcal_computed: true
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-31"
+  iron_mg: 5.36
+  calcium_mg: 350
+  magnesium_mg: 30
+  zinc_mg: 0.80
+  potassium_mg: 121
+  sodium_mg: 7
+  vitamin_d_ug: 0
+  vitamin_e_mg: 0.01
+  vitamin_k_ug: 2.40
+  vitamin_b1_mg: 0.08
+  vitamin_b2_mg: 0.05
+  vitamin_b6_mg: 0.05
+  folate_ug: 15
+  vitamin_c_mg: 0.10
+  micronutrient_source: "USDA FDC 172476 (Tofu, raw, regular, prepared with calcium sulfate — macros match this record exactly: 8.08g protein/4.78g fat/76kcal; note the FDC 'firm' tofu entry (172475, 17.3g protein/144kcal) is a different, much denser product and was NOT used here). Vitamin A omitted: FDC only reports this entry's vitamin A in IU, not RAE, and converting IU->RAE without a reliable retinol-activity ratio would be a guess."
+  micronutrient_fdc_id: 172476
+
+- id: pork_loin
+  name: 猪里脊 (pork loin)
+  basis: 100g_raw
+  protein_g: 21.3
+  carbs_g: 0
+  fat_g: 8.3
+  sugar_g: 0
+  kcal: 166
+  kcal_computed: true
+  source: "USDA FoodData Central, not yet a personal shopping record (no Malaysia retail price logged)"
+  last_verified: "2026-09-06"
+  iron_mg: 0.53
+  calcium_mg: 7
+  magnesium_mg: 24
+  zinc_mg: 1.73
+  potassium_mg: 358
+  sodium_mg: 47
+  vitamin_a_ug: 2
+  vitamin_d_ug: 0.5
+  vitamin_e_mg: 0.12
+  vitamin_b1_mg: 0.426
+  vitamin_b2_mg: 0.181
+  vitamin_b6_mg: 0.718
+  vitamin_b12_ug: 0.54
+  omega3_g: 0.039
+  micronutrient_source: "USDA FDC 168314 (Pork, fresh, loin, top loin (roasts), boneless, separable lean and fat, raw) — omega3_g is ALA only, EPA/DHA not reported; vitamin K/folate/vitamin C/iodine not reported on this entry, omitted rather than guessed"
+  micronutrient_fdc_id: 168314
+
+- id: pork_collar
+  name: 猪梅头肉 (pork collar / shoulder blade)
+  basis: 100g_raw
+  protein_g: 17.4
+  carbs_g: 0
+  fat_g: 12.4
+  sugar_g: 0
+  kcal: 186
+  kcal_computed: true
+  source: "USDA FoodData Central, not yet a personal shopping record (no Malaysia retail price logged)"
+  last_verified: "2026-09-06"
+  notes: "No FDC entry named \"pork collar\" — matched to Pork, fresh, shoulder (Boston butt), blade (steaks), separable lean and fat, raw, which is the closest fatty shoulder cut to what Malaysian butchers sell as 梅头肉/pork collar."
+  iron_mg: 1.12
+  calcium_mg: 16
+  magnesium_mg: 20
+  zinc_mg: 3.09
+  potassium_mg: 318
+  sodium_mg: 61
+  vitamin_a_ug: 2
+  vitamin_d_ug: 0.7
+  vitamin_e_mg: 0.22
+  vitamin_b1_mg: 0.52
+  vitamin_b2_mg: 0.353
+  vitamin_b6_mg: 0.486
+  vitamin_b12_ug: 0.91
+  omega3_g: 0.061
+  micronutrient_source: "USDA FDC 167849 (Pork, fresh, shoulder (Boston butt), blade (steaks), separable lean and fat, raw) — omega3_g is ALA only, EPA/DHA not reported; vitamin K/folate/vitamin C/iodine not reported on this entry, omitted rather than guessed"
+  micronutrient_fdc_id: 167849
 
 - id: canned_tuna
   name: 吞拿鱼罐头 (canned tuna, drained)
@@ -159,3 +406,17 @@
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-31"
   notes: "In water, drained weight (schema has no 100g_drained enum, using 100g_raw). Oil-packed tuna has substantially higher fat/kcal — check the label before using this record."
+  iron_mg: 1.67
+  calcium_mg: 18
+  magnesium_mg: 23
+  zinc_mg: 0.66
+  potassium_mg: 176
+  sodium_mg: 219
+  vitamin_d_ug: 1.20
+  vitamin_b1_mg: 0.030
+  vitamin_b2_mg: 0.082
+  vitamin_b6_mg: 0.32
+  vitamin_b12_ug: 2.57
+  omega3_g: 0.222
+  micronutrient_source: "USDA FDC 334194 (Fish, tuna, light, canned in water, drained solids) — this FDC entry's protein (~19g/100g) is lower than this record's 26g/100g (likely a leaner/wetter-pack brand than this entry), so treat as moderate confidence for absolute amounts"
+  micronutrient_fdc_id: 334194

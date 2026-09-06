@@ -262,22 +262,22 @@
   last_verified: "2026-08-19"
 
 - food_id: frozen_blueberries
-  pack_size: "400g"
-  pack_price_myr: ~14.00
-  unit_cost_myr: ~3.50
+  pack_size: "1kg"
+  pack_price_myr: ~26.00
+  unit_cost_myr: ~2.60
   unit: "per 100g"
   is_estimate: true
-  source: "personal shopping records (Malaysia), unverified"
-  last_verified: "2026-08-19"
+  source: "personal shopping records (Malaysia), unverified — repriced from a 400g pack (~RM3.50/100g) to a 1kg pack per standard_week.md's own flagged cost-cut note; confirm against a real 1kg receipt and tighten the ~ once verified"
+  last_verified: "2026-09-06"
 
 - food_id: frozen_strawberries
-  pack_size: "400g"
-  pack_price_myr: ~14.00
-  unit_cost_myr: ~3.50
+  pack_size: "1kg"
+  pack_price_myr: ~26.00
+  unit_cost_myr: ~2.60
   unit: "per 100g"
   is_estimate: true
-  source: "personal shopping records (Malaysia), unverified"
-  last_verified: "2026-08-31"
+  source: "personal shopping records (Malaysia), unverified — repriced from a 400g pack (~RM3.50/100g) to a 1kg pack per standard_week.md's own flagged cost-cut note; confirm against a real 1kg receipt and tighten the ~ once verified"
+  last_verified: "2026-09-06"
 
 - food_id: bell_pepper
   pack_size: "100g"

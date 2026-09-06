@@ -25,6 +25,38 @@ food:
   # count/weight, not eaten. Every other basis must carry full macros.
   macro_required_unless_basis: [1_serving, 1_piece]
   macro_fields: [protein_g, carbs_g, fat_g, sugar_g, kcal]
+  # Micronutrients (added 2026-09, see docs/design/nutrition-micronutrient-lookup.md
+  # in personal-os): cited to USDA FoodData Central via micronutrient_fdc_id, kept
+  # separate from the existing source/last_verified (which cover the macro fields
+  # above and predate this citation convention).
+  #
+  # Unit convention — pin before entering any value, mixing these up is a silent
+  # ~40x error in FDC's own export:
+  #   vitamin_a_ug = mcg RAE (NOT the IU column FDC also exposes)
+  #   vitamin_d_ug = mcg      (NOT the IU column FDC also exposes)
+  #
+  # Blank vs. zero: an omitted micronutrient field means "not yet researched".
+  # An explicit 0 means "researched, confirmed negligible/absent". Never fill
+  # a blank with 0 as a placeholder.
+  micronutrient_fields:
+    - iron_mg
+    - calcium_mg
+    - magnesium_mg
+    - zinc_mg
+    - potassium_mg
+    - sodium_mg
+    - iodine_ug
+    - vitamin_a_ug     # mcg RAE — see unit convention note above
+    - vitamin_d_ug     # mcg — see unit convention note above
+    - vitamin_e_mg
+    - vitamin_k_ug
+    - vitamin_b1_mg
+    - vitamin_b2_mg
+    - vitamin_b6_mg
+    - vitamin_b12_ug
+    - folate_ug
+    - vitamin_c_mg
+    - omega3_g
   optional_fields:
     - fibre_g
     - kcal_computed
@@ -38,6 +70,26 @@ food:
                        # fact in case a future consumer needs it.
     - notes
     - aliases
+    - iron_mg
+    - calcium_mg
+    - magnesium_mg
+    - zinc_mg
+    - potassium_mg
+    - sodium_mg
+    - iodine_ug
+    - vitamin_a_ug
+    - vitamin_d_ug
+    - vitamin_e_mg
+    - vitamin_k_ug
+    - vitamin_b1_mg
+    - vitamin_b2_mg
+    - vitamin_b6_mg
+    - vitamin_b12_ug
+    - folate_ug
+    - vitamin_c_mg
+    - omega3_g
+    - micronutrient_source   # e.g. "USDA FDC 170379"
+    - micronutrient_fdc_id   # e.g. 170379 — the FDC record id itself
 
 price:
   required: [food_id, unit_cost_myr, unit, source, last_verified]

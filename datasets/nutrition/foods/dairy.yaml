@@ -14,6 +14,24 @@
   gi_source: "public GI reference (plain yogurt), not lab-tested on this specific product"
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-19"
+  iron_mg: 0.04
+  calcium_mg: 115
+  magnesium_mg: 11
+  zinc_mg: 0.60
+  potassium_mg: 141
+  sodium_mg: 34
+  vitamin_a_ug: 90
+  vitamin_e_mg: 0.04
+  vitamin_k_ug: 0.20
+  vitamin_b1_mg: 0.044
+  vitamin_b2_mg: 0.233
+  vitamin_b6_mg: 0.055
+  vitamin_b12_ug: 0.52
+  folate_ug: 12
+  vitamin_c_mg: 0.80
+  omega3_g: 0.007
+  micronutrient_source: "USDA FDC 170903"
+  micronutrient_fdc_id: 170903
 
 - id: whole_milk
   name: 全脂牛奶 (whole milk)
@@ -29,6 +47,25 @@
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-19"
   notes: "Source table priced this per 200ml pack unit (RM1.40/200ml); macros normalized to 100ml here for basis consistency."
+  iron_mg: 0.03
+  calcium_mg: 113
+  magnesium_mg: 10
+  zinc_mg: 0.37
+  potassium_mg: 132
+  sodium_mg: 43
+  vitamin_a_ug: 46
+  vitamin_d_ug: 1.30
+  vitamin_e_mg: 0.07
+  vitamin_k_ug: 1.31
+  vitamin_b1_mg: 0.046
+  vitamin_b2_mg: 0.17
+  vitamin_b6_mg: 0.036
+  vitamin_b12_ug: 0.45
+  folate_ug: 5
+  vitamin_c_mg: 0
+  omega3_g: 0.075
+  micronutrient_source: "USDA FDC 171265"
+  micronutrient_fdc_id: 171265
 
 - id: skim_milk
   name: 脱脂牛奶 (skim milk)
@@ -43,6 +80,24 @@
   gi_source: "public GI reference (skim milk), not lab-tested on this specific product"
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-31"
+  iron_mg: 0.04
+  calcium_mg: 204
+  magnesium_mg: 11
+  zinc_mg: 0.40
+  potassium_mg: 166
+  sodium_mg: 52
+  vitamin_a_ug: 137
+  vitamin_d_ug: 1.2
+  vitamin_e_mg: 0.01
+  vitamin_k_ug: 0
+  vitamin_b1_mg: 0.04
+  vitamin_b2_mg: 0.14
+  vitamin_b6_mg: 0.04
+  vitamin_b12_ug: 0.38
+  folate_ug: 5
+  vitamin_c_mg: 1.0
+  micronutrient_source: "USDA FDC 169868"
+  micronutrient_fdc_id: 169868
 
 - id: cheese_slice
   name: Cheese 片 (cheese slice)
@@ -57,3 +112,20 @@
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-19"
   notes: "unit_weight_g backed out from the original meal-library.md math (1-2 slices -> ~3.6g protein/slice => 20g/slice), not an independent measurement."
+  iron_mg: 0.49
+  calcium_mg: 866
+  magnesium_mg: 25.1
+  zinc_mg: 2.43
+  potassium_mg: 149
+  sodium_mg: 1660
+  vitamin_a_ug: 300
+  vitamin_d_ug: 7.5
+  vitamin_e_mg: 0.78
+  vitamin_k_ug: 13.6
+  vitamin_b1_mg: 0.015
+  vitamin_b2_mg: 0.248
+  vitamin_b6_mg: 0.058
+  vitamin_b12_ug: 1.46
+  omega3_g: 0.165
+  micronutrient_source: "USDA FDC 170853"
+  micronutrient_fdc_id: 170853

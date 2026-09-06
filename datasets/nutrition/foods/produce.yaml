@@ -14,6 +14,23 @@
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-31"
   notes: "Split out of the old generic vegetables_mixed placeholder for precision."
+  iron_mg: 0.73
+  calcium_mg: 47
+  magnesium_mg: 21
+  zinc_mg: 0.41
+  potassium_mg: 316
+  sodium_mg: 33
+  vitamin_a_ug: 31
+  vitamin_d_ug: 0
+  vitamin_e_mg: 0.78
+  vitamin_k_ug: 102
+  vitamin_b1_mg: 0.07
+  vitamin_b2_mg: 0.12
+  vitamin_b6_mg: 0.18
+  folate_ug: 63
+  vitamin_c_mg: 89.2
+  micronutrient_source: "USDA FDC 170379 (Broccoli, raw)"
+  micronutrient_fdc_id: 170379
 
 - id: lettuce
   name: 生菜 (lettuce)
@@ -28,6 +45,23 @@
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-31"
   notes: "Split out of the old generic vegetables_mixed placeholder for precision."
+  iron_mg: 0.86
+  calcium_mg: 36
+  magnesium_mg: 13
+  zinc_mg: 0.18
+  potassium_mg: 194
+  sodium_mg: 28
+  vitamin_a_ug: 370
+  vitamin_d_ug: 0
+  vitamin_e_mg: 0.22
+  vitamin_k_ug: 126
+  vitamin_b1_mg: 0.07
+  vitamin_b2_mg: 0.08
+  vitamin_b6_mg: 0.09
+  folate_ug: 38
+  vitamin_c_mg: 9.2
+  micronutrient_source: "USDA FDC 169249 (Lettuce, green leaf, raw)"
+  micronutrient_fdc_id: 169249
 
 - id: frozen_blueberries
   name: 冷冻蓝莓 (frozen blueberries)
@@ -43,6 +77,23 @@
   gi_source: "public GI reference (fresh/frozen blueberries), not lab-tested on this specific product"
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-19"
+  iron_mg: 0.18
+  calcium_mg: 8
+  magnesium_mg: 5
+  zinc_mg: 0.07
+  potassium_mg: 54
+  sodium_mg: 1
+  vitamin_a_ug: 2
+  vitamin_d_ug: 0
+  vitamin_e_mg: 0.48
+  vitamin_k_ug: 16.4
+  vitamin_b1_mg: 0.03
+  vitamin_b2_mg: 0.04
+  vitamin_b6_mg: 0.06
+  folate_ug: 7
+  vitamin_c_mg: 2.5
+  micronutrient_source: "USDA FDC 173950 (Blueberries, frozen, unsweetened)"
+  micronutrient_fdc_id: 173950
 
 - id: frozen_strawberries
   name: 冷冻草莓 (frozen strawberries)
@@ -58,6 +109,23 @@
   gi_source: "public GI reference (fresh/frozen strawberries), not lab-tested on this specific product"
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-31"
+  iron_mg: 0.75
+  calcium_mg: 16
+  magnesium_mg: 11
+  zinc_mg: 0.13
+  potassium_mg: 148
+  sodium_mg: 2
+  vitamin_a_ug: 2
+  vitamin_d_ug: 0
+  vitamin_e_mg: 0.29
+  vitamin_k_ug: 2.2
+  vitamin_b1_mg: 0.02
+  vitamin_b2_mg: 0.04
+  vitamin_b6_mg: 0.03
+  folate_ug: 17
+  vitamin_c_mg: 41.2
+  micronutrient_source: "USDA FDC 168173 (Strawberries, frozen, unsweetened)"
+  micronutrient_fdc_id: 168173
 
 - id: bell_pepper
   name: 红黄甜椒 (red/yellow bell pepper)
@@ -71,6 +139,23 @@
   kcal_computed: true
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-31"
+  iron_mg: 0.43
+  calcium_mg: 7
+  magnesium_mg: 12
+  zinc_mg: 0.25
+  potassium_mg: 211
+  sodium_mg: 4
+  vitamin_a_ug: 157
+  vitamin_d_ug: 0
+  vitamin_e_mg: 1.58
+  vitamin_k_ug: 4.9
+  vitamin_b1_mg: 0.05
+  vitamin_b2_mg: 0.09
+  vitamin_b6_mg: 0.29
+  folate_ug: 46
+  vitamin_c_mg: 128
+  micronutrient_source: "USDA FDC 170108 (Peppers, sweet, red, raw)"
+  micronutrient_fdc_id: 170108
 
 - id: banana
   name: 香蕉 (banana)
@@ -88,6 +173,23 @@
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-31"
   notes: "Referenced in user_profile.md pre-workout nutrition (Pre 半勺 whey + 1 香蕉) but had no food record until now."
+  iron_mg: 0.26
+  calcium_mg: 5
+  magnesium_mg: 27
+  zinc_mg: 0.15
+  potassium_mg: 358
+  sodium_mg: 1
+  vitamin_a_ug: 3
+  vitamin_d_ug: 0
+  vitamin_e_mg: 0.10
+  vitamin_k_ug: 0.5
+  vitamin_b1_mg: 0.03
+  vitamin_b2_mg: 0.07
+  vitamin_b6_mg: 0.37
+  folate_ug: 20
+  vitamin_c_mg: 8.7
+  micronutrient_source: "USDA FDC 173944 (Bananas, raw)"
+  micronutrient_fdc_id: 173944
 
 - id: apple
   name: 苹果 (apple)
@@ -105,6 +207,23 @@
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-31"
   notes: "Referenced as a daily lunch item in personal-os data/protocol/standard_week.md §6 but had no food record until now — it was the last remaining hand-estimated line in that file's shopping list."
+  iron_mg: 0.12
+  calcium_mg: 6
+  magnesium_mg: 5
+  zinc_mg: 0.04
+  potassium_mg: 107
+  sodium_mg: 1
+  vitamin_a_ug: 3
+  vitamin_d_ug: 0
+  vitamin_e_mg: 0.18
+  vitamin_k_ug: 2.2
+  vitamin_b1_mg: 0.02
+  vitamin_b2_mg: 0.03
+  vitamin_b6_mg: 0.04
+  folate_ug: 3
+  vitamin_c_mg: 4.6
+  micronutrient_source: "USDA FDC 171688 (Apples, raw, with skin)"
+  micronutrient_fdc_id: 171688
 
 - id: cherry_tomato
   name: 小番茄 (cherry tomato)
@@ -118,6 +237,23 @@
   kcal_computed: true
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-31"
+  iron_mg: 0.27
+  calcium_mg: 10
+  magnesium_mg: 11
+  zinc_mg: 0.17
+  potassium_mg: 237
+  sodium_mg: 5
+  vitamin_a_ug: 42
+  vitamin_d_ug: 0
+  vitamin_e_mg: 0.54
+  vitamin_k_ug: 7.9
+  vitamin_b1_mg: 0.04
+  vitamin_b2_mg: 0.02
+  vitamin_b6_mg: 0.08
+  folate_ug: 15
+  vitamin_c_mg: 13.7
+  micronutrient_source: "USDA FDC 170457 (proxy: Tomatoes, red, ripe, raw, year round average — no cherry-tomato-specific SR Legacy entry exists; cherry tomatoes are typically slightly higher in sugar/vitamin C than standard tomatoes, so this likely undercounts vitamin C a little)"
+  micronutrient_fdc_id: 170457
 
 - id: avocado
   name: 牛油果 (avocado)
@@ -132,3 +268,20 @@
   unit_weight_g: 200
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-31"
+  iron_mg: 0.55
+  calcium_mg: 12
+  magnesium_mg: 29
+  zinc_mg: 0.64
+  potassium_mg: 485
+  sodium_mg: 7
+  vitamin_a_ug: 7
+  vitamin_d_ug: 0
+  vitamin_e_mg: 2.07
+  vitamin_k_ug: 21
+  vitamin_b1_mg: 0.07
+  vitamin_b2_mg: 0.13
+  vitamin_b6_mg: 0.26
+  folate_ug: 81
+  vitamin_c_mg: 10
+  micronutrient_source: "USDA FDC 171705 (Avocados, raw, all commercial varieties)"
+  micronutrient_fdc_id: 171705

@@ -19,8 +19,19 @@ const ROOT = path.resolve(__dirname, "..");
 const DATASET_DIR = path.join(ROOT, "datasets", "nutrition");
 
 const schema = yaml.load(fs.readFileSync(path.join(DATASET_DIR, "schema.yaml"), "utf8"));
+const rdaReference = yaml.load(
+  fs.readFileSync(path.join(DATASET_DIR, "rda_reference.yaml"), "utf8"),
+);
 
 const errors = [];
+
+const KNOWN_FOOD_FIELDS = new Set([
+  "id",
+  "_file",
+  ...schema.food.required,
+  ...schema.food.macro_fields,
+  ...schema.food.optional_fields,
+]);
 
 function loadYamlDir(dir) {
   if (!fs.existsSync(dir)) return [];
@@ -77,6 +88,17 @@ for (const f of foods) {
   }
   if (f.basis === "1_serving" && f.serving_g === undefined) {
     errors.push(`${label}: basis "1_serving" requires "serving_g"`);
+  }
+  for (const key of Object.keys(f)) {
+    if (!KNOWN_FOOD_FIELDS.has(key)) {
+      errors.push(`${label}: unknown field "${key}" (typo, or missing from schema.yaml's food.optional_fields)`);
+    }
+  }
+}
+
+for (const field of schema.food.micronutrient_fields) {
+  if (rdaReference[field] === undefined || rdaReference[field] === null) {
+    errors.push(`rda_reference.yaml: missing entry for micronutrient field "${field}"`);
   }
 }
 

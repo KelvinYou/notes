@@ -17,6 +17,25 @@
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-19"
   notes: "unit_weight_g backed out from the original meal-library.md math (1 slice -> ~2.4g protein => 20g/slice), not an independent measurement."
+  iron_mg: 2.6
+  calcium_mg: 163
+  magnesium_mg: 76.6
+  zinc_mg: 1.8
+  potassium_mg: 250
+  sodium_mg: 450
+  vitamin_a_ug: 3.0
+  vitamin_d_ug: 0
+  vitamin_e_mg: 2.8
+  vitamin_k_ug: 7.8
+  vitamin_b1_mg: 0.39
+  vitamin_b2_mg: 0.17
+  vitamin_b6_mg: 0.22
+  vitamin_b12_ug: 0
+  folate_ug: 42.0
+  vitamin_c_mg: 0
+  omega3_g: 0.14
+  micronutrient_source: "USDA FDC 172688 (Bread, whole-wheat, commercially prepared)"
+  micronutrient_fdc_id: 172688
 
 - id: brown_rice_cooked
   name: 糙米 (brown rice, cooked)
@@ -32,6 +51,25 @@
   gi_source: "public GI reference (cooked brown rice), not lab-tested on this specific product"
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-19"
+  iron_mg: 0.56
+  calcium_mg: 3.0
+  magnesium_mg: 39.0
+  zinc_mg: 0.71
+  potassium_mg: 86
+  sodium_mg: 4.0
+  vitamin_a_ug: 0
+  vitamin_d_ug: 0
+  vitamin_e_mg: 0.17
+  vitamin_k_ug: 0.2
+  vitamin_b1_mg: 0.18
+  vitamin_b2_mg: 0.069
+  vitamin_b6_mg: 0.12
+  vitamin_b12_ug: 0
+  folate_ug: 9.0
+  vitamin_c_mg: 0
+  omega3_g: 0.01
+  micronutrient_source: "USDA FDC 169704 (Rice, brown, long-grain, cooked)"
+  micronutrient_fdc_id: 169704
 
 - id: white_rice_cooked
   name: 白饭 (white rice, cooked)
@@ -47,6 +85,24 @@
   gi_source: "public GI reference (cooked white rice), not lab-tested on this specific product"
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-19"
+  iron_mg: 0.2
+  calcium_mg: 10
+  magnesium_mg: 12
+  zinc_mg: 0.5
+  potassium_mg: 35
+  sodium_mg: 1
+  vitamin_a_ug: 0
+  vitamin_d_ug: 0
+  vitamin_e_mg: 0.04
+  vitamin_k_ug: 0
+  vitamin_b1_mg: 0.02
+  vitamin_b2_mg: 0.01
+  vitamin_b6_mg: 0.09
+  vitamin_b12_ug: 0
+  folate_ug: 3
+  vitamin_c_mg: 0
+  micronutrient_source: "USDA FDC 169757 (Rice, white, long-grain, regular, unenriched, cooked without salt — unenriched variant used since Malaysian retail rice is not typically fortified; thiamin/folate would be several times higher for a fortified/enriched product)"
+  micronutrient_fdc_id: 169757
 
 - id: potato
   name: 马铃薯 (potato)
@@ -62,6 +118,24 @@
   gi_source: "public GI reference (boiled potato), not lab-tested on this specific product"
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-19"
+  iron_mg: 0.81
+  calcium_mg: 12
+  magnesium_mg: 23
+  zinc_mg: 0.31
+  potassium_mg: 425
+  sodium_mg: 6
+  vitamin_a_ug: 0
+  vitamin_d_ug: 0
+  vitamin_e_mg: 0.01
+  vitamin_k_ug: 2
+  vitamin_b1_mg: 0.081
+  vitamin_b2_mg: 0.032
+  vitamin_b6_mg: 0.297
+  vitamin_b12_ug: 0
+  folate_ug: 15
+  vitamin_c_mg: 19.7
+  micronutrient_source: "USDA FDC 170026 (Potatoes, flesh and skin, raw)"
+  micronutrient_fdc_id: 170026
 
 - id: pasta_dry
   name: 意面 (pasta, dry)
@@ -78,6 +152,25 @@
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-31"
   notes: "Referenced in user_profile.md as a carb rotation option (糙米/意面/杂饭) but had no food record until now. basis is dry/raw weight before cooking (schema has no 100g_dry enum, using 100g_raw) — do not compare directly to brown_rice_cooked/white_rice_cooked which are cooked-basis."
+  iron_mg: 3.3
+  calcium_mg: 21.0
+  magnesium_mg: 52.9
+  zinc_mg: 1.4
+  potassium_mg: 223
+  sodium_mg: 6.0
+  vitamin_a_ug: 0
+  vitamin_d_ug: 0
+  vitamin_e_mg: 0.11
+  vitamin_k_ug: 0.11
+  vitamin_b1_mg: 0.89
+  vitamin_b2_mg: 0.40
+  vitamin_b6_mg: 0.14
+  vitamin_b12_ug: 0
+  folate_ug: 391
+  vitamin_c_mg: 0
+  omega3_g: 0.022
+  micronutrient_source: "USDA FDC 169736 (Pasta, dry, enriched)"
+  micronutrient_fdc_id: 169736
 
 - id: rolled_oats
   name: Rolled Oats
@@ -93,3 +186,21 @@
   gi_source: "public GI reference (rolled oats/porridge), not lab-tested on this specific product"
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-19"
+  iron_mg: 4.2
+  calcium_mg: 52.0
+  magnesium_mg: 138
+  zinc_mg: 3.6
+  potassium_mg: 362
+  sodium_mg: 6.0
+  vitamin_a_ug: 0
+  vitamin_d_ug: 0
+  vitamin_e_mg: 0.42
+  vitamin_k_ug: 2.0
+  vitamin_b1_mg: 0.46
+  vitamin_b2_mg: 0.15
+  vitamin_b6_mg: 0.10
+  vitamin_b12_ug: 0
+  folate_ug: 32.0
+  vitamin_c_mg: 0
+  micronutrient_source: "USDA FDC 173904 (Cereals, oats, regular and quick, not fortified, dry — closest generic match; not rolled-oats-specific)"
+  micronutrient_fdc_id: 173904

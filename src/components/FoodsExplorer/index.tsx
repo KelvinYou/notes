@@ -1,7 +1,9 @@
 import React, { useMemo, useRef, useState } from "react";
 import styles from "./styles.module.css";
+import { NUTRIENTS, GROUP_LABELS, type NutrientKey, type RdaReference } from "./nutrients";
+import NutrientLookup from "./NutrientLookup";
 
-export interface FoodRow {
+export interface FoodRow extends Partial<Record<NutrientKey, number>> {
   id: string;
   name: string;
   category: string;
@@ -13,16 +15,21 @@ export interface FoodRow {
   gi?: number | null;
   price?: string;
   priceValue?: number | null;
+  micronutrientSource?: string;
+  fdcId?: number;
 }
 
 interface Props {
   foods: FoodRow[];
   categories: string[];
+  rdaReference?: RdaReference;
 }
 
-type ColumnKey = "category" | "protein" | "carbs" | "fat" | "kcal" | "gi" | "price";
+type BaseColumnKey = "category" | "protein" | "carbs" | "fat" | "kcal" | "gi" | "price";
+type ColumnKey = BaseColumnKey | NutrientKey;
+type ColumnGroup = "macros" | "minerals" | "vitamins";
 
-const COLUMNS: { key: ColumnKey; label: string; sortLabel: string }[] = [
+const BASE_COLUMNS: { key: BaseColumnKey; label: string; sortLabel: string }[] = [
   { key: "category", label: "Category", sortLabel: "Category" },
   { key: "protein", label: "Protein", sortLabel: "Protein" },
   { key: "carbs", label: "Carbs", sortLabel: "Carbs" },
@@ -31,6 +38,26 @@ const COLUMNS: { key: ColumnKey; label: string; sortLabel: string }[] = [
   { key: "gi", label: "GI", sortLabel: "GI" },
   { key: "price", label: "Price", sortLabel: "Price" },
 ];
+
+const COLUMNS: { key: ColumnKey; label: string; sortLabel: string; group: ColumnGroup }[] = [
+  ...BASE_COLUMNS.map((c) => ({ ...c, group: "macros" as ColumnGroup })),
+  ...NUTRIENTS.map((n) => ({
+    key: n.key as ColumnKey,
+    label: `${n.label} (${n.unit})`,
+    sortLabel: n.label,
+    group: n.group as ColumnGroup,
+  })),
+];
+
+const COLUMN_GROUP_ORDER: ColumnGroup[] = ["macros", "minerals", "vitamins"];
+const COLUMN_GROUP_LABELS: Record<ColumnGroup, string> = {
+  macros: "Macros",
+  ...GROUP_LABELS,
+};
+
+// New nutrient columns start hidden — the existing food-first default view
+// must not regress by suddenly growing ~18 extra columns.
+const DEFAULT_HIDDEN_COLUMNS: ColumnKey[] = NUTRIENTS.map((n) => n.key);
 
 type SortKey = "name" | ColumnKey;
 type SortDir = "asc" | "desc";
@@ -51,12 +78,13 @@ function compareValues(a: unknown, b: unknown, dir: SortDir): number {
 // Live filter + sort + column visibility for the generated foods catalog.
 // Data is produced at build time by scripts/generate-nutrition-docs.mjs;
 // this component only filters/sorts/hides columns of an already-static array.
-export default function FoodsExplorer({ foods, categories }: Props) {
+export default function FoodsExplorer({ foods, categories, rdaReference }: Props) {
+  const [tab, setTab] = useState<"byFood" | "lookup">("byFood");
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("all");
   const [sortKey, setSortKey] = useState<SortKey>("name");
   const [sortDir, setSortDir] = useState<SortDir>("asc");
-  const [hidden, setHidden] = useState<Set<ColumnKey>>(new Set());
+  const [hidden, setHidden] = useState<Set<ColumnKey>>(new Set(DEFAULT_HIDDEN_COLUMNS));
   const [columnsOpen, setColumnsOpen] = useState(false);
   const columnsRef = useRef<HTMLDivElement>(null);
 
@@ -95,9 +123,38 @@ export default function FoodsExplorer({ foods, categories }: Props) {
   }
 
   const visibleColumns = COLUMNS.filter((c) => !hidden.has(c.key));
+  const nutrientMetaByKey = useMemo(
+    () => new Map(NUTRIENTS.map((n) => [n.key, n])),
+    [],
+  );
 
   return (
     <div>
+      <div className={styles.tabRow} role="tablist">
+        <button
+          type="button"
+          role="tab"
+          aria-selected={tab === "byFood"}
+          className={tab === "byFood" ? styles.tabActive : styles.tab}
+          onClick={() => setTab("byFood")}
+        >
+          By food
+        </button>
+        <button
+          type="button"
+          role="tab"
+          aria-selected={tab === "lookup"}
+          className={tab === "lookup" ? styles.tabActive : styles.tab}
+          onClick={() => setTab("lookup")}
+        >
+          Nutrient Lookup
+        </button>
+      </div>
+
+      {tab === "lookup" ? (
+        <NutrientLookup foods={foods} rdaReference={rdaReference} />
+      ) : (
+      <>
       <div className={styles.controls}>
         <input
           type="search"
@@ -139,15 +196,20 @@ export default function FoodsExplorer({ foods, categories }: Props) {
             </button>
             {columnsOpen && (
               <div className={styles.columnsDropdown}>
-                {COLUMNS.map((c) => (
-                  <label key={c.key} className={styles.columnOption}>
-                    <input
-                      type="checkbox"
-                      checked={!hidden.has(c.key)}
-                      onChange={() => toggleColumn(c.key)}
-                    />
-                    {c.label}
-                  </label>
+                {COLUMN_GROUP_ORDER.map((group) => (
+                  <div key={group} className={styles.columnGroup}>
+                    <div className={styles.columnGroupLabel}>{COLUMN_GROUP_LABELS[group]}</div>
+                    {COLUMNS.filter((c) => c.group === group).map((c) => (
+                      <label key={c.key} className={styles.columnOption}>
+                        <input
+                          type="checkbox"
+                          checked={!hidden.has(c.key)}
+                          onChange={() => toggleColumn(c.key)}
+                        />
+                        {c.label}
+                      </label>
+                    ))}
+                  </div>
                 ))}
               </div>
             )}
@@ -194,12 +256,20 @@ export default function FoodsExplorer({ foods, categories }: Props) {
                       (f.kcal != null ? `${f.kcalComputed ? "≈" : ""}${f.kcal}` : "—")}
                     {c.key === "gi" && (f.gi != null ? f.gi : "—")}
                     {c.key === "price" && (f.price ?? "—")}
+                    {c.group !== "macros" &&
+                      (() => {
+                        const value = (f as Record<string, unknown>)[c.key] as number | undefined;
+                        const meta = nutrientMetaByKey.get(c.key as NutrientKey);
+                        return value != null ? `${value}${meta ? ` ${meta.unit}` : ""}` : "—";
+                      })()}
                   </td>
                 ))}
               </tr>
             ))}
           </tbody>
         </table>
+      )}
+      </>
       )}
     </div>
   );

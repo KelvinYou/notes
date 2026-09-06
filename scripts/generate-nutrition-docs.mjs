@@ -22,6 +22,17 @@ const ROOT = path.resolve(__dirname, "..");
 const DATASET_DIR = path.join(ROOT, "datasets", "nutrition");
 const OUT_DIR = path.join(ROOT, "docs", "health", "nutrition", "catalog");
 
+const schema = yaml.load(fs.readFileSync(path.join(DATASET_DIR, "schema.yaml"), "utf8"));
+const rdaReferenceRaw = yaml.load(
+  fs.readFileSync(path.join(DATASET_DIR, "rda_reference.yaml"), "utf8"),
+);
+const MICRONUTRIENT_FIELDS = schema.food.micronutrient_fields;
+
+// snake_case -> camelCase, e.g. "vitamin_b12_ug" -> "vitaminB12Ug".
+function toCamel(snake) {
+  return snake.replace(/_([a-z0-9])/g, (_, c) => c.toUpperCase());
+}
+
 const CATEGORY_LABEL = {
   proteins: "Protein",
   grains: "Grains",
@@ -88,12 +99,15 @@ Produced by scripts/generate-nutrition-docs.mjs from datasets/nutrition/*.yaml
 
 function renderFoodsPage() {
   const categories = [...new Set(foods.map((f) => f._category))].sort();
+  const rdaReference = Object.fromEntries(
+    MICRONUTRIENT_FIELDS.map((field) => [toCamel(field), rdaReferenceRaw[field]]),
+  );
   const rows = foods
     .slice()
     .sort((a, b) => a.id.localeCompare(b.id))
     .map((f) => {
       const price = priceByFoodId.get(f.id);
-      return {
+      const row = {
         id: f.id,
         name: englishLabel(f.name),
         category: CATEGORY_LABEL[f._category] || f._category,
@@ -106,6 +120,17 @@ function renderFoodsPage() {
         price: fmtPrice(price),
         priceValue: priceNumber(price),
       };
+      // Only emit micronutrient keys that are actually populated — a blank
+      // field means "not yet researched" (see schema.yaml), so omit rather
+      // than emit null/undefined and have the UI treat it as "confirmed zero".
+      for (const field of MICRONUTRIENT_FIELDS) {
+        if (f[field] !== undefined && f[field] !== null) {
+          row[toCamel(field)] = f[field];
+        }
+      }
+      if (f.micronutrient_source) row.micronutrientSource = f.micronutrient_source;
+      if (f.micronutrient_fdc_id !== undefined) row.fdcId = f.micronutrient_fdc_id;
+      return row;
     });
 
   return `---
@@ -119,13 +144,17 @@ ${generatedHeader(foods.length)}
 
 Numbers are per 100g unless the row's price says otherwise (e.g. "per egg").
 Calories marked ≈ are computed from protein/carbs/fat, not read off a label.
-All of this comes from my own Malaysia grocery shopping, not independently
-verified — this is a personal reference, not nutrition advice.
+Macros come from my own Malaysia grocery shopping, not independently verified.
+Vitamins and minerals, where present, are cited to USDA FoodData Central
+(per-food FDC id shown in the "Micronutrient source" detail) — not every food
+has every nutrient researched yet. This is a personal reference, not nutrition
+advice.
 
 export const foodsData = ${JSON.stringify(rows)};
 export const foodCategories = ${JSON.stringify(categories.map((c) => CATEGORY_LABEL[c] || c))};
+export const rdaReference = ${JSON.stringify(rdaReference)};
 
-<FoodsExplorer foods={foodsData} categories={foodCategories} />
+<FoodsExplorer foods={foodsData} categories={foodCategories} rdaReference={rdaReference} />
 `;
 }
 

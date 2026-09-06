@@ -27,6 +27,25 @@
   kcal_computed: true
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-19"
+  iron_mg: 13.9
+  calcium_mg: 128
+  magnesium_mg: 499
+  zinc_mg: 6.8
+  potassium_mg: 1523
+  sodium_mg: 21
+  vitamin_a_ug: 0
+  vitamin_d_ug: 0
+  vitamin_e_mg: 0.1
+  vitamin_k_ug: 2.4
+  vitamin_b1_mg: 0.078
+  vitamin_b2_mg: 0.24
+  vitamin_b6_mg: 0.117
+  vitamin_b12_ug: 0
+  folate_ug: 32
+  vitamin_c_mg: 0
+  omega3_g: 0.44
+  micronutrient_source: "USDA FDC 169593"
+  micronutrient_fdc_id: 169593
 
 - id: black_sesame_powder
   name: 黑芝麻粉 (black sesame powder)
@@ -41,6 +60,25 @@
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-19"
   notes: "Ca ~975mg, Fe ~14mg per 100g per source table"
+  iron_mg: 14.5
+  calcium_mg: 975
+  magnesium_mg: 351
+  zinc_mg: 7.75
+  potassium_mg: 468
+  sodium_mg: 11
+  vitamin_a_ug: 0
+  vitamin_d_ug: 0
+  vitamin_e_mg: 0.25
+  vitamin_k_ug: 0
+  vitamin_b1_mg: 0.79
+  vitamin_b2_mg: 0.25
+  vitamin_b6_mg: 0.79
+  vitamin_b12_ug: 0
+  folate_ug: 97
+  vitamin_c_mg: 0
+  omega3_g: 0.38
+  micronutrient_source: "USDA FDC 170150 (Seeds, sesame seeds, whole, dried — no black-sesame-specific FDC entry exists; used as closest proxy)"
+  micronutrient_fdc_id: 170150
 
 - id: black_sesame_oil
   name: 黑芝麻油 (black sesame oil)
@@ -53,6 +91,25 @@
   kcal_computed: true
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-19"
+  iron_mg: 0
+  calcium_mg: 0
+  magnesium_mg: 0
+  zinc_mg: 0
+  potassium_mg: 0
+  sodium_mg: 0
+  vitamin_a_ug: 0
+  vitamin_d_ug: 0
+  vitamin_e_mg: 1.40
+  vitamin_k_ug: 13.6
+  vitamin_b1_mg: 0
+  vitamin_b2_mg: 0
+  vitamin_b6_mg: 0
+  vitamin_b12_ug: 0
+  folate_ug: 0
+  vitamin_c_mg: 0
+  omega3_g: 0.30
+  micronutrient_source: "USDA FDC 171016 (Oil, sesame, salad or cooking — generic sesame oil, not black-sesame-specific; used as closest proxy)"
+  micronutrient_fdc_id: 171016
 
 - id: black_sesame_paste
   name: 黑芝麻酱 (black sesame paste)
@@ -66,6 +123,25 @@
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-31"
   notes: "Distinct from black_sesame_powder (drier, ground form) — paste is oil-blended, higher fat density."
+  iron_mg: 7.0
+  calcium_mg: 116
+  magnesium_mg: 357
+  zinc_mg: 6.1
+  potassium_mg: 408
+  sodium_mg: 64
+  vitamin_a_ug: 3
+  vitamin_d_ug: 0
+  vitamin_e_mg: 0
+  vitamin_k_ug: 2
+  vitamin_b1_mg: 0.99
+  vitamin_b2_mg: 0.47
+  vitamin_b6_mg: 0.59
+  vitamin_b12_ug: 0
+  folate_ug: 108
+  vitamin_c_mg: 0
+  omega3_g: 0.25
+  micronutrient_source: "USDA FDC 170189 (Sesame Butter/Tahini — no black-sesame-specific FDC entry exists; used as closest proxy)"
+  micronutrient_fdc_id: 170189
 
 - id: sesame_paste
   name: 芝麻酱 (sesame paste / tahini)
@@ -79,6 +155,25 @@
   kcal_computed: true
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-31"
+  iron_mg: 7.0
+  calcium_mg: 116
+  magnesium_mg: 357
+  zinc_mg: 6.1
+  potassium_mg: 408
+  sodium_mg: 64
+  vitamin_a_ug: 3
+  vitamin_d_ug: 0
+  vitamin_e_mg: 0
+  vitamin_k_ug: 2
+  vitamin_b1_mg: 0.99
+  vitamin_b2_mg: 0.47
+  vitamin_b6_mg: 0.59
+  vitamin_b12_ug: 0
+  folate_ug: 108
+  vitamin_c_mg: 0
+  omega3_g: 0.25
+  micronutrient_source: "USDA FDC 170189 (Sesame Butter/Tahini)"
+  micronutrient_fdc_id: 170189
 
 - id: peanut_butter
   name: 花生酱 (peanut butter)
@@ -92,6 +187,25 @@
   kcal_computed: true
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-31"
+  iron_mg: 1.75
+  calcium_mg: 49
+  magnesium_mg: 168
+  zinc_mg: 2.5
+  potassium_mg: 558
+  sodium_mg: 17
+  vitamin_a_ug: 0
+  vitamin_d_ug: 0
+  vitamin_e_mg: 9.09
+  vitamin_k_ug: 0.31
+  vitamin_b1_mg: 0.15
+  vitamin_b2_mg: 0.19
+  vitamin_b6_mg: 0.44
+  vitamin_b12_ug: 0
+  folate_ug: 87
+  vitamin_c_mg: 0
+  omega3_g: 0.03
+  micronutrient_source: "USDA FDC 172470 (Peanut butter, smooth style, without salt)"
+  micronutrient_fdc_id: 172470
 
 - id: aromatics_mixed
   name: 洋葱/蒜/姜 (onion / garlic / ginger)
@@ -106,3 +220,21 @@
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-31"
   notes: "Blended placeholder for onion/garlic/ginger seasoning aromatics, priced/estimated as one group since typical portions are small and mixed within one dish — split into distinct food ids later if precision matters."
+  iron_mg: 0.2
+  calcium_mg: 23
+  magnesium_mg: 10
+  zinc_mg: 0.17
+  potassium_mg: 146
+  sodium_mg: 4
+  vitamin_a_ug: 0
+  vitamin_d_ug: 0
+  vitamin_e_mg: 0.02
+  vitamin_k_ug: 0.4
+  vitamin_b1_mg: 0.05
+  vitamin_b2_mg: 0.03
+  vitamin_b6_mg: 0.12
+  vitamin_b12_ug: 0
+  folate_ug: 19
+  vitamin_c_mg: 7.4
+  micronutrient_source: "USDA FDC 170000 (Onions, raw — used as single-ingredient proxy for the onion/garlic/ginger mix rather than averaging all three; onion is the dominant component by typical portion)"
+  micronutrient_fdc_id: 170000
