@@ -172,6 +172,41 @@
   micronutrient_source: "USDA FDC 169736 (Pasta, dry, enriched)"
   micronutrient_fdc_id: 169736
 
+- id: corn_cooked
+  name: 玉米粒 (sweet corn, cooked)
+  basis: 100g_cooked
+  protein_g: 3.4
+  carbs_g: 21.0
+  fat_g: 1.5
+  sugar_g: 4.5
+  fibre_g: 2.4
+  kcal: 96
+  kcal_computed: true
+  glycemic_index: 52
+  gi_source: "public GI reference (sweet corn), not lab-tested on this specific product"
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-09-28"
+  notes: "Boiled/steamed, drained, no added salt. Occasional rice substitute at lunch — lower kcal than brown rice (96 vs 111/100g cooked) and meaningfully higher potassium (218 vs 86mg/100g) and folate (42 vs 9ug/100g). See data/protocol/standard_week.md §6 changelog v3.4."
+  iron_mg: 0.6
+  calcium_mg: 3
+  magnesium_mg: 26
+  zinc_mg: 0.5
+  potassium_mg: 218
+  sodium_mg: 1
+  vitamin_a_ug: 9
+  vitamin_d_ug: 0
+  vitamin_e_mg: 0.1
+  vitamin_k_ug: 0.4
+  vitamin_b1_mg: 0.155
+  vitamin_b2_mg: 0.055
+  vitamin_b6_mg: 0.093
+  vitamin_b12_ug: 0
+  folate_ug: 42
+  vitamin_c_mg: 6.8
+  omega3_g: 0.02
+  micronutrient_source: "USDA FDC 169998 (Corn, sweet, yellow, cooked, boiled, drained, without salt)"
+  micronutrient_fdc_id: 169998
+
 - id: rolled_oats
   name: Rolled Oats
   basis: 100g_raw

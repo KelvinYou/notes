@@ -128,6 +128,39 @@
   micronutrient_fdc_id: 170554
   notes: "Vitamin A/D/K and B6 not found on available source page — omitted rather than guessed."
 
+- id: pistachio
+  name: 开心果碎 (pistachio, shelled pieces)
+  basis: 100g_raw
+  protein_g: 20.2
+  carbs_g: 27.2
+  fat_g: 45.3
+  sugar_g: 7.7
+  fibre_g: 10.6
+  kcal: 560
+  kcal_computed: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-09-28"
+  iron_mg: 3.92
+  calcium_mg: 105
+  magnesium_mg: 121
+  zinc_mg: 2.2
+  potassium_mg: 1025
+  sodium_mg: 1
+  vitamin_a_ug: 13
+  vitamin_d_ug: 0
+  vitamin_e_mg: 2.3
+  vitamin_k_ug: 13.2
+  vitamin_b1_mg: 0.87
+  vitamin_b2_mg: 0.16
+  vitamin_b6_mg: 1.70
+  vitamin_b12_ug: 0
+  folate_ug: 51
+  vitamin_c_mg: 5.0
+  omega3_g: 0.07
+  micronutrient_source: "USDA FDC 170184 (Nuts, pistachio nuts, raw)"
+  micronutrient_fdc_id: 170184
+  notes: "Much lower vitamin E than almonds (2.3mg vs 25.6mg/100g) — see data/protocol/standard_week.md §6 changelog v3.3 for why the lunch nut serving keeps almond as the majority share rather than a full swap."
+
 - id: pumpkin_seeds
   name: 南瓜籽 (pumpkin seeds)
   basis: 100g_raw

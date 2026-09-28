@@ -207,6 +207,41 @@
   micronutrient_source: "USDA FDC 172470 (Peanut butter, smooth style, without salt)"
   micronutrient_fdc_id: 172470
 
+- id: honey
+  name: 蜂蜜 (honey)
+  basis: 100g_raw
+  protein_g: 0.3
+  carbs_g: 82.4
+  fat_g: 0
+  sugar_g: 82.1
+  fibre_g: 0.2
+  kcal: 304
+  kcal_computed: true
+  glycemic_index: 61
+  gi_source: "public GI reference (honey), not lab-tested on this specific product"
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-09-28"
+  notes: "Replaces banana as the pre-/post-workout and pre-run fast-carb slot in data/protocol/standard_week.md §6 (v3.3) — fresh banana became unreliable to source. Much lower potassium/folate/vitamin C than banana; see changelog v3.3 for the resulting micronutrient trade-off."
+  iron_mg: 0.42
+  calcium_mg: 6
+  magnesium_mg: 2
+  zinc_mg: 0.22
+  potassium_mg: 52
+  sodium_mg: 4
+  vitamin_a_ug: 0
+  vitamin_d_ug: 0
+  vitamin_e_mg: 0
+  vitamin_k_ug: 0
+  vitamin_b1_mg: 0
+  vitamin_b2_mg: 0.038
+  vitamin_b6_mg: 0.024
+  vitamin_b12_ug: 0
+  folate_ug: 2
+  vitamin_c_mg: 0.5
+  omega3_g: 0
+  micronutrient_source: "USDA FDC 169640 (Honey)"
+  micronutrient_fdc_id: 169640
+
 - id: aromatics_mixed
   name: 洋葱/蒜/姜 (onion / garlic / ginger)
   basis: 100g_raw

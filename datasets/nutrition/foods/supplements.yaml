@@ -15,3 +15,19 @@
   basis: 1_piece
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-19"
+
+- id: iodine_supplement
+  name: Iodine (kelp/potassium iodide tablet)
+  basis: 1_piece
+  iodine_ug: 150
+  source: "commercial supplement label, not yet a specific purchased product — verify against actual bottle"
+  last_verified: "2026-09-28"
+  notes: >-
+    Added because the entire nutrition dataset has zero foods with researched iodine
+    data (not "confirmed zero" — never researched; see schema.yaml's blank-vs-zero
+    convention). Rather than guess food-composition iodine values (dairy/egg/seafood
+    iodine varies hugely by region and processing, and getting it wrong has real
+    thyroid-health consequences), this uses a labeled supplement dose instead —
+    same pattern as magnesium_glycinate/creatine_monohydrate in this file. Confirm
+    the actual product's label states ~150ug (100% DV) per tablet before relying on
+    this number; if the real label differs, update this value, not standard_week.md.

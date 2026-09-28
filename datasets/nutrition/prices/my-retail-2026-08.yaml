@@ -399,6 +399,42 @@
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-31"
 
+- food_id: pistachio
+  pack_size: "1kg"
+  pack_price_myr: ~65.00
+  unit_cost_myr: ~6.50
+  unit: "per 100g"
+  is_estimate: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-09-28"
+
+- food_id: honey
+  pack_size: "500g jar"
+  pack_price_myr: ~28.00
+  unit_cost_myr: ~5.60
+  unit: "per 100g"
+  is_estimate: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-09-28"
+
+- food_id: corn_cooked
+  pack_size: "1kg frozen kernels"
+  pack_price_myr: ~6.50
+  unit_cost_myr: ~0.65
+  unit: "per 100g"
+  is_estimate: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-09-28"
+
+- food_id: iodine_supplement
+  pack_size: "60 tablets"
+  pack_price_myr: ~18.00
+  unit_cost_myr: ~0.30
+  unit: "per tablet"
+  is_estimate: true
+  source: "personal shopping records (Malaysia), unverified"
+  last_verified: "2026-09-28"
+
 - food_id: aromatics_mixed
   pack_size: "100g"
   pack_price_myr: ~2.00
