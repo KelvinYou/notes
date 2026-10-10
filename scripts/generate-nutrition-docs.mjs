@@ -144,11 +144,16 @@ ${generatedHeader(foods.length)}
 
 Numbers are per 100g unless the row's price says otherwise (e.g. "per egg").
 Calories marked ≈ are computed from protein/carbs/fat, not read off a label.
-Macros come from my own Malaysia grocery shopping, not independently verified.
+Macro sources vary by food: older records are from unverified Malaysia shopping
+notes, while newer records cite USDA FoodData Central. Check each food's source
+before applying the numbers to a particular product. A blank price is unknown,
+not free.
 Vitamins and minerals, where present, are cited to USDA FoodData Central
 (per-food FDC id shown in the "Micronutrient source" detail) — not every food
-has every nutrient researched yet. This is a personal reference, not nutrition
-advice.
+has every nutrient researched yet. Daily Value benchmarks are generic, not
+personal nutrient requirements. Omega-3 totals can mix ALA and marine fats, so
+they have no meaningful percent Daily Value here. This is a personal reference,
+not nutrition advice.
 
 export const foodsData = ${JSON.stringify(rows)};
 export const foodCategories = ${JSON.stringify(categories.map((c) => CATEGORY_LABEL[c] || c))};

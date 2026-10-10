@@ -18,6 +18,11 @@ sidebar_position: 1
 - **[Foods catalog](./nutrition/catalog/foods.mdx)** — generated from
   `datasets/nutrition/foods/*.yaml`; regenerate with
   `node scripts/generate-nutrition-docs.mjs` after editing the YAML
+- **[Food swaps](./nutrition/food-swaps.md)** — sourced portions for lean
+  protein, oily fish, red meat, fruit, starch and vegetable alternatives
+- **[Malaysia nutrition source audit](./nutrition/local-label-audit-2026-09.md)**
+  — each food's source decision, two exact-product local variants, and the
+  milk correction that changes the standing plan's calcium estimate
 - **[Chicken marinades](./nutrition/chicken-marinades.md)** — the 3 I actually
   rotate through and why
 - **[Overnight oats combos](./nutrition/overnight-oats.md)** — ratios and

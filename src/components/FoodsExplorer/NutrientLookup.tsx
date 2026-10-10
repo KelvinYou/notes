@@ -16,7 +16,9 @@ export default function NutrientLookup({ foods, rdaReference }: Props) {
   const [selected, setSelected] = useState<NutrientKey>("ironMg");
 
   const meta = useMemo(() => NUTRIENTS.find((n) => n.key === selected)!, [selected]);
-  const rda = rdaReference?.[selected];
+  // The table's omega-3 values may mix ALA with EPA/DPA/DHA, while the
+  // reference is an ALA-only AI. A percentage would compare unlike measures.
+  const rda = selected === "omega3G" ? undefined : rdaReference?.[selected];
 
   const ranked = useMemo(() => {
     return foods
@@ -31,7 +33,7 @@ export default function NutrientLookup({ foods, rdaReference }: Props) {
   }
 
   function sourceBadge(pct: number | null): string | null {
-    if (pct == null) return null;
+    if (pct == null || selected === "sodiumMg") return null;
     if (pct >= 20) return "Excellent source";
     if (pct >= 10) return "Good source";
     return null;
@@ -59,7 +61,8 @@ export default function NutrientLookup({ foods, rdaReference }: Props) {
 
       <p className={styles.count}>
         Ranked by {meta.label} ({meta.unit}) per 100g/serving
-        {rda ? ` — adult reference: ${rda}${meta.unit}/day` : ""}.
+        {rda ? ` — generic adult Daily Value: ${rda}${meta.unit}/day` : ""}.
+        {selected === "omega3G" ? " Omega-3 values may include different fatty acids, so no percent target is shown." : ""}
       </p>
 
       {ranked.length === 0 ? (
