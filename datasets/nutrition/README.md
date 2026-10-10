@@ -1,33 +1,53 @@
 # Nutrition dataset — data quality notes
 
 Structured source for the `docs/health/nutrition/` pages and for
-`personal-os`'s `nutrition.py` query adapter (Phase 2, not built yet). This
-is not a formal schema yet — that's tracked in
-[plan-public-knowledge-integration.md](https://github.com/KelvinYou/personal-os/blob/main/docs/plan-public-knowledge-integration.md)
-Phase 1 in the `personal-os` repo.
+`personal-os`'s `scripts/nutrition.py` query adapter. The shape is defined
+by `schema.yaml` and checked with `npm run validate:nutrition`. The generated
+foods page is rebuilt with `npm run generate:nutrition`.
 
-## Known gaps (carry into Phase 1, don't silently fix here)
+## Known gaps and provenance
 
-- **No per-row source citation.** Every food/price record is marked
-  `source: "personal shopping records (Malaysia), unverified"` — the original
-  table this came from cited no product label or database. Phase 1 should
-  replace this with a real source (label, USDA FDC, etc.) before this data is
-  treated as authoritative.
-- **No per-row date.** `last_verified: "2026-08-19"` is inherited from the
-  source file's last edit date, not an independent per-item check.
-- **`kcal` is derived, not sourced.** Computed via Atwater factors
-  (P×4 + C×4 + F×9) from protein/carbs/fat, marked `kcal_computed: true`.
-  Standard derivation, not an invented value — but Phase 2's adapter should
-  own this computation instead of a static number baked into the YAML.
-- **Basis is `100g` for every solid food**, `100g_cooked` for items already
-  cooked at time of consumption (brown rice, white rice), `100g_raw` for
-  everything else including meats (the source table explicitly labelled
-  those 生重/raw weight).
+- **Older macro and price records remain unverified.** Many retain
+  `source: "personal shopping records (Malaysia), unverified"`; their dates
+  reflect the old table's edit date, not an independent product-label check.
+  Newly added USDA records cite a FoodData Central ID and retrieval date.
+- **Missing prices stay missing.** Pork cuts, lamb, papaya, sweet potato,
+  cooked lentils, bok choy, colour-specific bell peppers, carrots, guava and
+  drained bone-in sardines do not have a comparable Malaysian edible-weight
+  purchase price. The Farm Fresh and Quaker exact-product nutrition rows added
+  on 2026-09-29 also have no separately verified package price.
+  A food without a price can be compared nutritionally but cannot win a
+  ringgit-based ranking yet. Never substitute a guessed retail price.
+- **Energy provenance varies.** `kcal_computed: true` marks older
+  Atwater-derived values; `false` marks energy read from the cited USDA
+  record. The two can differ because fibre is handled differently.
+- **Basis must be read per row.** Brown/white rice and lentils use cooked
+  weight; raw meat and vegetables use raw edible weight. Restaurant dishes
+  such as salmon mentai sushi are not single foods with stable macros:
+  salmon, rice, mayonnaise/sauce, and portion size vary independently.
+- **Micronutrients can use a proxy.** Read `micronutrient_source` and
+  `notes` before claiming a nutrient threshold is met. `skim_milk` now uses
+  generic unfortified US skim milk (~125 mg calcium/100 ml), after the
+  previous calcium-fortified proxy (204 mg/100 ml) was found unsuitable.
+  A Malaysian carton can be higher or lower; see the full local-source audit
+  in `docs/health/nutrition/local-label-audit-2026-09.md`.
+- **Optional replacement foods need label and yield checks.** The canned
+  sardine record is *oil-drained solids with edible bones*; tomato-sauce or
+  boneless tins have different fat, sodium and calcium. USDA's common-guava
+  record excludes the skin; a local seedless fruit eaten with skin can differ.
+  Carrot values use trimmed edible weight. Store shelf prices for whole packs
+  must not be treated as cost per 100 g edible without measuring the yield.
+- **Iodine has not been researched for these foods.** An omitted
+  `iodine_ug` is unknown, not zero. The same missing-versus-zero rule applies
+  to every micronutrient. The adult reference file holds generic Daily
+  Values, not age/sex-specific requirements; its 1.6 g omega-3 entry is an
+  ALA reference and must not be used as a percent target for a total that
+  mixes ALA with marine EPA/DHA.
 - **`pack_price_myr`/`unit_cost_myr` mix string and float** in
   `prices/*.yaml` — an estimated value keeps the `~` prefix as a string
   (`"~15.00"`) so the estimate marker survives; exact values are floats.
-  Phase 1's schema should split this into a numeric value + a separate
-  `is_estimate` boolean everywhere.
+  A future schema change could split this into a numeric value and a
+  separate `is_estimate` boolean everywhere.
 - **`meals/` removed (2026-08-24).** Structured meal-template records (with
   `slot`/ingredient/basis-conversion schema) are gone — replaced by narrative
   technique/pairing notes under `docs/health/nutrition/` (marinades, overnight

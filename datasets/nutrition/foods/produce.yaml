@@ -63,6 +63,68 @@
   micronutrient_source: "USDA FDC 169249 (Lettuce, green leaf, raw)"
   micronutrient_fdc_id: 169249
 
+- id: bok_choy
+  name: 小白菜 (bok choy)
+  basis: 100g_raw
+  protein_g: 1.5
+  carbs_g: 2.18
+  fat_g: 0.2
+  sugar_g: 1.18
+  fibre_g: 1.0
+  kcal: 13
+  kcal_computed: false
+  source: "USDA FoodData Central SR Legacy 170390 (raw pak choi)"
+  last_verified: "2026-09-29"
+  notes: "Raw edible weight; cooking changes the weight. No Malaysian retail price has been verified."
+  iron_mg: 0.8
+  calcium_mg: 105
+  magnesium_mg: 19
+  zinc_mg: 0.19
+  potassium_mg: 252
+  sodium_mg: 65
+  vitamin_a_ug: 223
+  vitamin_d_ug: 0
+  vitamin_e_mg: 0.09
+  vitamin_k_ug: 45.5
+  vitamin_b1_mg: 0.04
+  vitamin_b2_mg: 0.07
+  vitamin_b6_mg: 0.194
+  vitamin_b12_ug: 0
+  folate_ug: 66
+  vitamin_c_mg: 45
+  omega3_g: 0.055
+  micronutrient_source: "USDA FDC 170390 (Cabbage, chinese (pak-choi), raw); omega-3 is reported ALA only"
+  micronutrient_fdc_id: 170390
+
+- id: carrot_raw
+  name: 胡萝卜 (carrot, raw)
+  basis: 100g_raw
+  protein_g: 0.93
+  carbs_g: 9.58
+  fat_g: 0.24
+  sugar_g: 4.74
+  fibre_g: 2.8
+  kcal: 41
+  kcal_computed: false
+  source: "USDA National Nutrient Database SR28 NDB 11124 (Carrots, raw)"
+  last_verified: "2026-09-29"
+  notes: "Raw edible weight after trimming. Useful for vegetable variety and provitamin-A carotenoids; not a substitute for a protein or starchy-food serving. No comparable Malaysian edible-weight price has been recorded."
+  iron_mg: 0.3
+  calcium_mg: 33
+  magnesium_mg: 12
+  zinc_mg: 0.24
+  potassium_mg: 320
+  sodium_mg: 69
+  vitamin_a_ug: 835
+  vitamin_e_mg: 0.66
+  vitamin_b1_mg: 0.066
+  vitamin_b2_mg: 0.058
+  vitamin_b6_mg: 0.138
+  folate_ug: 19
+  vitamin_c_mg: 5.9
+  micronutrient_source: "USDA SR28 NDB 11124 (Carrots, raw); vitamin A is mcg RAE, mostly provitamin-A carotenoids"
+  micronutrient_fdc_id: 170393
+
 - id: frozen_blueberries
   name: 冷冻蓝莓 (frozen blueberries)
   basis: 100g_raw
@@ -128,7 +190,7 @@
   micronutrient_fdc_id: 168173
 
 - id: bell_pepper
-  name: 红黄甜椒 (red/yellow bell pepper)
+  name: 红甜椒 (red bell pepper)
   basis: 100g_raw
   protein_g: 1
   carbs_g: 6
@@ -139,6 +201,7 @@
   kcal_computed: true
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-31"
+  notes: "The legacy bell_pepper ID now means red bell pepper: its USDA micronutrients were always for red, not yellow. The old mixed-colour retail price is only a rough proxy for red; no colour-specific receipt has been checked."
   iron_mg: 0.43
   calcium_mg: 7
   magnesium_mg: 12
@@ -156,6 +219,63 @@
   vitamin_c_mg: 128
   micronutrient_source: "USDA FDC 170108 (Peppers, sweet, red, raw)"
   micronutrient_fdc_id: 170108
+
+- id: yellow_bell_pepper
+  name: 黄甜椒 (yellow bell pepper)
+  basis: 100g_raw
+  protein_g: 1
+  carbs_g: 6.32
+  fat_g: 0.21
+  sugar_g: 4.3
+  fibre_g: 0.9
+  kcal: 27
+  kcal_computed: false
+  source: "USDA SR28 NDB 11951 (Peppers, sweet, yellow, raw); sugar only: FSANZ AFCD Release 3 F010259 (Capsicum, yellow, fresh, raw)"
+  last_verified: "2026-09-29"
+  notes: "Raw edible weight. USDA SR28 has no total-sugars value for yellow pepper, so sugar uses a different analysed sample from AFCD; carbohydrate methods and samples differ. No Malaysian colour-specific price has been verified."
+  iron_mg: 0.46
+  calcium_mg: 11
+  magnesium_mg: 12
+  zinc_mg: 0.17
+  potassium_mg: 212
+  sodium_mg: 2
+  vitamin_a_ug: 10
+  vitamin_b1_mg: 0.028
+  vitamin_b2_mg: 0.025
+  vitamin_b6_mg: 0.168
+  folate_ug: 26
+  vitamin_c_mg: 183.5
+  micronutrient_source: "USDA National Nutrient Database SR28 NDB 11951 (Peppers, sweet, yellow, raw)"
+  micronutrient_fdc_id: 169383
+
+- id: green_bell_pepper
+  name: 青甜椒 (green bell pepper)
+  basis: 100g_raw
+  protein_g: 0.86
+  carbs_g: 4.64
+  fat_g: 0.17
+  sugar_g: 2.4
+  fibre_g: 1.7
+  kcal: 20
+  kcal_computed: false
+  source: "USDA National Nutrient Database SR28 NDB 11333 (Peppers, sweet, green, raw)"
+  last_verified: "2026-09-29"
+  notes: "Raw edible weight; this is mild green bell pepper, not hot green chilli. No Malaysian colour-specific price has been verified."
+  iron_mg: 0.34
+  calcium_mg: 10
+  magnesium_mg: 10
+  zinc_mg: 0.13
+  potassium_mg: 175
+  sodium_mg: 3
+  vitamin_a_ug: 18
+  vitamin_e_mg: 0.37
+  vitamin_b1_mg: 0.057
+  vitamin_b2_mg: 0.028
+  vitamin_b6_mg: 0.224
+  folate_ug: 10
+  vitamin_c_mg: 80.4
+  micronutrient_source: "USDA National Nutrient Database SR28 NDB 11333 (Peppers, sweet, green, raw)"
+  micronutrient_fdc_id: 170427
 
 - id: banana
   name: 香蕉 (banana)
@@ -190,6 +310,68 @@
   vitamin_c_mg: 8.7
   micronutrient_source: "USDA FDC 173944 (Bananas, raw)"
   micronutrient_fdc_id: 173944
+
+- id: papaya
+  name: 木瓜 (papaya)
+  basis: 100g_raw
+  protein_g: 0.47
+  carbs_g: 10.82
+  fat_g: 0.26
+  sugar_g: 7.82
+  fibre_g: 1.7
+  kcal: 43
+  kcal_computed: false
+  source: "USDA FoodData Central SR Legacy 169926 (Papayas, raw)"
+  last_verified: "2026-09-29"
+  notes: "Edible flesh without peel or seeds. No Malaysian retail price has been verified."
+  iron_mg: 0.25
+  calcium_mg: 20
+  magnesium_mg: 21
+  zinc_mg: 0.08
+  potassium_mg: 182
+  sodium_mg: 8
+  vitamin_a_ug: 47
+  vitamin_d_ug: 0
+  vitamin_e_mg: 0.3
+  vitamin_k_ug: 2.6
+  vitamin_b1_mg: 0.023
+  vitamin_b2_mg: 0.027
+  vitamin_b6_mg: 0.038
+  vitamin_b12_ug: 0
+  folate_ug: 37
+  vitamin_c_mg: 60.9
+  omega3_g: 0.047
+  micronutrient_source: "USDA FDC 169926 (Papayas, raw); omega-3 is reported ALA only"
+  micronutrient_fdc_id: 169926
+
+- id: guava_raw
+  name: 番石榴 (guava, raw edible flesh)
+  basis: 100g_raw
+  protein_g: 2.55
+  carbs_g: 14.32
+  fat_g: 0.95
+  sugar_g: 8.92
+  fibre_g: 5.4
+  kcal: 68
+  kcal_computed: false
+  source: "USDA National Nutrient Database SR28 NDB 09139 (Guavas, common, raw)"
+  last_verified: "2026-09-29"
+  notes: "USDA edible-portion sample excludes the skin (22% refuse); local seedless guava eaten with skin may differ. Use the edible weight, not whole-fruit purchase weight, for comparisons. Possible fruit-slot alternative to frozen berries if tolerated and cheaper locally; no comparable Malaysian edible-weight price has been verified."
+  iron_mg: 0.26
+  calcium_mg: 18
+  magnesium_mg: 22
+  zinc_mg: 0.23
+  potassium_mg: 417
+  sodium_mg: 2
+  vitamin_a_ug: 31
+  vitamin_e_mg: 0.73
+  vitamin_b1_mg: 0.067
+  vitamin_b2_mg: 0.04
+  vitamin_b6_mg: 0.11
+  folate_ug: 49
+  vitamin_c_mg: 228.3
+  micronutrient_source: "USDA SR28 NDB 09139 (Guavas, common, raw); edible portion excludes skin"
+  micronutrient_fdc_id: 173044
 
 - id: apple
   name: 苹果 (apple)

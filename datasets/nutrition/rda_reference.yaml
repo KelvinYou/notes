@@ -1,9 +1,11 @@
 # datasets/nutrition/rda_reference.yaml
-# Generic adult reference values — NOT personalized (no age/sex/pregnancy
-# adjustment; see docs/design/nutrition-micronutrient-lookup.md in personal-os,
-# "Out of scope"). Convention: generic US/EU Daily Value, chosen so this pairs
-# with the USDA FDC source already used for the food data itself — one
-# citation trail, not two.
+# Generic adult Daily Value benchmarks — NOT individual RDAs or AIs and NOT
+# personalized for age, sex or pregnancy. Iron 18 mg and calcium 1300 mg are
+# label Daily Values, not requirements for every adult. Potassium 4700 mg is
+# also a label Daily Value; the US adult male AI is 3400 mg.
+# omega3_g: 1.6 below is the adult male AI for ALA alone. Individual food
+# omega3_g records can mix ALA with EPA/DPA/DHA, so a percent-of-reference
+# calculation for omega3_g is invalid and the catalog suppresses it.
 #
 # Enforced by scripts/validate-nutrition-data.mjs: every key in
 # schema.yaml's food.micronutrient_fields must have an entry here.

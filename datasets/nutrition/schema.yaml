@@ -38,6 +38,9 @@ food:
   # Blank vs. zero: an omitted micronutrient field means "not yet researched".
   # An explicit 0 means "researched, confirmed negligible/absent". Never fill
   # a blank with 0 as a placeholder.
+  # omega3_g is a descriptive total from each source; some foods report only
+  # ALA and others include EPA/DPA/DHA. Do not compare it with the 1.6g ALA
+  # reference as if it were a single interchangeable nutrient.
   micronutrient_fields:
     - iron_mg
     - calcium_mg

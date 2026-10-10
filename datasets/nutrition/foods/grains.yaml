@@ -137,6 +137,72 @@
   micronutrient_source: "USDA FDC 170026 (Potatoes, flesh and skin, raw)"
   micronutrient_fdc_id: 170026
 
+- id: sweet_potato
+  name: 红薯 (sweet potato)
+  basis: 100g_raw
+  protein_g: 1.57
+  carbs_g: 20.12
+  fat_g: 0.05
+  sugar_g: 4.18
+  fibre_g: 3.0
+  kcal: 86
+  kcal_computed: false
+  source: "USDA FoodData Central SR Legacy 168482 (Sweet potato, raw, unprepared)"
+  last_verified: "2026-09-29"
+  notes: "Raw edible weight, without cooking oil. No Malaysian retail price has been verified."
+  iron_mg: 0.61
+  calcium_mg: 30
+  magnesium_mg: 25
+  zinc_mg: 0.3
+  potassium_mg: 337
+  sodium_mg: 55
+  vitamin_a_ug: 709
+  vitamin_d_ug: 0
+  vitamin_e_mg: 0.26
+  vitamin_k_ug: 1.8
+  vitamin_b1_mg: 0.078
+  vitamin_b2_mg: 0.061
+  vitamin_b6_mg: 0.209
+  vitamin_b12_ug: 0
+  folate_ug: 11
+  vitamin_c_mg: 2.4
+  omega3_g: 0.001
+  micronutrient_source: "USDA FDC 168482 (Sweet potato, raw, unprepared); omega-3 is reported ALA only"
+  micronutrient_fdc_id: 168482
+
+- id: lentils_cooked
+  name: 熟扁豆 (lentils, cooked)
+  basis: 100g_cooked
+  protein_g: 9.02
+  carbs_g: 20.13
+  fat_g: 0.38
+  sugar_g: 1.8
+  fibre_g: 7.9
+  kcal: 116
+  kcal_computed: false
+  source: "USDA FoodData Central SR Legacy 172421 (Lentils, boiled without salt)"
+  last_verified: "2026-09-29"
+  notes: "Cooked and drained weight; do not compare its 100g basis with dry lentil prices. No Malaysian retail price has been verified."
+  iron_mg: 3.33
+  calcium_mg: 19
+  magnesium_mg: 36
+  zinc_mg: 1.27
+  potassium_mg: 369
+  sodium_mg: 2
+  vitamin_a_ug: 0
+  vitamin_d_ug: 0
+  vitamin_e_mg: 0.11
+  vitamin_k_ug: 1.7
+  vitamin_b1_mg: 0.169
+  vitamin_b2_mg: 0.073
+  vitamin_b6_mg: 0.178
+  vitamin_b12_ug: 0
+  folate_ug: 181
+  vitamin_c_mg: 1.5
+  omega3_g: 0.037
+  micronutrient_source: "USDA FDC 172421 (Lentils, mature seeds, cooked, boiled, without salt); omega-3 is reported ALA only"
+  micronutrient_fdc_id: 172421
+
 - id: pasta_dry
   name: 意面 (pasta, dry)
   basis: 100g_raw
@@ -172,41 +238,6 @@
   micronutrient_source: "USDA FDC 169736 (Pasta, dry, enriched)"
   micronutrient_fdc_id: 169736
 
-- id: corn_cooked
-  name: 玉米粒 (sweet corn, cooked)
-  basis: 100g_cooked
-  protein_g: 3.4
-  carbs_g: 21.0
-  fat_g: 1.5
-  sugar_g: 4.5
-  fibre_g: 2.4
-  kcal: 96
-  kcal_computed: true
-  glycemic_index: 52
-  gi_source: "public GI reference (sweet corn), not lab-tested on this specific product"
-  source: "personal shopping records (Malaysia), unverified"
-  last_verified: "2026-09-28"
-  notes: "Boiled/steamed, drained, no added salt. Occasional rice substitute at lunch — lower kcal than brown rice (96 vs 111/100g cooked) and meaningfully higher potassium (218 vs 86mg/100g) and folate (42 vs 9ug/100g). See data/protocol/standard_week.md §6 changelog v3.4."
-  iron_mg: 0.6
-  calcium_mg: 3
-  magnesium_mg: 26
-  zinc_mg: 0.5
-  potassium_mg: 218
-  sodium_mg: 1
-  vitamin_a_ug: 9
-  vitamin_d_ug: 0
-  vitamin_e_mg: 0.1
-  vitamin_k_ug: 0.4
-  vitamin_b1_mg: 0.155
-  vitamin_b2_mg: 0.055
-  vitamin_b6_mg: 0.093
-  vitamin_b12_ug: 0
-  folate_ug: 42
-  vitamin_c_mg: 6.8
-  omega3_g: 0.02
-  micronutrient_source: "USDA FDC 169998 (Corn, sweet, yellow, cooked, boiled, drained, without salt)"
-  micronutrient_fdc_id: 169998
-
 - id: rolled_oats
   name: Rolled Oats
   basis: 100g_raw
@@ -239,3 +270,20 @@
   vitamin_c_mg: 0
   micronutrient_source: "USDA FDC 173904 (Cereals, oats, regular and quick, not fortified, dry — closest generic match; not rolled-oats-specific)"
   micronutrient_fdc_id: 173904
+
+- id: quaker_my_rolled_oats
+  name: Quaker Rolled Oats (Malaysia)
+  basis: 100g_raw
+  protein_g: 12.2
+  carbs_g: 58
+  fat_g: 9
+  sugar_g: 1.4
+  fibre_g: 9
+  kcal: 380
+  kcal_computed: false
+  magnesium_mg: 100
+  sodium_mg: 6
+  source: "Quaker Malaysia official Rolled Oats nutrition table, https://www.quaker.com.my/products.php"
+  last_verified: "2026-09-29"
+  notes: "Local brand candidate, not the owner's confirmed oats. The web table's iron lines are inconsistent, so iron and other unlisted micronutrients are left unknown."
+  micronutrient_source: "Quaker Malaysia official Rolled Oats nutrition table (magnesium and sodium only)"

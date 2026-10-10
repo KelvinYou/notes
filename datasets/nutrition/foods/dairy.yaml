@@ -67,6 +67,22 @@
   micronutrient_source: "USDA FDC 171265"
   micronutrient_fdc_id: 171265
 
+- id: farm_fresh_uht_fresh_milk_1l
+  name: Farm Fresh UHT Fresh Milk 1L (Malaysia)
+  basis: 100ml_raw
+  protein_g: 3.4
+  carbs_g: 4.3
+  fat_g: 3.8
+  sugar_g: 4.3
+  kcal: 65
+  kcal_computed: false
+  calcium_mg: 122
+  sodium_mg: 34.5
+  source: "Farm Fresh Malaysia official shop nutrition facts, https://shop.farmfresh.com.my/products/farm-fresh-uht-fresh-milk-1l-x-1-pack-farm-fresh-choco-malt-powder-800g-1-pack"
+  last_verified: "2026-09-29"
+  notes: "Local brand candidate, not the owner's confirmed carton. Label lists only these nutrients; missing micronutrients are unknown, not zero. Product is full-fat UHT fresh milk, not skim milk."
+  micronutrient_source: "Farm Fresh Malaysia official product nutrition panel (calcium and sodium only)"
+
 - id: skim_milk
   name: 脱脂牛奶 (skim milk)
   basis: 100ml_raw
@@ -80,24 +96,25 @@
   gi_source: "public GI reference (skim milk), not lab-tested on this specific product"
   source: "personal shopping records (Malaysia), unverified"
   last_verified: "2026-08-31"
-  iron_mg: 0.04
-  calcium_mg: 204
+  notes: "Generic unfortified skim milk, not a verified Malaysian carton. Micronutrients use USDA SR28 NDB 01151 (FDC 173432), converted from per 100 g to per 100 ml using its 245 g per US cup (~240 ml) measure; roundings are approximate. A calcium- or vitamin-fortified local carton needs its own label record."
+  iron_mg: 0.03
+  calcium_mg: 125
   magnesium_mg: 11
-  zinc_mg: 0.40
-  potassium_mg: 166
-  sodium_mg: 52
-  vitamin_a_ug: 137
-  vitamin_d_ug: 1.2
+  zinc_mg: 0.43
+  potassium_mg: 159
+  sodium_mg: 43
+  vitamin_a_ug: 2
+  vitamin_d_ug: 0
   vitamin_e_mg: 0.01
   vitamin_k_ug: 0
-  vitamin_b1_mg: 0.04
-  vitamin_b2_mg: 0.14
-  vitamin_b6_mg: 0.04
-  vitamin_b12_ug: 0.38
+  vitamin_b1_mg: 0.046
+  vitamin_b2_mg: 0.186
+  vitamin_b6_mg: 0.038
+  vitamin_b12_ug: 0.51
   folate_ug: 5
-  vitamin_c_mg: 1.0
-  micronutrient_source: "USDA FDC 169868"
-  micronutrient_fdc_id: 169868
+  vitamin_c_mg: 0
+  micronutrient_source: "USDA SR28 NDB 01151 / FDC 173432 (milk, nonfat, fluid, without added vitamins A and D); per-100g values converted approximately to per 100ml at 245g/US cup"
+  micronutrient_fdc_id: 173432
 
 - id: cheese_slice
   name: Cheese 片 (cheese slice)

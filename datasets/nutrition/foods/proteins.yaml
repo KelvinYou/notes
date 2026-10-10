@@ -248,6 +248,39 @@
   micronutrient_source: "USDA FDC 175167 (Fish, salmon, Atlantic, farmed, raw)"
   micronutrient_fdc_id: 175167
 
+- id: canned_sardines_bone_drained
+  name: 带骨沙丁鱼罐头 (canned sardines in oil, drained, with bones)
+  basis: 100g_cooked
+  protein_g: 24.62
+  carbs_g: 0
+  fat_g: 11.45
+  sugar_g: 0
+  fibre_g: 0
+  kcal: 208
+  kcal_computed: false
+  source: "USDA National Nutrient Database SR28 NDB 15088 (Atlantic sardines canned in oil, drained solids with bone)"
+  last_verified: "2026-09-29"
+  notes: "Ready-to-eat drained solids with edible bones, not the full can weight or tomato/chilli sauce. Use as an occasional lunch oily-fish replacement, not an extra serving; fat and sodium are higher than lean fish. Check the actual can's drained weight, bone content and label. No comparable Malaysian drained-weight price has been verified."
+  iron_mg: 2.92
+  calcium_mg: 382
+  magnesium_mg: 39
+  zinc_mg: 1.31
+  potassium_mg: 397
+  sodium_mg: 307
+  vitamin_a_ug: 32
+  vitamin_d_ug: 4.8
+  vitamin_e_mg: 2.04
+  vitamin_k_ug: 2.6
+  vitamin_b1_mg: 0.08
+  vitamin_b2_mg: 0.227
+  vitamin_b6_mg: 0.167
+  vitamin_b12_ug: 8.94
+  folate_ug: 10
+  vitamin_c_mg: 0
+  omega3_g: 0.982
+  micronutrient_source: "USDA SR28 NDB 15088; omega-3 is EPA 0.473g + DHA 0.509g per 100g drained solids (not total ALA+EPA+DHA)"
+  micronutrient_fdc_id: 175139
+
 - id: dory_fillet_raw
   name: Dory 鱼柳 (dory fillet, raw weight)
   basis: 100g_raw
@@ -348,6 +381,7 @@
   kcal_computed: true
   source: "USDA FoodData Central, not yet a personal shopping record (no Malaysia retail price logged)"
   last_verified: "2026-09-06"
+  notes: "Unprocessed pork is red meat. This record includes separable lean and fat; a fully trimmed loin or fatty hotpot slice will differ. It is not a meaningful substitute for oily fish as an EPA/DHA source."
   iron_mg: 0.53
   calcium_mg: 7
   magnesium_mg: 24
@@ -364,6 +398,37 @@
   omega3_g: 0.039
   micronutrient_source: "USDA FDC 168314 (Pork, fresh, loin, top loin (roasts), boneless, separable lean and fat, raw) — omega3_g is ALA only, EPA/DHA not reported; vitamin K/folate/vitamin C/iodine not reported on this entry, omitted rather than guessed"
   micronutrient_fdc_id: 168314
+
+- id: lamb_leg_lean_raw
+  name: 瘦羊腿肉 (lean lamb leg)
+  basis: 100g_raw
+  protein_g: 21.1
+  carbs_g: 0
+  fat_g: 4.64
+  sugar_g: 0
+  fibre_g: 0
+  kcal: 126
+  kcal_computed: false
+  source: "USDA FoodData Central SR Legacy 172515 (New Zealand lamb leg, separable lean only, raw)"
+  last_verified: "2026-09-29"
+  notes: "Edible lean meat, excluding bone and visible fat. A restaurant hotpot slice may contain more fat; broth, sauce and sides are separate. No Malaysian retail price has been verified."
+  iron_mg: 1.64
+  calcium_mg: 11
+  magnesium_mg: 24
+  zinc_mg: 3.16
+  potassium_mg: 350
+  sodium_mg: 64
+  vitamin_a_ug: 3
+  vitamin_d_ug: 0
+  vitamin_e_mg: 0.14
+  vitamin_b1_mg: 0.175
+  vitamin_b2_mg: 0.173
+  vitamin_b6_mg: 0.137
+  vitamin_b12_ug: 1.64
+  vitamin_c_mg: 0
+  omega3_g: 0.118
+  micronutrient_source: "USDA FDC 172515 (New Zealand lamb leg, separable lean only, raw); omega-3 = ALA 0.065 + EPA 0.024 + DPA 0.022 + DHA 0.007 g per 100g. Iodine, vitamin K and folate were not reported."
+  micronutrient_fdc_id: 172515
 
 - id: pork_collar
   name: 猪梅头肉 (pork collar / shoulder blade)
